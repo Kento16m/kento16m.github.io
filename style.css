@@ -1,0 +1,181 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: 100px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: #b7c8db;
+}
+
+main {
+    margin-top: 100px;
+}
+
+.logo {
+    margin-right: 120px;
+    padding-left: 35px;
+    padding-right: 50px;
+}
+
+.logo img {
+    height: 55px;
+}
+
+body {
+    background-color: #d7d6db;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: #007bff;
+    transition: width 0.2s ease;
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+}
+
+.imagen-redondeada img {
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+}
+
+.imagen-redondeada {
+    width: 95%;
+    margin: 120px auto 20px auto;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+}
+
+h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+}
+
+h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 25px;
+}
+
+p {
+    font-family: 'Anton', sans-serif;
+    font-size: 17px;
+    color: #333;
+}
+
+.imagenes-circulares {
+    text-align: center;
+    padding: 20px;
+}
+
+.imagenes-circulares h2 {
+    margin-bottom: 20px;
+}
+
+.contenedor-imagenes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.imagen-info {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+.imagen-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.texto-info {
+    text-align: left;
+}
+
+/* Estilos para el mapa y el formulario de contacto */
+.mapa-contacto {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.mapa {
+    flex: 1;
+}
+
+.contacto {
+    flex: 1;
+    padding: 20px;
+}
+
+.contacto h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.contacto input,
+.contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.contacto button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
