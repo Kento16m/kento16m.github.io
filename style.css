@@ -76,6 +76,18 @@ nav ul li a::before {
 nav ul li a:hover::before {
     width: 100%;
 }
+.boton-redondeado {
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.boton-redondeado:hover {
+    background-color: #66a3ff; /* Color de fondo al pasar el ratón */
+}
 
 .imagen-redondeada img {
     width: 100%;
@@ -179,3 +191,169 @@ p {
     border: none;
     cursor: pointer;
 }
+.contacto input,
+.contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Ajusta este valor para cambiar la redondez */
+}
+.contacto button {
+    background: linear-gradient(to right, #007bff, #66a3ff); /* Degradado de azul */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px; /* Más redondeado */
+    font-size: 16px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contacto button:hover {
+    transform: translateY(-3px); /* Ligero efecto de elevación */
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4); /* Sombra al pasar el ratón */
+}
+.mapa-contacto {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #ffffffc5; /* Gris claro */
+}
+
+.mapa {
+    flex: 1;
+}
+
+.contacto {
+    flex: 1;
+    padding: 20px;
+}
+
+.contacto h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.contacto input,
+.contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.contacto button {
+    background: linear-gradient(to right, #007bff, #66a3ff);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contacto button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 123, 255, 0.5);
+}
+.mapa-contacto {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #F0F0F0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.mapa {
+    flex: 1;
+}
+
+.contacto {
+    flex: 1;
+    padding: 20px;
+}
+
+.contacto h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.contacto input,
+.contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.contacto button {
+    background: linear-gradient(to right, #007bff, #66a3ff);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contacto button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 123, 255, 0.5);
+}
+.mapa iframe {
+    border-radius: 15px; /* Ajusta este valor para cambiar la redondez */
+}
+.contacto input::placeholder,
+.contacto textarea::placeholder {
+    font-family: 'Anton', sans-serif; /* Reemplaza 'TuFuentePersonalizada' con la fuente que desees */
+}
+
+footer {
+    background-color: #f0f0f0; /* Cambia el color de fondo */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-section img {
+    width: 30px; /* Ajusta el tamaño del icono */
+    margin-right: 10px;
+  }
+  
+  .footer-social {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-social a {
+    margin: 0 10px;
+  }
+  
+  .footer-social img {
+    width: 30px; /* Ajusta el tamaño del icono */
+  }
+  
+  .copyright {
+    font-size: 14px;
+  }
