@@ -10,63 +10,233 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="imagen-redondeada">
-        <img src="imagen1.jpg" alt="Descripción de la imagen">
-    </div>
 
     <header>
-        <nav>
-            <div class="logo">
-                <img src="logo.png" alt="Logo de tu gimnasio">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <a href="Index.html">
+                    <img src="img/logo.png" alt="Logo de tu gimnasio">
+                    </a>
+                </div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link">Gimnasios</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Tu espacio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Smart Fit Go</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Smartfit App</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Planes Corporativos</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link cta-button">¡Inscríbete ya!</a></li>
+                </ul>
             </div>
-            <ul>
-                <li><a href="#">Opcion1</a></li>
-                <li><a href="#">Opcion2</a></li>
-                <li><a href="#">Opcion3</a></li>
-                <li><a href="#">Opcion4</a></li>
-                <li><a href="#">Opcion5</a></li>
-                <li><a href="#" class="boton-redondeado">¡Inscríbete ya!</a></li>
-            </ul>
         </nav>
+
+        <!-- Modificación de lugar de la imagen redondeada -->
+        <div class="imagen-redondeada">
+            <img src="img/imagen1.jpg" alt="Descripción de la imagen">
+        </div>
+        <!-- ---- -->
     </header>
 
+    <!-- Modificaciones a main -->
     <main>
-        <section>
-            <div style="text-align: center;">
-                <h1>¡Bienvenido a nuestro gimnasio!</h1>
+        <section id="entrena_aqui" class="entrena_aqui">
+            <div class="section-header">
+                <h1>Entrena en nuestro GYM</h1>
+                <p>Contamos con equipamientos modernos y bien cuidados</p>
             </div>
-            <p>Aquí encontrarás toda la información sobre nuestras instalaciones y servicios.</p>
+            <div class="galeria">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img/galeria1.jpg" alt="Equipamiento de gimnasio">
+                    </div>
+                    <div class="card-content">
+                        <h3>Área de Pesas</h3>
+                        <p>Equipamiento de última generación para tu entrenamiento de fuerza.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img/galeria2.jpg" alt="Área de cardio">
+                    </div>
+                    <div class="card-content">
+                        <h3>Zona Cardio</h3>
+                        <p>Máquinas modernas para mejorar tu resistencia cardiovascular.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img/galeria3.jpg" alt="Área funcional">
+                    </div>
+                    <div class="card-content">
+                        <h3>Entrenamiento Funcional</h3>
+                        <p>Espacio dedicado para ejercicios funcionales y de alta intensidad.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Nuestras clases</h2>
-            <p>Ofrecemos una variedad de clases para todos los niveles.</p>
+        <section id="boxeo" class="boxeo">
+            <div class="boxeo-container">
+                <div class="boxeo-imagen">
+                    <img src="img/boxeo.jpg" alt="Clases de boxeo">
+                </div>
+                <div class="boxeo-contenido">
+                    <h2>Entrena <span class="highlight">BOXEO</span> con nosotros</h2>
+                    <p>Ofrecemos una variedad de clases para todos los niveles, desde principiantes hasta avanzados. Nuestros entrenadores certificados te guiarán en cada paso del camino para mejorar tu técnica, resistencia y fuerza.</p>
+                    <p>El boxeo no solo es un deporte de combate, sino también una excelente forma de ejercicio cardiovascular que ayuda a quemar calorías, mejorar la coordinación y liberar el estrés. ¡Únete a nuestra comunidad de boxeo y descubre una nueva forma de desafiar tus límites!</p>
+                    <a href="#" class="boton-redondeado">Conoce más</a>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Nuestros entrenadores</h2>
-            <p>Conoce a nuestro equipo de profesionales.</p>
+        <section id="entrenadores" class="entrenadores">
+            <div class="section-header">
+                <h2>Nuestros entrenadores</h2>
+                <p>Conoce a nuestro equipo de profesionales altamente calificados</p>
+            </div>
+            
+            <div class="turnos-container">
+                <div class="turno-header">
+                    <h2>Turno Mañana</h2>
+                    <p>Horario de: 6:00 AM a 12:00 PM</p>
+                </div>
+                
+                <div class="entrenadores-cards">
+                    <div class="entrenador-card">
+                        <div class="entrenador-img">
+                            <img src="img/entrenador1.jpg" alt="Entrenador Juan Pérez">
+                        </div>
+                        <div class="entrenador-info">
+                            <h3>Juan Pérez</h3>
+                            <p class="especialidad">Especialista en musculación</p>
+                            <p class="descripcion">Con más de 10 años de experiencia en entrenamiento de fuerza y acondicionamiento físico. Certificado en nutrición deportiva y rehabilitación.</p>
+                            <div class="entrenador-social">
+                                <a href="#"><img src="img/instagram icono.png" alt="Instagram"></a>
+                                <a href="#"><img src="img/facebook icono.png" alt="Facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="entrenador-card">
+                        <div class="entrenador-img">
+                            <img src="img/entrenador2.jpg" alt="Entrenadora María González">
+                        </div>
+                        <div class="entrenador-info">
+                            <h3>María González</h3>
+                            <p class="especialidad">Instructora de cardio y HIIT</p>
+                            <p class="descripcion">Especialista en entrenamiento de alta intensidad y pérdida de peso. Certificada en entrenamiento funcional y pilates.</p>
+                            <div class="entrenador-social">
+                                <a href="#"><img src="img/instagram icono.png" alt="Instagram"></a>
+                                <a href="#"><img src="img/facebook icono.png" alt="Facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="turno-header">
+                    <h2>Turno Tarde</h2>
+                    <p>Horario de: 12:00 PM a 6:00 PM</p>
+                </div>
+                
+                <div class="entrenadores-cards">
+                    <div class="entrenador-card">
+                        <div class="entrenador-img">
+                            <img src="img/entrenador3.jpg" alt="Entrenador Carlos Rodríguez">
+                        </div>
+                        <div class="entrenador-info">
+                            <h3>Carlos Rodríguez</h3>
+                            <p class="especialidad">Entrenador de CrossFit</p>
+                            <p class="descripcion">Atleta de élite con experiencia en competiciones nacionales. Especializado en entrenamiento funcional y técnicas olímpicas de levantamiento.</p>
+                            <div class="entrenador-social">
+                                <a href="#"><img src="img/instagram icono.png" alt="Instagram"></a>
+                                <a href="#"><img src="img/facebook icono.png" alt="Facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="entrenador-card">
+                        <div class="entrenador-img">
+                            <img src="img/entrenador4.jpg" alt="Entrenadora Ana Martínez">
+                        </div>
+                        <div class="entrenador-info">
+                            <h3>Ana Martínez</h3>
+                            <p class="especialidad">Especialista en yoga y flexibilidad</p>
+                            <p class="descripcion">Instructora certificada con enfoque en bienestar integral. Experta en técnicas de respiración y meditación para complementar el entrenamiento físico.</p>
+                            <div class="entrenador-social">
+                                <a href="#"><img src="img/instagram icono.png" alt="Instagram"></a>
+                                <a href="#"><img src="img/facebook icono.png" alt="Facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="turno-header">
+                    <h2>Turno Noche</h2>
+                    <p>Horario de: 6:00 PM a 11:00 PM</p>
+                </div>
+                
+                <div class="entrenadores-cards">
+                    <div class="entrenador-card">
+                        <div class="entrenador-img">
+                            <img src="img/entrenador5.jpg" alt="Entrenador Roberto Sánchez">
+                        </div>
+                        <div class="entrenador-info">
+                            <h3>Roberto Sánchez</h3>
+                            <p class="especialidad">Entrenador de boxeo y artes marciales</p>
+                            <p class="descripcion">Campeón nacional con experiencia en diversas disciplinas de combate. Especializado en técnicas de defensa personal y acondicionamiento físico intenso.</p>
+                            <div class="entrenador-social">
+                                <a href="#"><img src="img/instagram icono.png" alt="Instagram"></a>
+                                <a href="#"><img src="img/facebook icono.png" alt="Facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="entrenador-card">
+                        <div class="entrenador-img">
+                            <img src="img/entrenador6.jpg" alt="Entrenadora Laura Torres">
+                        </div>
+                        <div class="entrenador-info">
+                            <h3>Laura Torres</h3>
+                            <p class="especialidad">Nutricionista deportiva</p>
+                            <p class="descripcion">Especialista en planes alimenticios personalizados para deportistas. Certificada en suplementación y optimización del rendimiento físico.</p>
+                            <div class="entrenador-social">
+                                <a href="#"><img src="img/instagram icono.png" alt="Instagram"></a>
+                                <a href="#"><img src="img/facebook icono.png" alt="Facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+    </main>
 
+    <!-- Hasta aquí -->
+
+    <footer>
         <section class="imagenes-circulares">
             <h2>Nuestros Servicios Destacados</h2>
             <div class="contenedor-imagenes">
                 <div class="imagen-info">
-                    <img src="cardio.png" alt="Cardio">
+                    <img src="img/cardio.png" alt="Cardio">
                     <div class="texto-info">
                         <h3>Cardio</h3>
                         <p>Aumenta tu resistencia y mejora tu salud cardiovascular.</p>
                     </div>
                 </div>
                 <div class="imagen-info">
-                    <img src="peso.png" alt="Musculación">
+                    <img src="img/peso.png" alt="Musculación">
                     <div class="texto-info">
                         <h3>Musculación</h3>
                         <p>Fortalece tus músculos y define tu cuerpo.</p>
                     </div>
                 </div>
                 <div class="imagen-info">
-                    <img src="musculacion.png" alt="Entrenamiento Funcional">
+                    <img src="img/musculacion.png" alt="Entrenamiento Funcional">
                     <div class="texto-info">
                         <h3>Entrenamiento Funcional</h3>
                         <p>Mejora tu movilidad y fuerza con ejercicios prácticos.</p>
@@ -91,35 +261,48 @@
                     <button type="submit">Enviar mensaje</button>
                     <div id="message" style="display:none;"></div>
                 </form>
-                <script>
-                    document.getElementById('contactForm').addEventListener('submit', function(event) {
-                        // Aquí puedes añadir validaciones del lado del cliente
-                        // ...
-                        document.getElementById('message').innerHTML = 'Mensaje enviado correctamente.';
-                        document.getElementById('message').style.display = 'block';
-                    });
-                </script>
             </div>
-        </section>
-    </main>
-
+        </section>    
+    </footer>
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <img src="map icono.png" alt="Icono de ubicación">
-                <p>Av. Francisco Acuña De Figueroa casi, Asunción 001102</p>
-            </div>
-            <div class="footer-section">
-                <img src="telefono icono.png" alt="Icono de teléfono">
-                <p>+595 991 765 892</p>
-            </div>
-            <div class="footer-social">
-                <a href="https://www.facebook.com/macrogympy/?locale=es_LA" target="_blank"><img src="facebook icono.png" alt="Icono de Facebook"></a>
-                <a href="https://www.instagram.com/macrogymfitness/" target="_blank"><img src="instagram icono.png" alt="Icono de Instagram"></a>
-                <a href="https://api.whatsapp.com/send?phone=%2B595991765892&context=ARDiVknuNYgWt195N-uljZhl0KxeCCfhJsOk8JyJ4ENR7vzvUKsy_Aqx6UYerSnIucVPOllghHTPMLSPDWjwDdmDehfaoWzL-J7U6PYyfGdCatIhO87AFebQoQTuT-BbqNsxM1iWDiyFjObtUzmlfP9L6A&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawJEOKhleHRuA2FlbQIxMAABHaOQmS6Wr3ixFwvFCI8GqMKIi2JOqSq8A_zrC63lWggnF-Rbx0fHS1sHzw_aem_cuNDL88VM6x4GYzONbuYwA" target="_blank"><img src="Whatsapp icono.png" alt="Icono de WhatsApp"></a>
-            </div>
+          <div class="footer-section">
+            <img src="img/map icono.png" alt="Icono de ubicación">
+            <p>Av. Francisco Acuña De Figueroa casi, Asunción 001102</p>
+          </div>
+          <div class="footer-section">
+            <img src="img/telefono icono.png" alt="Icono de teléfono">
+            <p>+595 991 765 892</p>
+          </div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/macrogympy/?locale=es_LA" target="_blank"><img src="img/facebook icono.png" alt="Icono de Facebook"></a>
+            <a href="https://www.instagram.com/macrogymfitness/" target="_blank"><img src="img/instagram icono.png" alt="Icono de Instagram"></a>
+            <a href="https://api.whatsapp.com/send?phone=%2B595991765892&context=ARDiVknuNYgWt195N-uljZhl0KxeCCfhJsOk8JyJ4ENR7vzvUKsy_Aqx6UYerSnIucVPOllghHTPMLSPDWjwDdmDehfaoWzL-J7U6PYyfGdCatIhO87AFebQoQTuT-BbqNsxM1iWDiyFjObtUzmlfP9L6A&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawJEOKhleHRuA2FlbQIxMAABHaOQmS6Wr3ixFwvFCI8GqMKIi2JOqSq8A_zrC63lWggnF-Rbx0fHS1sHzw_aem_cuNDL88VM6x4GYzONbuYwA" target="_blank"><img src="Whatsapp icono.png" alt="Icono de WhatsApp"></a>
+          </div>
         </div>
-        <p class="copyright">Copyright 2025 © Todos los Derechos Reservados por el Aleman Toxico</p>
-    </footer>
+        <p class="copyright">Copyright 2025 © Todos los Derechos Reservados por el aleman toxico</p>
+      </footer>
+
+      <!--Script central-->
+    <script src="index_script.js"></script>
+
+    <!--Script para hacer responsive el navbar (función hamburguesa)-->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Aquí puedes añadir validaciones del lado del cliente
+            // ...
+            document.getElementById('message').innerHTML = 'Mensaje enviado correctamente.';
+            document.getElementById('message').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
