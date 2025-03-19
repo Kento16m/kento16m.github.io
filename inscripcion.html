@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACRO GYM - Inscripción</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .inscripcion-section {
+            padding: 120px 20px 80px;
+            background-color: #f8f8f8;
+            position: relative;
+        }
+        
+        .inscripcion-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("img/pattern.png");
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .inscripcion-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: var(--sombra-media);
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .inscripcion-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .inscripcion-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--fondo-oscuro);
+        }
+        
+        .inscripcion-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+        }
+        
+        .form-group select {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 1rem;
+            transition: var(--transicion);
+            background-color: #f9f9f9;
+            appearance: none;
+        }
+        
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--azul-logo);
+            box-shadow: 0 0 0 3px rgba(0, 136, 255, 0.1);
+            background-color: white;
+        }
+        
+        .payment-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(51, 204, 51, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            color: var(--verde-logo);
+            font-weight: 600;
+        }
+        
+        .payment-info i {
+            margin-right: 10px;
+        }
+        
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            background-color: rgba(51, 204, 51, 0.1);
+            color: var(--verde-logo);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .inscripcion-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .inscripcion-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ボタンを上に戻る -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <a href="Index.html">
+                        <img src="img/logo.png" alt="Logo MacroGym Fitness">
+                    </a>
+                </div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="maquinas.html" class="nav-link">Maquinas</a></li>
+                    <li class="nav-item"><a href="Index.html#boxeo" class="nav-link">Tu espacio</a></li>
+                    <li class="nav-item"><a href="Index.html#entrenadores" class="nav-link">Smart Fit Go</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Smartfit App</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Planes Corporativos</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link cta-button">¡Inscríbete ya!</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="inscripcion-section">
+            <div class="inscripcion-container">
+                <div class="inscripcion-header">
+                    <h2>INSCRIPCIÓN</h2>
+                    <div class="section-divider">
+                        <span></span>
+                        <i class="fas fa-user-plus"></i>
+                        <span></span>
+                    </div>
+                    <p>Completa el formulario para inscribirte en MACRO GYM</p>
+                </div>
+                
+                <form id="inscripcionForm" class="inscripcion-form">
+                    <!-- Ejemplo de cómo debe estructurarse cada campo -->
+<div class="form-group">
+    <label for="nombre">Nombre <span style="color: red;">*</span></label>
+    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+    <div class="form-icon">
+        <i class="fas fa-user"></i>
+    </div>
+</div>
+                    
+                    <div class="form-group">
+                        <label for="apellido">Apellido <span style="color: red;">*</span></label>
+                        <div class="form-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cedula">C.I <span style="color: red;">*</span></label>
+                        <div class="form-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <input type="text" id="cedula" name="cedula" placeholder="C.I" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Telefono <span style="color: red;">*</span></label>
+                        <div class="form-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Telefono" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email <span style="color: red;">*</span></label>
+                        <div class="form-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fecha_nacimiento">Fecha de Nacimiento <span style="color: red;">*</span></label>
+                        <div class="form-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="plan">Plan <span style="color: red;">*</span></label>
+                        <div class="form-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <select id="plan" name="plan" required>
+                            <option value="">Elige un plan</option>
+                            <option value="Normal">Normal- ₲ 150.000/mes</option>
+                            <option value="2 meses">2 meses - ₲ 200.000/mes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="horario">horario<span style="color: red;">*</span></label>
+                        <div class="form-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <select id="horario" name="horario" required>
+                            <option value="">seleccione la zona horaria</option>
+                            <option value="Mañana">Mañana (6:00 - 12:00)</option>
+                            <option value="Tarde">Tarde (12:00 - 18:00)</option>
+                            <option value="Noche">Noche(18:00 - 23:00)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="direccion">住所</label>
+                        <div class="form-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <input type="text" id="direccion" name="direccion" placeholder="Indroduce tu direccion">
+                    </div>
+                    
+                    
+                    <div class="form-group full-width">
+                        <button type="submit" id="submitBtn">
+                            <span>Enviar</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="payment-info">
+                    <i class="fas fa-info-circle"></i> El pago se realizará en la tienda. Después del registro nuestro personal le guiará.
+                </div>
+                
+                <div id="successMessage" class="success-message">
+                    <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <h3>¡Registro exitoso!</h3>
+                    <p>gracias. Su información ha sido registrada exitosamente.</p>
+                    <p>Los detalles del pago se proporcionarán en la tienda.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="Logo MacroGym Fitness">
+                    </div>
+                    <p>MacroGym Fitnessは、最新の設備とプロのトレーナーであなたのトレーニング目標達成をサポートする最高の選択肢です。</p>
+                </div>
+                <div class="footer-links">
+                    <h3>クイックリンク</h3>
+                    <ul>
+                        <li><a href="Index.html#entrena_aqui">ジム施設</a></li>
+                        <li><a href="Index.html#boxeo">ボクシングクラス</a></li>
+                        <li><a href="Index.html#entrenadores">トレーナー</a></li>
+                        <li><a href="Index.html#contacto">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>連絡先</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Av. Francisco Acuña De Figueroa casi, Asunción 001102</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+595 991 765 892</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5831363e371835393b2a373f2135763b3735">[email&#160;protected]</a></p>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>ニュースレター登録</h3>
+                    <p>ニュース、プロモーション、フィットネスのアドバイスをメールで受け取る。</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="メールアドレス">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/macrogympy/?locale=es_LA" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/macrogymfitness/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=%2B595991765892" target="_blank" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">Copyright &copy; 2025 - MacroGym Fitnessのすべての権利を保有</p>
+        </div>
+    </footer>
+
+    <!-- スクリプト -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // モバイルメニュー
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // リンクをクリックしたときにメニューを閉じる
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // トップに戻るボタン
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // 登録フォームの送信処理
+            const inscripcionForm = document.getElementById('inscripcionForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            inscripcionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // フォームデータの収集
+                const formData = new FormData(inscripcionForm);
+                const userData = {};
+                
+                for (const [key, value] of formData.entries()) {
+                    userData[key] = value;
+                }
+                
+                // Excelファイルに保存するためのデータを準備
+                saveToExcel(userData);
+                
+                // 成功メッセージを表示
+                inscripcionForm.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // フォームをリセット
+                inscripcionForm.reset();
+            });
+            
+            // Excelファイルに保存する関数
+            function saveToExcel(userData) {
+                // ここでExcelファイルを生成してダウンロードする処理を実装
+                // SheetJSライブラリを使用してExcelファイルを生成
+                
+                // 既存のデータを取得（ローカルストレージから）
+                let existingData = JSON.parse(localStorage.getItem('inscripcionData')) || [];
+                
+                // 新しいデータを追加
+                existingData.push({
+                    nombre: userData.nombre,
+                    apellido: userData.apellido,
+                    cedula: userData.cedula,
+                    telefono: userData.telefono,
+                    email: userData.email,
+                    fecha_nacimiento: userData.fecha_nacimiento,
+                    plan: userData.plan,
+                    horario: userData.horario,
+                    direccion: userData.direccion || '',
+                    observaciones: userData.observaciones || '',
+                    fecha_inscripcion: new Date().toISOString().split('T')[0]
+                });
+                
+                // 名前と姓でソート
+                existingData.sort((a, b) => {
+                    if (a.apellido === b.apellido) {
+                        return a.nombre.localeCompare(b.nombre);
+                    }
+                    return a.apellido.localeCompare(b.apellido);
+                });
+                
+                // ローカルストレージに保存
+                localStorage.setItem('inscripcionData', JSON.stringify(existingData));
+                
+                // 管理者向けにExcelファイルをダウンロードする機能
+                // 実際の実装では、サーバーサイドでデータを処理し、
+                // データベースに保存してから管理者がダウンロードできるようにする
+                
+                console.log('データが保存されました:', existingData);
+            }
+        });
+    </script>
+</body>
+</html>
