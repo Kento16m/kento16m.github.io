@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACRO GYM - Nuestros Planes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-logo: #0088ff;
+            --rojo-logo: #ff3a3a;
+            --verde-logo: #33cc33;
+            --naranja-logo: #ff9933;
+            --fondo-oscuro: #222;
+            --texto-oscuro: #333;
+            --gris-medio: #666;
+            --gris-claro: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Botón para volver arriba */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--azul-logo);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #0066cc;
+            transform: translateY(-5px);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--texto-oscuro);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--azul-logo);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--azul-logo);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background-color: var(--azul-logo);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0066cc;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 136, 255, 0.3);
+        }
+
+        .cta-button::after {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease;
+            background-color: var(--texto-oscuro);
+        }
+
+        /* Planes Section */
+        .planes-section {
+            padding: 120px 20px 80px;
+            background-color: #f8f8f8;
+            position: relative;
+        }
+
+        .planes-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("img/pattern.png");
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .planes-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--fondo-oscuro);
+            letter-spacing: 1px;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .section-divider span {
+            height: 2px;
+            width: 70px;
+            background-color: var(--azul-logo);
+            display: inline-block;
+        }
+
+        .section-divider i {
+            color: var(--azul-logo);
+            font-size: 1.2rem;
+            margin: 0 15px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gris-medio);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .planes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .plan-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-top: 5px solid #e0e0e0;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-card.featured {
+            border-top: 5px solid var(--azul-logo);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background-color: var(--azul-logo);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 30px 0 0 30px;
+            box-shadow: 0 5px 15px rgba(0, 136, 255, 0.3);
+        }
+
+        .plan-header {
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+            background-color: #fafafa;
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--fondo-oscuro);
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--azul-logo);
+            margin-bottom: 5px;
+        }
+
+        .plan-duration {
+            font-size: 1rem;
+            color: var(--gris-medio);
+            margin-bottom: 15px;
+        }
+
+        .plan-features {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .plan-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .plan-feature i {
+            color: var(--verde-logo);
+            margin-right: 10px;
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .plan-feature span {
+            font-size: 1rem;
+            color: var(--texto-oscuro);
+        }
+
+        .plan-footer {
+            padding: 20px 30px 30px;
+            text-align: center;
+        }
+
+        .plan-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--azul-logo) 0%, #0066cc 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 136, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            display: block;
+        }
+
+        .plan-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .plan-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 136, 255, 0.3);
+            background: linear-gradient(135deg, #0066cc 0%, var(--azul-logo) 100%);
+        }
+
+        .plan-button:hover::before {
+            left: 100%;
+        }
+
+        .plan-card.premium {
+            border-top: 5px solid var(--verde-logo);
+        }
+
+        .plan-card.premium .plan-price {
+            color: var(--verde-logo);
+        }
+
+        .plan-card.premium .plan-button {
+            background: linear-gradient(135deg, var(--verde-logo) 0%, #28a428 100%);
+            box-shadow: 0 10px 20px rgba(51, 204, 51, 0.2);
+        }
+
+        .plan-card.premium .plan-button:hover {
+            background: linear-gradient(135deg, #28a428 0%, var(--verde-logo) 100%);
+            box-shadow: 0 15px 25px rgba(51, 204, 51, 0.3);
+        }
+
+        .plan-card.premium .plan-badge {
+            background-color: var(--verde-logo);
+            box-shadow: 0 5px 15px rgba(51, 204, 51, 0.3);
+        }
+
+        .plan-card.basic {
+            border-top: 5px solid var(--naranja-logo);
+        }
+
+        .plan-card.basic .plan-price {
+            color: var(--naranja-logo);
+        }
+
+        .plan-card.basic .plan-button {
+            background: linear-gradient(135deg, var(--naranja-logo) 0%, #e67300 100%);
+            box-shadow: 0 10px 20px rgba(255, 153, 51, 0.2);
+        }
+
+        .plan-card.basic .plan-button:hover {
+            background: linear-gradient(135deg, #e67300 0%, var(--naranja-logo) 100%);
+            box-shadow: 0 15px 25px rgba(255, 153, 51, 0.3);
+        }
+
+        .plan-savings {
+            background-color: rgba(51, 204, 51, 0.1);
+            color: var(--verde-logo);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .plan-original-price {
+            text-decoration: line-through;
+            color: var(--gris-medio);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .plan-comparison {
+            margin-top: 60px;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-header {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--fondo-oscuro);
+            color: white;
+        }
+
+        .comparison-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .comparison-header p {
+            color: #ccc;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .comparison-table th {
+            background-color: #f9f9f9;
+            font-weight: 600;
+            color: var(--fondo-oscuro);
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+            width: 30%;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table i.fa-check {
+            color: var(--verde-logo);
+            font-size: 1.2rem;
+        }
+
+        .comparison-table i.fa-times {
+            color: var(--rojo-logo);
+            font-size: 1.2rem;
+        }
+
+        .comparison-table .highlight {
+            background-color: rgba(0, 136, 255, 0.05);
+        }
+
+        .faq-section {
+            margin-top: 80px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--fondo-oscuro);
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+
+        .faq-question i {
+            transition: all 0.3s ease;
+            color: var(--azul-logo);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding: 20px 0;
+            color: var(--gris-medio);
+        }
+
+        .faq-item.active .faq-question {
+            background-color: var(--azul-logo);
+            color: white;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: white;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .cta-section {
+            margin-top: 80px;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--azul-logo) 0%, #0066cc 100%);
+            border-radius: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("img/pattern.png");
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--azul-logo);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            background-color: #f9f9f9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--fondo-oscuro);
+            color: white;
+            padding-top: 60px;
+        }
+
+        .footer-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info {
+            margin-right: 20px;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .footer-info p {
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3,
+        .footer-contact h3,
+        .footer-newsletter h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3::after,
+        .footer-contact h3::after,
+        .footer-newsletter h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--azul-logo);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--azul-logo);
+            padding-left: 5px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact-item i {
+            color: var(--azul-logo);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .footer-contact-item p {
+            color: #ccc;
+        }
+
+        .footer-newsletter p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            position: relative;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-form button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            border: none;
+            background-color: var(--azul-logo);
+            color: white;
+            border-radius: 30px;
+            width: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #0066cc;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--azul-logo);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .copyright {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 1024px) {
+            .navbar-container {
+                padding: 0 20px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 90px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .plan-card.featured {
+                transform: scale(1);
+            }
+
+            .plan-card.featured:hover {
+                transform: translateY(-10px);
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 15px 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .navbar-container {
+                padding: 0 15px;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .plan-price {
+                font-size: 2rem;
+            }
+
+            .cta-section h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        .animate-slide-up {
+            animation: slideInUp 1s ease;
+        }
+
+        /* Estilos para promociones especiales */
+        .promo-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--rojo-logo);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(255, 58, 58, 0.3);
+            z-index: 3;
+        }
+
+        .promo-timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .timer-item {
+            background-color: var(--fondo-oscuro);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer-separator {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .promo-text {
+            font-size: 0.9rem;
+            color: var(--rojo-logo);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón para volver arriba -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <a href="Index.html">
+                        <img src="img/logo.png" alt="Logo MacroGym Fitness">
+                    </a>
+                </div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="Index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="maquinas.html" class="nav-link">Máquinas</a></li>
+                    <li class="nav-item"><a href="inscripcion.html" class="nav-link">Inscripción</a></li>
+                    <li class="nav-item"><a href="calculadora-imc.html" class="nav-link">Calculadora IMC</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link cta-button">Planes</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="planes" class="planes-section">
+            <div class="planes-container">
+                <div class="section-header animate-fade-in">
+                    <h2>NUESTROS PLANES</h2>
+                    <div class="section-divider">
+                        <span></span>
+                        <i class="fas fa-tags"></i>
+                        <span></span>
+                    </div>
+                    <p>Elige el plan que mejor se adapte a tus necesidades y objetivos fitness</p>
+                </div>
+
+                <div class="planes-grid animate-slide-up">
+                    <div class="plan-card basic">
+                        <div class="plan-header">
+                            <h3 class="plan-name">Plan Básico</h3>
+                            <div class="plan-price">₲ 150.000</div>
+                            <div class="plan-duration">mensual</div>
+                        </div>
+                        <div class="plan-features">
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Acceso a equipamiento completo</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Horario: 7:00 - 22:00</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Evaluación física inicial</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Entrenamiento personalizado</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Acceso a clases grupales</span>
+                            </div>
+                        </div>
+                        <div class="plan-footer">
+                            <a href="inscripcion.html" class="plan-button">
+                                ¡Inscríbete ya!
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="plan-card featured">
+                        <div class="plan-badge">Popular</div>
+                        <div class="plan-header">
+                            <h3 class="plan-name">Plan Premium</h3>
+                            <div class="plan-price">₲ 250.000</div>
+                            <div class="plan-duration">mensual</div>
+                        </div>
+                        <div class="plan-features">
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Acceso a equipamiento completo</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Horario: 6:00 - 23:00</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Evaluación física mensual</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>2 sesiones con entrenador personal</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Acceso ilimitado a clases grupales</span>
+                            </div>
+                        </div>
+                        <div class="plan-footer">
+                            <a href="inscripcion.html" class="plan-button">
+                                ¡Inscríbete ya!
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="plan-card premium">
+                        <div class="promo-badge">Oferta Especial</div>
+                        <div class="plan-header">
+                            <h3 class="plan-name">Plan Trimestral</h3>
+                            <div class="plan-price">₲ 600.000</div>
+                            <div class="plan-duration">por 3 meses</div>
+                            <div class="plan-savings">
+                                <span class="plan-original-price">₲ 750.000</span> Ahorras ₲ 150.000
+                            </div>
+                            <div class="promo-timer">
+                                <div class="timer-item" id="days">05</div>
+                                <div class="timer-separator">:</div>
+                                <div class="timer-item" id="hours">12</div>
+                                <div class="timer-separator">:</div>
+                                <div class="timer-item" id="minutes">45</div>
+                            </div>
+                            <div class="promo-text">¡Oferta por tiempo limitado!</div>
+                        </div>
+                        <div class="plan-features">
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Acceso a equipamiento completo</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Horario: 6:00 - 23:00</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Evaluación física mensual</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>4 sesiones con entrenador personal</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Acceso ilimitado a clases grupales</span>
+                            </div>
+                            <div class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>1 invitado gratis por semana</span>
+                            </div>
+                        </div>
+                        <div class="plan-footer">
+                            <a href="inscripcion.html" class="plan-button">
+                                ¡Inscríbete ya!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-comparison animate-fade-in">
+                    <div class="comparison-header">
+                        <h3>Comparativa de Planes</h3>
+                        <p>Encuentra el plan perfecto para ti</p>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Características</th>
+                                <th>Plan Básico</th>
+                                <th class="highlight">Plan Premium</th>
+                                <th>Plan Trimestral</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Acceso a equipamiento</td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Horario extendido</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Evaluación física</td>
+                                <td>Inicial</td>
+                                <td>Mensual</td>
+                                <td>Mensual</td>
+                            </tr>
+                            <tr>
+                                <td>Entrenamiento personalizado</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td>2 sesiones/mes</td>
+                                <td>4 sesiones/mes</td>
+                            </tr>
+                            <tr>
+                                <td>Clases grupales</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td>Ilimitadas</td>
+                                <td>Ilimitadas</td>
+                            </tr>
+                            <tr>
+                                <td>Invitados</td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td><i class="fas fa-times"></i></td>
+                                <td>1 por semana</td>
+                            </tr>
+                            <tr>
+                                <td>Descuentos en suplementos</td>
+                                <td>5%</td>
+                                <td>10%</td>
+                                <td>15%</td>
+                            </tr>
+                            <tr>
+                                <td>Precio</td>
+                                <td>₲ 150.000/mes</td>
+                                <td>₲ 250.000/mes</td>
+                                <td>₲ 200.000/mes</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="inscripcion.html" class="plan-button">
+                                        Elegir
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="inscripcion.html" class="plan-button">
+                                        Elegir
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="inscripcion.html" class="plan-button">
+                                        Elegir
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="faq-section animate-fade-in">
+                    <div class="section-header">
+                        <h2>PREGUNTAS FRECUENTES</h2>
+                        <div class="section-divider">
+                            <span></span>
+                            <i class="fas fa-question-circle"></i>
+                            <span></span>
+                        </div>
+                        <p>Resolvemos tus dudas sobre nuestros planes</p>
+                    </div>
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Puedo cambiar de plan en cualquier momento?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Sí, puedes cambiar de plan en cualquier momento. Si deseas actualizar a un plan superior, se aplicará el prorrateo correspondiente. Si deseas cambiar a un plan inferior, el cambio se aplicará en tu próxima renovación.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Qué incluyen las sesiones de entrenamiento personalizado?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Las sesiones de entrenamiento personalizado incluyen una evaluación de tus objetivos, diseño de rutina específica para tus necesidades, corrección de técnica y seguimiento de tu progreso. Cada sesión dura aproximadamente 50 minutos.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Hay alguna penalización por cancelar mi membresía?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>No hay penalización por cancelar tu membresía mensual. Para planes trimestrales o anuales, se aplica un cargo administrativo del 10% sobre el monto restante si decides cancelar antes del período contratado.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Qué tipos de clases grupales ofrecen?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Ofrecemos una amplia variedad de clases grupales, incluyendo: Zumba, Spinning, Yoga, Pilates, Funcional, HIIT, Body Pump, y más. Puedes consultar nuestro horario de clases en la recepción o en nuestra aplicación móvil.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>¿Cómo puedo reservar una clase grupal?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Puedes reservar tu lugar en las clases grupales a través de nuestra aplicación móvil, en nuestra página web o directamente en la recepción del gimnasio. Te recomendamos reservar con al menos 2 horas de anticipación, ya que los cupos son limitados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section animate-fade-in">
+                    <div class="cta-content">
+                        <h3>¿LISTO PARA COMENZAR TU TRANSFORMACIÓN?</h3>
+                        <p>No esperes más para dar el primer paso hacia una vida más saludable y activa. Únete a la familia MACRO GYM hoy mismo y comienza a ver resultados.</p>
+                        <a href="inscripcion.html" class="cta-button">
+                            <i class="fas fa-dumbbell"></i> Inscríbete Ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="Logo MacroGym Fitness">
+                    </div>
+                    <p>MacroGym Fitness es tu mejor opción para alcanzar tus objetivos de entrenamiento con instalaciones modernas y entrenadores profesionales.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="Index.html">Inicio</a></li>
+                        <li><a href="maquinas.html">Máquinas</a></li>
+                        <li><a href="inscripcion.html">Inscripción</a></li>
+                        <li><a href="calculadora-imc.html">Calculadora IMC</a></li>
+                        <li><a href="#">Planes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Información de contacto</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Av. Francisco Acuña De Figueroa casi, Asunción 001102</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+595 991 765 892</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@macrogym.com</p>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Suscríbete a nuestro boletín</h3>
+                    <p>Recibe noticias, promociones y consejos fitness directamente en tu correo.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/macrogympy/?locale=es_LA" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/macrogymfitness/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=%2B595991765892" target="_blank" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">Copyright &copy; 2025 - Todos los Derechos Reservados por MacroGym Fitness</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menú móvil
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Botón para volver arriba
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Countdown Timer
+            function updateCountdown() {
+                const now = new Date();
+                const endDate = new Date();
+                endDate.setDate(now.getDate() + 5);
+                endDate.setHours(23, 59, 59);
+                
+                const diff = endDate - now;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+        });
+    </script>
+</body>
+</html>
