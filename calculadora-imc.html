@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACRO GYM - Calculadora de IMC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: var(--azul-logo);
+            --secondary-color: #0066cc;
+            --accent-color: var(--rojo-logo);
+            --success-color: var(--verde-logo);
+            --warning-color: var(--naranja-logo);
+            --text-color: var(--texto-oscuro);
+            --bg-color: #f8f8f8;
+            --card-bg: white;
+            --border-radius: 20px;
+            --box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .calculator-section {
+            padding: 120px 20px 80px;
+            background-color: var(--bg-color);
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        .calculator-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("img/pattern.png");
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .calculator-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .calculator-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--fondo-oscuro);
+            letter-spacing: 1px;
+        }
+        
+        .calculator-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .calculator-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            border-top: 5px solid var(--primary-color);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .calculator-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .form-group {
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-icon {
+            position: absolute;
+            left: 15px;
+            top: 72%;
+            transform: translateY(-50%);
+            color: var(--gris-medio);
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            appearance: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 136, 255, 0.1);
+            background-color: white;
+        }
+        
+        .form-group input:focus + .form-icon,
+        .form-group select:focus + .form-icon {
+            color: var(--primary-color);
+        }
+        
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+        
+        .form-group select:focus {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230088ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        }
+        
+        .form-group input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        
+        .form-group input[type="number"]::-webkit-outer-spin-button,
+        .form-group input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .calculate-button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 136, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculate-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .calculate-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 136, 255, 0.3);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+        }
+        
+        .calculate-button:hover::before {
+            left: 100%;
+        }
+        
+        .calculate-button i {
+            transition: transform 0.3s ease;
+        }
+        
+        .calculate-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        .results-card {
+            display: none;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            border-top: 5px solid var(--success-color);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .results-header h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--fondo-oscuro);
+        }
+        
+        .imc-result {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0 40px;
+        }
+        
+        .imc-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 136, 255, 0.2);
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+        
+        .imc-value {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .imc-category {
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        
+        .recommendation-tabs {
+            margin-top: 30px;
+        }
+        
+        .tabs-nav {
+            display: flex;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        
+        .tab-button {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .tab-button.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-button.active::after {
+            width: 100%;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .recommendation-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .recommendation-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .recommendation-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--fondo-oscuro);
+            font-size: 1.2rem;
+        }
+        
+        .recommendation-item h4 i {
+            color: var(--primary-color);
+        }
+        
+        .recommendation-item p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .nutrition-table th,
+        .nutrition-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .nutrition-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .nutrition-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .workout-day {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .workout-day h5 {
+            color: var(--fondo-oscuro);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .workout-exercises {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .exercise-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .exercise-item i {
+            color: var(--primary-color);
+        }
+        
+        .print-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--fondo-oscuro);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 30px;
+        }
+        
+        .print-button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #e0e0e0;
+            color: var(--text-color);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 30px;
+            margin-right: 10px;
+        }
+        
+        .back-button:hover {
+            background-color: #d0d0d0;
+            transform: translateY(-3px);
+        }
+        
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 136, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 136, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 136, 255, 0);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .calculator-card,
+            .results-card {
+                padding: 30px 20px;
+            }
+            
+            .calculator-header h2,
+            .results-header h3 {
+                font-size: 2rem;
+            }
+            
+            .imc-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .imc-value {
+                font-size: 2.5rem;
+            }
+            
+            .tabs-nav {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+            
+            .tab-button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .workout-exercises {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón para volver arriba -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <a href="Index.html">
+                        <img src="img/logo.png" alt="Logo MacroGym Fitness">
+                    </a>
+                </div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="Index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="maquinas.html" class="nav-link">Máquinas</a></li>
+                    <li class="nav-item"><a href="inscripcion.html" class="nav-link">Inscripción</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link cta-button">Calculadora IMC</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="calculator-section">
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h2>CALCULADORA DE IMC</h2>
+                    <div class="section-divider">
+                        <span></span>
+                        <i class="fas fa-calculator"></i>
+                        <span></span>
+                    </div>
+                    <p>Calcula tu Índice de Masa Corporal y obtén recomendaciones personalizadas para tu entrenamiento y nutrición</p>
+                </div>
+                
+                <div class="calculator-card" id="calculatorForm">
+                    <form id="imcForm">
+                        <div class="calculator-form">
+                            <div class="form-group">
+                                <label for="bodyType">Tipo de Cuerpo</label>
+                                <div class="form-icon">
+                                    <i class="fas fa-male"></i>
+                                </div>
+                                <select id="bodyType" name="bodyType" required>
+                                    <option value="">Selecciona tu tipo de cuerpo</option>
+                                    <option value="ectomorfo">Ectomorfo (delgado, metabolismo rápido)</option>
+                                    <option value="mesomorfo">Mesomorfo (atlético, gana músculo fácilmente)</option>
+                                    <option value="endomorfo">Endomorfo (tendencia a acumular grasa)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="gender">Sexo</label>
+                                <div class="form-icon">
+                                    <i class="fas fa-venus-mars"></i>
+                                </div>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Selecciona tu sexo</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="age">Edad</label>
+                                <div class="form-icon">
+                                    <i class="fas fa-birthday-cake"></i>
+                                </div>
+                                <input type="number" id="age" name="age" min="1" max="100" placeholder="Tu edad (1-100)" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="weight">Peso Actual (kg)</label>
+                                <div class="form-icon">
+                                    <i class="fas fa-weight"></i>
+                                </div>
+                                <input type="number" id="weight" name="weight" min="1" step="0.1" placeholder="Tu peso en kilogramos" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="height">Altura (cm)</label>
+                                <div class="form-icon">
+                                    <i class="fas fa-ruler-vertical"></i>
+                                </div>
+                                <input type="number" id="height" name="height" min="1" placeholder="Tu altura en centímetros" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="goal">Objetivo</label>
+                                <div class="form-icon">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <select id="goal" name="goal" required>
+                                    <option value="">Selecciona tu objetivo</option>
+                                    <option value="ganar_masa">Ganar masa muscular</option>
+                                    <option value="perder_grasa">Perder grasa</option>
+                                    <option value="mejorar_resistencia">Mejorar resistencia</option>
+                                    <option value="aumentar_fuerza">Aumentar fuerza</option>
+                                    <option value="mantener_salud">Mantener salud</option>
+                                    <option value="reducir_estres">Reducir estrés</option>
+                                    <option value="mejorar_estetica">Mejorar estética</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="activityLevel">Nivel de Actividad</label>
+                                <div class="form-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <select id="activityLevel" name="activityLevel" required>
+                                    <option value="">Selecciona tu nivel de actividad</option>
+                                    <option value="sedentario">Sedentario (poco o nada de ejercicio)</option>
+                                    <option value="ligero">Ligero (ejercicio 1-3 días/semana)</option>
+                                    <option value="moderado">Moderado (ejercicio 3-5 días/semana)</option>
+                                    <option value="activo">Activo (ejercicio 6-7 días/semana)</option>
+                                    <option value="muy_activo">Muy activo (ejercicio intenso diario)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dietPreference">Preferencia Alimentaria</label>
+                                <div class="form-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <select id="dietPreference" name="dietPreference" required>
+                                    <option value="">Selecciona tu preferencia</option>
+                                    <option value="omnivoro">Omnívoro (todo tipo de alimentos)</option>
+                                    <option value="vegetariano">Vegetariano</option>
+                                    <option value="vegano">Vegano</option>
+                                    <option value="keto">Cetogénica</option>
+                                    <option value="paleo">Paleo</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="calculate-button">
+                                <i class="fas fa-calculator"></i>
+                                <span>Calcular mi IMC</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="results-card" id="resultsCard">
+                    <div class="results-header">
+                        <h3>TUS RESULTADOS</h3>
+                        <div class="section-divider">
+                            <span></span>
+                            <i class="fas fa-chart-line"></i>
+                            <span></span>
+                        </div>
+                        <p>Basado en tus datos, hemos calculado tu IMC y preparado recomendaciones personalizadas</p>
+                    </div>
+                    
+                    <div class="imc-result">
+                        <div class="imc-circle">
+                            <div class="imc-value" id="imcValue">25.4</div>
+                            <div class="imc-category" id="imcCategory">Sobrepeso</div>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendation-tabs">
+                        <div class="tabs-nav">
+                            <button class="tab-button active" data-tab="overview">Resumen</button>
+                            <button class="tab-button" data-tab="workout">Entrenamiento</button>
+                            <button class="tab-button" data-tab="nutrition">Nutrición</button>
+                            <button class="tab-button" data-tab="tips">Consejos</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="overview">
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-info-circle"></i> ¿Qué significa tu IMC?</h4>
+                                <p id="imcExplanation">Un IMC de 25.4 indica que estás en la categoría de sobrepeso. Esto puede aumentar el riesgo de desarrollar ciertas condiciones de salud. Sin embargo, el IMC es solo un indicador y no tiene en cuenta la composición corporal (músculo vs grasa).</p>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-bullseye"></i> Recomendación para tu objetivo</h4>
+                                <p id="goalRecommendation">Basado en tu objetivo de perder grasa y tu tipo de cuerpo mesomorfo, te recomendamos un enfoque combinado de entrenamiento de fuerza y cardio, junto con una dieta con déficit calórico moderado.</p>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-heartbeat"></i> Estado de salud</h4>
+                                <p id="healthStatus">Tu IMC actual te coloca en una categoría de riesgo moderado. Enfocarte en mejorar tu composición corporal a través de ejercicio regular y una alimentación balanceada puede ayudarte a reducir estos riesgos.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="workout">
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-dumbbell"></i> Plan de entrenamiento semanal</h4>
+                                <p>Hemos diseñado este plan de entrenamiento semanal basado en tu tipo de cuerpo, objetivo y nivel de actividad:</p>
+                            </div>
+                            
+                            <div id="workoutPlan">
+                                <div class="workout-day">
+                                    <h5>Lunes: Piernas y Glúteos</h5>
+                                    <div class="workout-exercises">
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Sentadillas (4x12)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Peso muerto (4x10)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Prensa (3x15)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Extensiones (3x15)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Elevaciones de cadera (3x20)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="workout-day">
+                                    <h5>Martes: Pecho y Tríceps</h5>
+                                    <div class="workout-exercises">
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Press de banca (4x10)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Aperturas (3x12)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Fondos (3x12)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Extensiones de tríceps (3x15)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="workout-day">
+                                    <h5>Miércoles: Cardio y Core</h5>
+                                    <div class="workout-exercises">
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>HIIT (20 min)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Plancha (3x45s)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Crunches (3x20)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Russian twists (3x20)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="workout-day">
+                                    <h5>Jueves: Espalda y Bíceps</h5>
+                                    <div class="workout-exercises">
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Dominadas (4x8)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Remo (4x12)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Curl de bíceps (3x12)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Curl martillo (3x12)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="workout-day">
+                                    <h5>Viernes: Hombros y Piernas</h5>
+                                    <div class="workout-exercises">
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Press militar (4x10)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Elevaciones laterales (3x15)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Zancadas (3x12)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Curl femoral (3x15)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="workout-day">
+                                    <h5>Sábado: Cardio y Funcional</h5>
+                                    <div class="workout-exercises">
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Cardio (30 min)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Burpees (3x15)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Mountain climbers (3x20)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Saltos al cajón (3x12)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="workout-day">
+                                    <h5>Domingo: Descanso activo</h5>
+                                    <div class="workout-exercises">
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Caminata (30-45 min)</span>
+                                        </div>
+                                        <div class="exercise-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Estiramientos (15 min)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="nutrition">
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-utensils"></i> Plan nutricional personalizado</h4>
+                                <p id="nutritionIntro">Este plan nutricional está diseñado específicamente para tu tipo de cuerpo, objetivo y preferencias alimentarias. Las cantidades exactas dependerán de tu metabolismo individual.</p>
+                            </div>
+                            
+                            <table class="nutrition-table">
+                                <thead>
+                                    <tr>
+                                        <th>Macronutriente</th>
+                                        <th>Cantidad diaria</th>
+                                        <th>Fuentes recomendadas</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="nutritionTable">
+                                    <tr>
+                                        <td>Proteínas</td>
+                                        <td id="proteinAmount">1.8g por kg de peso corporal</td>
+                                        <td>Pollo, pescado, huevos, legumbres, tofu</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Carbohidratos</td>
+                                        <td id="carbAmount">3g por kg de peso corporal</td>
+                                        <td>Arroz integral, avena, batata, frutas, verduras</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Grasas</td>
+                                        <td id="fatAmount">0.8g por kg de peso corporal</td>
+                                        <td>Aguacate, frutos secos, aceite de oliva, pescados grasos</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Agua</td>
+                                        <td id="waterAmount">35ml por kg de peso corporal</td>
+                                        <td>Agua, infusiones, té verde</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-clock"></i> Distribución de comidas</h4>
+                                <p>Para optimizar tu metabolismo y energía, te recomendamos:</p>
+                                <ul id="mealTiming">
+                                    <li>Desayuno: 7:00 - 8:00 AM (25% de calorías diarias)</li>
+                                    <li>Snack: 10:00 - 11:00 AM (10% de calorías diarias)</li>
+                                    <li>Almuerzo: 1:00 - 2:00 PM (30% de calorías diarias)</li>
+                                    <li>Snack pre-entreno: 4:00 - 5:00 PM (10% de calorías diarias)</li>
+                                    <li>Cena: 7:00 - 8:00 PM (25% de calorías diarias)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-ban"></i> Alimentos a evitar</h4>
+                                <p>Para maximizar tus resultados, recomendamos limitar:</p>
+                                <ul id="avoidFoods">
+                                    <li>Alimentos ultraprocesados y comida rápida</li>
+                                    <li>Bebidas azucaradas y alcohol</li>
+                                    <li>Harinas refinadas y azúcares añadidos</li>
+                                    <li>Grasas trans y frituras</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="tips">
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-lightbulb"></i> Consejos para tu tipo de cuerpo</h4>
+                                <ul id="bodyTypeTips">
+                                    <li>Como mesomorfo, responderás bien tanto al entrenamiento de fuerza como al cardio.</li>
+                                    <li>Mantén un equilibrio entre proteínas y carbohidratos para optimizar tu composición corporal.</li>
+                                    <li>Alterna entre fases de ganancia muscular y definición para mejores resultados.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-trophy"></i> Consejos para alcanzar tu objetivo</h4>
+                                <ul id="goalTips">
+                                    <li>Establece metas pequeñas y medibles para mantener la motivación.</li>
+                                    <li>Lleva un registro de tus entrenamientos y alimentación.</li>
+                                    <li>Asegúrate de descansar adecuadamente para permitir la recuperación muscular.</li>
+                                    <li>Considera trabajar con un entrenador personal para técnica y motivación.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="recommendation-item">
+                                <h4><i class="fas fa-heart"></i> Consejos de salud general</h4>
+                                <ul>
+                                    <li>Duerme 7-8 horas diarias para optimizar la recuperación y hormonas.</li>
+                                    <li>Gestiona el estrés con técnicas de relajación como meditación o yoga.</li>
+                                    <li>Mantente hidratado durante todo el día.</li>
+                                    <li>Realiza chequeos médicos regulares para monitorear tu salud.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button class="back-button" id="backButton">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Volver a calcular</span>
+                        </button>
+                        <button class="print-button" id="printButton">
+                            <i class="fas fa-print"></i>
+                            <span>Imprimir resultados</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="Logo MacroGym Fitness">
+                    </div>
+                    <p>MacroGym Fitness es tu mejor opción para alcanzar tus objetivos de entrenamiento con instalaciones modernas y entrenadores profesionales.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="Index.html">Inicio</a></li>
+                        <li><a href="maquinas.html">Máquinas</a></li>
+                        <li><a href="inscripcion.html">Inscripción</a></li>
+                        <li><a href="#">Calculadora IMC</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Información de contacto</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Av. Francisco Acuña De Figueroa casi, Asunción 001102</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+595 991 765 892</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@macrogym.com</p>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Suscríbete a nuestro boletín</h3>
+                    <p>Recibe noticias, promociones y consejos fitness directamente en tu correo.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/macrogympy/?locale=es_LA" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/macrogymfitness/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=%2B595991765892" target="_blank" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">Copyright &copy; 2025 - Todos los Derechos Reservados por MacroGym Fitness</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menú móvil
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Botón para volver arriba
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Tabs de recomendaciones
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    button.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Formulario de IMC
+            const imcForm = document.getElementById('imcForm');
+            const calculatorForm = document.getElementById('calculatorForm');
+            const resultsCard = document.getElementById('resultsCard');
+            const backButton = document.getElementById('backButton');
+            const printButton = document.getElementById('printButton');
+            
+            imcForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Obtener valores del formulario
+                const weight = parseFloat(document.getElementById('weight').value);
+                const height = parseFloat(document.getElementById('height').value) / 100; // Convertir cm a metros
+                const age = parseInt(document.getElementById('age').value);
+                const gender = document.getElementById('gender').value;
+                const bodyType = document.getElementById('bodyType').value;
+                const goal = document.getElementById('goal').value;
+                const activityLevel = document.getElementById('activityLevel').value;
+                const dietPreference = document.getElementById('dietPreference').value;
+                
+                // Calcular IMC
+                const imc = weight / (height * height);
+                
+                // Actualizar valor de IMC
+                document.getElementById('imcValue').textContent = imc.toFixed(1);
+                
+                // Determinar categoría de IMC
+                let category = '';
+                let color = '';
+                
+                if (imc < 18.5) {
+                    category = 'Bajo peso';
+                    color = '#3498db';
+                } else if (imc >= 18.5 && imc < 25) {
+                    category = 'Peso normal';
+                    color = '#2ecc71';
+                } else if (imc >= 25 && imc < 30) {
+                    category = 'Sobrepeso';
+                    color = '#f39c12';
+                } else if (imc >= 30 && imc < 35) {
+                    category = 'Obesidad I';
+                    color = '#e74c3c';
+                } else if (imc >= 35 && imc < 40) {
+                    category = 'Obesidad II';
+                    color = '#c0392b';
+                } else {
+                    category = 'Obesidad III';
+                    color = '#922b21';
+                }
+                
+                // Actualizar categoría y color
+                document.getElementById('imcCategory').textContent = category;
+                document.querySelector('.imc-circle').style.background = `linear-gradient(135deg, ${color} 0%, ${adjustColor(color, -30)} 100%)`;
+                
+                // Actualizar explicación del IMC
+                let imcExplanation = `Tu IMC de ${imc.toFixed(1)} indica que estás en la categoría de ${category.toLowerCase()}. `;
+                
+                if (imc < 18.5) {
+                    imcExplanation += 'Esto puede indicar que estás por debajo del peso recomendado. Considera enfocarte en aumentar tu masa muscular y consumir más calorías.';
+                } else if (imc >= 18.5 && imc < 25) {
+                    imcExplanation += 'Esto indica un peso saludable. Mantén tus hábitos actuales y enfócate en tu objetivo específico.';
+                } else if (imc >= 25 && imc < 30) {
+                    imcExplanation += 'Esto indica que estás por encima del peso recomendado. Enfocarte en una dieta balanceada y ejercicio regular puede ayudarte a alcanzar un peso más saludable.';
+                } else {
+                    imcExplanation += 'Esto indica obesidad, lo que puede aumentar el riesgo de problemas de salud. Te recomendamos consultar con un profesional de la salud para un plan personalizado.';
+                }
+                
+                document.getElementById('imcExplanation').textContent = imcExplanation;
+                
+                // Actualizar recomendación según objetivo
+                let goalRecommendation = '';
+                
+                switch (goal) {
+                    case 'ganar_masa':
+                        goalRecommendation = `Basado en tu objetivo de ganar masa muscular y tu tipo de cuerpo ${bodyType}, te recomendamos un entrenamiento enfocado en hipertrofia con pesos moderados a pesados, junto con un superávit calórico controlado y alto consumo de proteínas.`;
+                        break;
+                    case 'perder_grasa':
+                        goalRecommendation = `Basado en tu objetivo de perder grasa y tu tipo de cuerpo ${bodyType}, te recomendamos un enfoque combinado de entrenamiento de fuerza y cardio, junto con una dieta con déficit calórico moderado.`;
+                        break;
+                    case 'mejorar_resistencia':
+                        goalRecommendation = `Basado en tu objetivo de mejorar resistencia y tu tipo de cuerpo ${bodyType}, te recomendamos un entrenamiento progresivo de cardio combinado con ejercicios de resistencia, manteniendo una dieta equilibrada rica en carbohidratos complejos.`;
+                        break;
+                    case 'aumentar_fuerza':
+                        goalRecommendation = `Basado en tu objetivo de aumentar fuerza y tu tipo de cuerpo ${bodyType}, te recomendamos un entrenamiento de fuerza con pocas repeticiones y cargas pesadas, junto con una dieta rica en proteínas y suficientes calorías.`;
+                        break;
+                    case 'mantener_salud':
+                        goalRecommendation = `Basado en tu objetivo de mantener salud y tu tipo de cuerpo ${bodyType}, te recomendamos un entrenamiento variado que combine cardio, fuerza y flexibilidad, junto con una dieta equilibrada y variada.`;
+                        break;
+                    case 'reducir_estres':
+                        goalRecommendation = `Basado en tu objetivo de reducir estrés y tu tipo de cuerpo ${bodyType}, te recomendamos actividades como yoga, pilates y caminatas, junto con técnicas de respiración y una dieta equilibrada rica en alimentos que favorecen el bienestar mental.`;
+                        break;
+                    case 'mejorar_estetica':
+                        goalRecommendation = `Basado en tu objetivo de mejorar estética y tu tipo de cuerpo ${bodyType}, te recomendamos un entrenamiento que combine hipertrofia y definición, con especial atención a las proporciones corporales, junto con una dieta cíclica que alterne fases de volumen y definición.`;
+                        break;
+                }
+                
+                document.getElementById('goalRecommendation').textContent = goalRecommendation;
+                
+                // Actualizar estado de salud
+                let healthStatus = '';
+                
+                if (imc < 18.5) {
+                    healthStatus = 'Tu IMC actual te coloca en una categoría de bajo peso. Esto puede estar asociado con deficiencias nutricionales y menor resistencia inmunológica. Enfócate en aumentar tu ingesta calórica de forma saludable.';
+                } else if (imc >= 18.5 && imc < 25) {
+                    healthStatus = 'Tu IMC actual te coloca en una categoría saludable. Mantener este rango a través de ejercicio regular y alimentación balanceada contribuye a reducir el riesgo de enfermedades crónicas.';
+                } else if (imc >= 25 && imc < 30) {
+                    healthStatus = 'Tu IMC actual te coloca en una categoría de riesgo moderado. Enfocarte en mejorar tu composición corporal a través de ejercicio regular y una alimentación balanceada puede ayudarte a reducir estos riesgos.';
+                } else {
+                    healthStatus = 'Tu IMC actual te coloca en una categoría de alto riesgo para enfermedades cardiovasculares, diabetes y otros problemas de salud. Te recomendamos consultar con un profesional médico para un plan personalizado.';
+                }
+                
+                document.getElementById('healthStatus').textContent = healthStatus;
+                
+                // Actualizar recomendaciones de nutrición según tipo de cuerpo y objetivo
+                let proteinAmount = '';
+                let carbAmount = '';
+                let fatAmount = '';
+                
+                if (bodyType === 'ectomorfo') {
+                    if (goal === 'ganar_masa') {
+                        proteinAmount = '2.2g por kg de peso corporal';
+                        carbAmount = '6-7g por kg de peso corporal';
+                        fatAmount = '1.5g por kg de peso corporal';
+                    } else if (goal === 'perder_grasa') {
+                        proteinAmount = '2.5g por kg de peso corporal';
+                        carbAmount = '3-4g por kg de peso corporal';
+                        fatAmount = '1g por kg de peso corporal';
+                    } else {
+                        proteinAmount = '1.8g por kg de peso corporal';
+                        carbAmount = '5g por kg de peso corporal';
+                        fatAmount = '1.2g por kg de peso corporal';
+                    }
+                } else if (bodyType === 'mesomorfo') {
+                    if (goal === 'ganar_masa') {
+                        proteinAmount = '2g por kg de peso corporal';
+                        carbAmount = '4-5g por kg de peso corporal';
+                        fatAmount = '1.2g por kg de peso corporal';
+                    } else if (goal === 'perder_grasa') {
+                        proteinAmount = '2.2g por kg de peso corporal';
+                        carbAmount = '2-3g por kg de peso corporal';
+                        fatAmount = '0.8g por kg de peso corporal';
+                    } else {
+                        proteinAmount = '1.8g por kg de peso corporal';
+                        carbAmount = '3g por kg de peso corporal';
+                        fatAmount = '1g por kg de peso corporal';
+                    }
+                } else if (bodyType === 'endomorfo') {
+                    if (goal === 'ganar_masa') {
+                        proteinAmount = '1.8g por kg de peso corporal';
+                        carbAmount = '2-3g por kg de peso corporal';
+                        fatAmount = '1g por kg de peso corporal';
+                    } else if (goal === 'perder_grasa') {
+                        proteinAmount = '2.5g por kg de peso corporal';
+                        carbAmount = '1-2g por kg de peso corporal';
+                        fatAmount = '0.8g por kg de peso corporal';
+                    } else {
+                        proteinAmount = '2g por kg de peso corporal';
+                        carbAmount = '2g por kg de peso corporal';
+                        fatAmount = '0.8g por kg de peso corporal';
+                    }
+                }
+                
+                document.getElementById('proteinAmount').textContent = proteinAmount;
+                document.getElementById('carbAmount').textContent = carbAmount;
+                document.getElementById('fatAmount').textContent = fatAmount;
+                document.getElementById('waterAmount').textContent = '35ml por kg de peso corporal';
+                
+                // Actualizar consejos según tipo de cuerpo
+                let bodyTypeTips = '';
+                
+                if (bodyType === 'ectomorfo') {
+                    bodyTypeTips = `
+                        <li>Como ectomorfo, tu metabolismo es rápido y puede ser difícil ganar peso.</li>
+                        <li>Enfócate en entrenamientos de fuerza con pesos pesados y menos cardio.</li>
+                        <li>Consume comidas frecuentes y calorías suficientes para apoyar tu metabolismo acelerado.</li>
+                        <li>Prioriza los carbohidratos complejos para mantener la energía y apoyar el crecimiento muscular.</li>
+                    `;
+                } else if (bodyType === 'mesomorfo') {
+                    bodyTypeTips = `
+                        <li>Como mesomorfo, responderás bien tanto al entrenamiento de fuerza como al cardio.</li>
+                        <li>Mantén un equilibrio entre proteínas y carbohidratos para optimizar tu composición corporal.</li>
+                        <li>Alterna entre fases de ganancia muscular y definición para mejores resultados.</li>
+                        <li>Tu cuerpo responde rápidamente al entrenamiento, así que varía tus rutinas para evitar estancamientos.</li>
+                    `;
+                } else if (bodyType === 'endomorfo') {
+                    bodyTypeTips = `
+                        <li>Como endomorfo, tu cuerpo tiende a acumular grasa más fácilmente.</li>
+                        <li>Incluye más cardio en tu rutina para maximizar el gasto calórico.</li>
+                        <li>Controla tu ingesta de carbohidratos, priorizando fuentes de fibra y en momentos estratégicos.</li>
+                        <li>Mantén un déficit calórico moderado para perder grasa sin sacrificar músculo.</li>
+                    `;
+                }
+                
+                document.getElementById('bodyTypeTips').innerHTML = bodyTypeTips;
+                
+                // Mostrar resultados
+                calculatorForm.style.display = 'none';
+                resultsCard.style.display = 'block';
+                
+                // Scroll suave a los resultados
+                resultsCard.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Botón para volver a calcular
+            backButton.addEventListener('click', function() {
+                calculatorForm.style.display = 'block';
+                resultsCard.style.display = 'none';
+            });
+            
+            // Botón para imprimir resultados
+            printButton.addEventListener('click', function() {
+                window.print();
+            });
+            
+            // Función para ajustar color (oscurecer o aclarar)
+            function adjustColor(color, amount) {
+                return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+            }
+        });
+    </script>
+</body>
+</html>
