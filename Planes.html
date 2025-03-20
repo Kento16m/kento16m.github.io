@@ -69,7 +69,7 @@
         /* Navbar */
         .navbar {
             position: fixed;
-            top: 0px;
+            top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
@@ -96,10 +96,11 @@
         .nav-menu {
             display: flex;
             list-style: none;
+            margin-top: 0; /* ヘッダーメニューのマージントップを0に設定 */
         }
 
         .nav-item {
-            margin-left: 50px;
+            margin-left: 30px;
         }
 
         .nav-link {
@@ -133,7 +134,7 @@
 
         .cta-button {
             background-color: var(--azul-logo);
-            color: #333;
+            color: white !important;
             padding: 10px 20px;
             border-radius: 30px;
             transition: all 0.3s ease;
@@ -233,6 +234,9 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            max-width: 900px; /* 2つのプランに合わせて幅を調整 */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .plan-card {
@@ -368,65 +372,6 @@
             left: 100%;
         }
 
-        .plan-card.premium {
-            border-top: 5px solid var(--verde-logo);
-        }
-
-        .plan-card.premium .plan-price {
-            color: var(--verde-logo);
-        }
-
-        .plan-card.premium .plan-button {
-            background: linear-gradient(135deg, var(--verde-logo) 0%, #28a428 100%);
-            box-shadow: 0 10px 20px rgba(51, 204, 51, 0.2);
-        }
-
-        .plan-card.premium .plan-button:hover {
-            background: linear-gradient(135deg, #28a428 0%, var(--verde-logo) 100%);
-            box-shadow: 0 15px 25px rgba(51, 204, 51, 0.3);
-        }
-
-        .plan-card.premium .plan-badge {
-            background-color: var(--verde-logo);
-            box-shadow: 0 5px 15px rgba(51, 204, 51, 0.3);
-        }
-
-        .plan-card.basic {
-            border-top: 5px solid var(--naranja-logo);
-        }
-
-        .plan-card.basic .plan-price {
-            color: var(--naranja-logo);
-        }
-
-        .plan-card.basic .plan-button {
-            background: linear-gradient(135deg, var(--naranja-logo) 0%, #e67300 100%);
-            box-shadow: 0 10px 20px rgba(255, 153, 51, 0.2);
-        }
-
-        .plan-card.basic .plan-button:hover {
-            background: linear-gradient(135deg, #e67300 0%, var(--naranja-logo) 100%);
-            box-shadow: 0 15px 25px rgba(255, 153, 51, 0.3);
-        }
-
-        .plan-savings {
-            background-color: rgba(51, 204, 51, 0.1);
-            color: var(--verde-logo);
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        .plan-original-price {
-            text-decoration: line-through;
-            color: var(--gris-medio);
-            font-size: 1.2rem;
-            margin-right: 10px;
-        }
-
         .plan-comparison {
             margin-top: 60px;
             background-color: white;
@@ -471,7 +416,7 @@
 
         .comparison-table th:first-child {
             text-align: left;
-            width: 30%;
+            width: 40%;
         }
 
         .comparison-table td:first-child {
@@ -914,57 +859,6 @@
         .animate-slide-up {
             animation: slideInUp 1s ease;
         }
-
-        /* Estilos para promociones especiales */
-        .promo-badge {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--rojo-logo);
-            color: white;
-            padding: 8px 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(255, 58, 58, 0.3);
-            z-index: 3;
-        }
-
-        .promo-timer {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .timer-item {
-            background-color: var(--fondo-oscuro);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .timer-separator {
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .promo-text {
-            font-size: 0.9rem;
-            color: var(--rojo-logo);
-            font-weight: 600;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
@@ -991,7 +885,7 @@
                     <li class="nav-item"><a href="maquinas.html" class="nav-link">Máquinas</a></li>
                     <li class="nav-item"><a href="inscripcion.html" class="nav-link">Inscripción</a></li>
                     <li class="nav-item"><a href="calculadora-imc.html" class="nav-link">Calculadora IMC</a></li>
-                    <li class="nav-item"><a href="inscripcion.html" class="nav-link cta-button">Inscribete Ya!</a></li> 
+                    <li class="nav-item"><a href="#" class="nav-link cta-button">Planes</a></li>
                 </ul>
             </div>
         </nav>
@@ -1013,7 +907,7 @@
                 <div class="planes-grid animate-slide-up">
                     <div class="plan-card basic">
                         <div class="plan-header">
-                            <h3 class="plan-name">Plan Básico</h3>
+                            <h3 class="plan-name">Plan Individual</h3>
                             <div class="plan-price">₲ 150.000</div>
                             <div class="plan-duration">mensual</div>
                         </div>
@@ -1031,12 +925,12 @@
                                 <span>Evaluación física inicial</span>
                             </div>
                             <div class="plan-feature">
-                                <i class="fas fa-times"></i>
-                                <span>Entrenamiento personalizado</span>
+                                <i class="fas fa-check"></i>
+                                <span>Acceso a clases grupales</span>
                             </div>
                             <div class="plan-feature">
-                                <i class="fas fa-times"></i>
-                                <span>Acceso a clases grupales</span>
+                                <i class="fas fa-check"></i>
+                                <span>Asesoramiento de entrenadores</span>
                             </div>
                         </div>
                         <div class="plan-footer">
@@ -1047,10 +941,10 @@
                     </div>
 
                     <div class="plan-card featured">
-                        <div class="plan-badge">Popular</div>
+                        <div class="plan-badge">2 Personas</div>
                         <div class="plan-header">
-                            <h3 class="plan-name">Plan Premium</h3>
-                            <div class="plan-price">₲ 250.000</div>
+                            <h3 class="plan-name">Plan Pareja</h3>
+                            <div class="plan-price">₲ 200.000</div>
                             <div class="plan-duration">mensual</div>
                         </div>
                         <div class="plan-features">
@@ -1060,70 +954,19 @@
                             </div>
                             <div class="plan-feature">
                                 <i class="fas fa-check"></i>
-                                <span>Horario: 6:00 - 23:00</span>
+                                <span>Horario: 7:00 - 22:00</span>
                             </div>
                             <div class="plan-feature">
                                 <i class="fas fa-check"></i>
-                                <span>Evaluación física mensual</span>
+                                <span>Evaluación física inicial</span>
                             </div>
                             <div class="plan-feature">
                                 <i class="fas fa-check"></i>
-                                <span>2 sesiones con entrenador personal</span>
+                                <span>Acceso a clases grupales</span>
                             </div>
                             <div class="plan-feature">
                                 <i class="fas fa-check"></i>
-                                <span>Acceso ilimitado a clases grupales</span>
-                            </div>
-                        </div>
-                        <div class="plan-footer">
-                            <a href="inscripcion.html" class="plan-button">
-                                ¡Inscríbete ya!
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="plan-card premium">
-                        <div class="promo-badge">Oferta Especial</div>
-                        <div class="plan-header">
-                            <h3 class="plan-name">Plan Trimestral</h3>
-                            <div class="plan-price">₲ 600.000</div>
-                            <div class="plan-duration">por 3 meses</div>
-                            <div class="plan-savings">
-                                <span class="plan-original-price">₲ 750.000</span> Ahorras ₲ 150.000
-                            </div>
-                            <div class="promo-timer">
-                                <div class="timer-item" id="days">05</div>
-                                <div class="timer-separator">:</div>
-                                <div class="timer-item" id="hours">12</div>
-                                <div class="timer-separator">:</div>
-                                <div class="timer-item" id="minutes">45</div>
-                            </div>
-                            <div class="promo-text">¡Oferta por tiempo limitado!</div>
-                        </div>
-                        <div class="plan-features">
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Acceso a equipamiento completo</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Horario: 6:00 - 23:00</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Evaluación física mensual</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>4 sesiones con entrenador personal</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Acceso ilimitado a clases grupales</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>1 invitado gratis por semana</span>
+                                <span>Asesoramiento de entrenadores</span>
                             </div>
                         </div>
                         <div class="plan-footer">
@@ -1143,9 +986,8 @@
                         <thead>
                             <tr>
                                 <th>Características</th>
-                                <th>Plan Básico</th>
-                                <th class="highlight">Plan Premium</th>
-                                <th>Plan Trimestral</th>
+                                <th>Plan Individual</th>
+                                <th class="highlight">Plan Pareja</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1153,57 +995,34 @@
                                 <td>Acceso a equipamiento</td>
                                 <td><i class="fas fa-check"></i></td>
                                 <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
                             </tr>
                             <tr>
-                                <td>Horario extendido</td>
-                                <td><i class="fas fa-times"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
+                                <td>Horario</td>
+                                <td>7:00 - 22:00</td>
+                                <td>7:00 - 22:00</td>
                             </tr>
                             <tr>
                                 <td>Evaluación física</td>
                                 <td>Inicial</td>
-                                <td>Mensual</td>
-                                <td>Mensual</td>
-                            </tr>
-                            <tr>
-                                <td>Entrenamiento personalizado</td>
-                                <td><i class="fas fa-times"></i></td>
-                                <td>2 sesiones/mes</td>
-                                <td>4 sesiones/mes</td>
+                                <td>Inicial</td>
                             </tr>
                             <tr>
                                 <td>Clases grupales</td>
-                                <td><i class="fas fa-times"></i></td>
-                                <td>Ilimitadas</td>
-                                <td>Ilimitadas</td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
                             </tr>
                             <tr>
-                                <td>Invitados</td>
-                                <td><i class="fas fa-times"></i></td>
-                                <td><i class="fas fa-times"></i></td>
-                                <td>1 por semana</td>
-                            </tr>
-                            <tr>
-                                <td>Descuentos en suplementos</td>
-                                <td>5%</td>
-                                <td>10%</td>
-                                <td>15%</td>
+                                <td>Asesoramiento</td>
+                                <td><i class="fas fa-check"></i></td>
+                                <td><i class="fas fa-check"></i></td>
                             </tr>
                             <tr>
                                 <td>Precio</td>
                                 <td>₲ 150.000/mes</td>
-                                <td>₲ 250.000/mes</td>
                                 <td>₲ 200.000/mes</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>
-                                    <a href="inscripcion.html" class="plan-button">
-                                        Elegir
-                                    </a>
-                                </td>
                                 <td>
                                     <a href="inscripcion.html" class="plan-button">
                                         Elegir
@@ -1236,16 +1055,16 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                             <div class="faq-answer">
-                                <p>Sí, puedes cambiar de plan en cualquier momento. Si deseas actualizar a un plan superior, se aplicará el prorrateo correspondiente. Si deseas cambiar a un plan inferior, el cambio se aplicará en tu próxima renovación.</p>
+                                <p>Sí, puedes cambiar de plan en cualquier momento. Si deseas actualizar a un plan superior, se aplicará el prorrateo correspondiente.</p>
                             </div>
                         </div>
                         <div class="faq-item">
                             <div class="faq-question">
-                                <span>¿Qué incluyen las sesiones de entrenamiento personalizado?</span>
+                                <span>¿Qué incluye el asesoramiento de entrenadores?</span>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                             <div class="faq-answer">
-                                <p>Las sesiones de entrenamiento personalizado incluyen una evaluación de tus objetivos, diseño de rutina específica para tus necesidades, corrección de técnica y seguimiento de tu progreso. Cada sesión dura aproximadamente 50 minutos.</p>
+                                <p>El asesoramiento incluye orientación sobre el uso correcto de las máquinas, recomendaciones de rutinas según tus objetivos y corrección de técnica durante tus entrenamientos.</p>
                             </div>
                         </div>
                         <div class="faq-item">
@@ -1254,7 +1073,7 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                             <div class="faq-answer">
-                                <p>No hay penalización por cancelar tu membresía mensual. Para planes trimestrales o anuales, se aplica un cargo administrativo del 10% sobre el monto restante si decides cancelar antes del período contratado.</p>
+                                <p>No hay penalización por cancelar tu membresía. Puedes hacerlo en cualquier momento y será efectivo al finalizar el período pagado.</p>
                             </div>
                         </div>
                         <div class="faq-item">
@@ -1263,16 +1082,7 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                             <div class="faq-answer">
-                                <p>Ofrecemos una amplia variedad de clases grupales, incluyendo: Zumba, Spinning, Yoga, Pilates, Funcional, HIIT, Body Pump, y más. Puedes consultar nuestro horario de clases en la recepción o en nuestra aplicación móvil.</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>¿Cómo puedo reservar una clase grupal?</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Puedes reservar tu lugar en las clases grupales a través de nuestra aplicación móvil, en nuestra página web o directamente en la recepción del gimnasio. Te recomendamos reservar con al menos 2 horas de anticipación, ya que los cupos son limitados.</p>
+                                <p>Ofrecemos una variedad de clases grupales, incluyendo: Zumba, Spinning, Yoga, Pilates, Funcional, HIIT y más. Puedes consultar nuestro horario de clases en la recepción.</p>
                             </div>
                         </div>
                     </div>
@@ -1322,7 +1132,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-envelope"></i>
-                        <p>info@macrogym.com</p>
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="137a7d757c537e7270617c746a7e3d707c7e">[email&#160;protected]</a></p>
                     </div>
                 </div>
                 <div class="footer-newsletter">
@@ -1355,7 +1165,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', function() {
             // Menú móvil
             const mobileMenu = document.getElementById('mobile-menu');
@@ -1402,27 +1212,6 @@
                     item.classList.toggle('active');
                 });
             });
-
-            // Countdown Timer
-            function updateCountdown() {
-                const now = new Date();
-                const endDate = new Date();
-                endDate.setDate(now.getDate() + 5);
-                endDate.setHours(23, 59, 59);
-                
-                const diff = endDate - now;
-                
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            }
-            
-            updateCountdown();
-            setInterval(updateCountdown, 60000);
         });
     </script>
 </body>
