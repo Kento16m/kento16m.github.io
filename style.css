@@ -120,7 +120,7 @@ img {
 
 /* Estilos del navbar */
 .navbar {
-  background-color: var(--texto-claro);
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 15px 0;
   box-shadow: var(--sombra-media);
   position: fixed;
@@ -221,6 +221,7 @@ img {
   background-color: var(--azul-logo);
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  color: black;
 }
 
 .nav-link.cta-button::after {
@@ -241,26 +242,28 @@ img {
   transition: all 0.3s ease;
 }
 
-/* Hero Section */
+/* Hero Section - Pantalla Completa */
 .hero-section {
-  padding-top: 80px;
   position: relative;
-}
-
-.imagen-redondeada {
-  width: 95%;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  max-width: 1400px;
-  border-radius: 20px;
-  box-shadow: var(--sombra-fuerte);
-}
-
-.imagen-redondeada img {
+  height: 100vh;
   width: 100%;
-  display: block;
-  max-height: 85vh;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-background img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   filter: brightness(0.7);
 }
@@ -278,7 +281,7 @@ img {
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   margin-bottom: 20px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   line-height: 1.2;
@@ -939,6 +942,7 @@ img {
   font-size: 2rem;
   margin-bottom: 15px;
   color: var(--fondo-oscuro);
+  text-align: center; 
 }
 
 .contacto p {
@@ -959,11 +963,18 @@ img {
   top: 50%;
   transform: translateY(-50%);
   color: var(--gris-medio);
-  z-index: 1;
+}
+
+.form-icon.comment {
+  position: absolute;
+  left: 15px;
+  top: 16%;
+  transform: translateY(-50%);
+  color: var(--gris-medio);
 }
 
 .form-group textarea + .form-icon {
-  top: 25px;
+  top: 15px;
   transform: none;
 }
 
@@ -981,7 +992,7 @@ img {
 
 .contacto textarea {
   min-height: 150px;
-  resize: vertical;
+  resize: none;
 }
 
 .contacto input:focus,
@@ -1265,6 +1276,222 @@ img {
 
 .copyright {
   font-size: 0.9rem;
+}
+
+/* Estilos para los iconos de redes sociales de los entrenadores */
+.entrenador-social a img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.entrenador-social a:hover img {
+  transform: scale(1.2);
+}
+
+/* También ajustamos los iconos en el overlay */
+.entrenador-social-overlay a {
+  width: 35px;
+  height: 35px;
+}
+
+.entrenador-social-overlay a i {
+  font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .boxeo-contenido h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .nav-menu {
+    gap: 10px;
+  }
+
+  .nav-item {
+    margin-left: 10px;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .boxeo-container {
+    flex-direction: column;
+  }
+
+  .boxeo-imagen {
+    width: 100%;
+    max-height: 400px;
+  }
+
+  .entrenador-card {
+    max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    z-index: 101;
+  }
+
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    padding-top: 80px;
+    z-index: 100;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 15px 0;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+  }
+
+  .cta-button {
+    margin-top: 20px;
+    padding: 12px 20px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .entrenador-card {
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  .entrenador-img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-info,
+  .footer-links,
+  .footer-contact,
+  .footer-newsletter {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .entrenador-card {
+    max-width: 100%;
+  }
+
+  .entrenador-img {
+    height: 200px;
+  }
+
+  .entrenador-info {
+    padding: 20px 15px;
+  }
+
+  .contacto {
+    padding: 30px 20px;
+  }
+
+  .boxeo-features {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Programas Section */
@@ -1707,8 +1934,6 @@ img {
   }
 }
 
-/* Añadir estos estilos al final del archivo CSS para controlar el tamaño de los iconos de redes sociales */
-
 /* Estilos para los iconos de redes sociales de los entrenadores */
 .entrenador-social a img {
   width: 25px;
@@ -1721,7 +1946,6 @@ img {
   transform: scale(1.2);
 }
 
-/* También ajustamos los iconos en el overlay */
 .entrenador-social-overlay a {
   width: 35px;
   height: 35px;

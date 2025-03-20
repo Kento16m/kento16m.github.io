@@ -40,15 +40,15 @@
             </div>
         </nav>
 
-        <!-- Hero Section con imagen redondeada -->
+        <!-- Hero Section con imagen a pantalla completa -->
         <div class="hero-section">
-            <div class="imagen-redondeada">
+            <div class="hero-background">
                 <img src="img/imagen1.jpg" alt="Entrenamiento en MacroGym">
-                <div class="hero-content">
-                    <h1 class="hero-title">TRANSFORMA TU CUERPO<br>TRANSFORMA TU VIDA</h1>
-                    <p class="hero-subtitle">El mejor gimnasio para alcanzar tus objetivos fitness</p>
-                    <a href="#contacto" class="hero-button">COMIENZA HOY</a>
-                </div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">TRANSFORMA TU CUERPO<br>TRANSFORMA TU VIDA</h1>
+                <p class="hero-subtitle">El mejor gimnasio para alcanzar tus objetivos fitness</p>
+                <a href="#contacto" class="hero-button">COMIENZA HOY</a>
             </div>
         </div>
     </header>
@@ -118,9 +118,6 @@
                 <div class="boxeo-contenido" data-aos="fade-left">
                     <h2>Entrena <span class="highlight">BOXEO</span> con nosotros</h2>
                     <div class="section-divider">
-                        <span></span>
-                        <i class="fas fa-boxing-glove"></i>
-                        <span></span>
                     </div>
                     <p>Ofrecemos una variedad de clases para todos los niveles, desde principiantes hasta avanzados. Nuestros entrenadores certificados te guiarán en cada paso del camino para mejorar tu técnica, resistencia y fuerza.</p>
                     <p>El boxeo no solo es un deporte de combate, sino también una excelente forma de ejercicio cardiovascular que ayuda a quemar calorías, mejorar la coordinación y liberar el estrés. ¡Únete a nuestra comunidad de boxeo y descubre una nueva forma de desafiar tus límites!</p>
@@ -228,15 +225,15 @@
                 <div class="entrenadores-cards">
                     <div class="entrenador-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="entrenador-img">
-                            <img src="img/entrenador3.jpg" alt="Entrenador Carlos Rodríguez">
+                            <img src="img/entrenador1.png" alt="Entrenador Jeddi Díaz">
                             <div class="entrenador-social-overlay">
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                             </div>
                         </div>
                         <div class="entrenador-info">
-                            <h3>Carlos Rodríguez</h3>
-                            <p class="especialidad">Entrenador de CrossFit</p>
+                            <h3>Jeddi Díaz</h3>
+                            <p class="especialidad">Entrenador de Musculación</p>
                             <div class="entrenador-rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -401,7 +398,7 @@
                         <span></span>
                     </div>
                     <p>Nos encantaría conocer tu opinión, déjanos un mensaje o llámanos a nuestros números habilitados.</p>
-                    <form action="https://formspree.io/f/mvgkzaln" method="POST">
+                    <form id="contactForm" action="https://formspree.io/f/mvgkzaln" method="POST">
                         <div class="form-group">
                             <div class="form-icon">
                                 <i class="fas fa-user"></i>
@@ -427,7 +424,7 @@
                             <input type="tel" name="telefono" placeholder="Teléfono">
                         </div>
                         <div class="form-group">
-                            <div class="form-icon">
+                            <div class="form-icon comment">
                                 <i class="fas fa-comment"></i>
                             </div>
                             <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
@@ -473,7 +470,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-envelope"></i>
-                        <p>info@macrogymfitness.com</p>
+                        <p><a href="mailto:info@macrogymfitness.com">info@macrogymfitness.com</a></p>
                     </div>
                 </div>
                 <div class="footer-newsletter">
@@ -531,17 +528,6 @@
                 mobileMenu.classList.remove('active');
                 navMenu.classList.remove('active');
             });
-        });
-
-        // Formulario de contacto
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            // Aquí puedes añadir validaciones del lado del cliente si lo deseas
-            const messageDiv = document.getElementById('message');
-            messageDiv.innerHTML = '<div class="success-message"><i class="fas fa-check-circle"></i> Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.</div>';
-            messageDiv.style.display = 'block';
-            
-            // Para evitar que el formulario se envíe dos veces, puedes comentar esta línea
-            // event.preventDefault();
         });
     </script>
 </body>
