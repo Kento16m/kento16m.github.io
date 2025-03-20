@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MACRO GYM - Nuestros Planes</title>
+    <title>MACRO GYM - Galería de Fotos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -320,14 +320,14 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        /* Sección de planes */
-        .planes-section {
+        /* Sección de galería */
+        .galeria-section {
             padding: 80px 20px;
             background-color: #f8f8f8;
             position: relative;
         }
 
-        .planes-section::before {
+        .galeria-section::before {
             content: "";
             position: absolute;
             top: 0;
@@ -339,7 +339,7 @@
             z-index: 0;
         }
 
-        .planes-container {
+        .galeria-container {
             position: relative;
             z-index: 1;
             max-width: 1200px;
@@ -364,420 +364,301 @@
             color: var(--texto-oscuro);
         }
 
-        .planes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+        /* Filtros de categoría */
+        .galeria-filtros {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
         }
 
-        .plan-card {
+        .filtro-btn {
             background-color: white;
+            color: var(--texto-oscuro);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicion);
+            box-shadow: var(--sombra-suave);
+        }
+
+        .filtro-btn:hover {
+            background-color: var(--azul-logo);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .filtro-btn.active {
+            background-color: var(--azul-logo);
+            color: white;
+        }
+
+        /* Estilos para la galería */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .galeria-item {
+            position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--sombra-suave);
             transition: var(--transicion);
-            position: relative;
-            z-index: 1;
+            background-color: white;
+            height: 350px;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
-        .plan-card:hover {
+        .galeria-item:hover {
             transform: translateY(-10px);
             box-shadow: var(--sombra-media);
         }
 
-        .plan-card.featured {
-            border: 2px solid var(--azul-logo);
-            transform: scale(1.05);
-        }
-
-        .plan-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-
-        .plan-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--rojo-logo);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-
-        .plan-header {
-            background-color: var(--fondo-oscuro);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .plan-name {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .plan-price {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .plan-duration {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .plan-features {
-            padding: 30px 20px;
-        }
-
-        .plan-feature {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            color: var(--texto-oscuro);
-        }
-
-        .plan-feature i {
-            color: var(--azul-logo);
-            margin-right: 10px;
-            font-size: 1.1rem;
-        }
-
-        .plan-footer {
-            padding: 0 20px 30px;
-            text-align: center;
-        }
-
-        .plan-button {
-            display: inline-block;
-            background-color: var(--fondo-oscuro);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transicion);
+        .galeria-img-container {
             width: 100%;
-        }
-
-        .plan-button:hover {
-            background-color: var(--azul-logo);
-            transform: translateY(-3px);
-        }
-
-        /* Tabla comparativa de planes */
-        .planes-comparison {
-            margin-top: 80px;
-            background-color: white;
-            border-radius: 15px;
+            height: 250px;
             overflow: hidden;
-            box-shadow: var(--sombra-media);
-        }
-
-        .comparison-header {
-            background-color: var(--fondo-oscuro);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .comparison-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .comparison-header p {
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        .comparison-table th {
-            background-color: #f5f5f5;
-            font-weight: 600;
-            color: var(--fondo-oscuro);
-        }
-
-        .comparison-table th:first-child {
-            text-align: left;
-        }
-
-        .comparison-table td:first-child {
-            text-align: left;
-            font-weight: 500;
-        }
-
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table i.fa-check {
-            color: var(--verde-logo);
-            font-size: 1.2rem;
-        }
-
-        .comparison-table i.fa-times {
-            color: var(--rojo-logo);
-            font-size: 1.2rem;
-        }
-
-        .comparison-table i.fa-check-double {
-            color: var(--azul-logo);
-            font-size: 1.2rem;
-        }
-
-        /* Sección de preguntas frecuentes */
-        .faq-section {
-            padding: 80px 20px;
-            background-color: white;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--sombra-suave);
-            transition: var(--transicion);
-        }
-
-        .faq-item:hover {
-            box-shadow: var(--sombra-media);
-        }
-
-        .faq-question {
-            background-color: #f5f5f5;
-            padding: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--fondo-oscuro);
-        }
-
-        .faq-question i {
-            transition: var(--transicion);
-        }
-
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-
-        .faq-item.active .faq-question {
-            background-color: var(--azul-logo);
-            color: white;
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 20px;
-            max-height: 500px;
-        }
-
-        /* Sección de contacto */
-        .contacto-section {
-            padding: 80px 0;
-            background-color: #f0f0f0;
             position: relative;
         }
 
-        .contacto-section::before {
-            content: "";
+        .galeria-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .galeria-item:hover .galeria-img {
+            transform: scale(1.1);
+        }
+
+        .galeria-info {
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .galeria-categoria {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--azul-logo);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 3;
+            box-shadow: var(--sombra-suave);
+        }
+
+        .galeria-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--fondo-oscuro);
+        }
+
+        .galeria-info p {
+            font-size: 0.9rem;
+            color: var(--gris-medio);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .galeria-fecha {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--gris-medio);
+        }
+
+        .galeria-fecha i {
+            margin-right: 5px;
+            color: var(--azul-logo);
+        }
+
+        .galeria-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: url("img/pattern.png");
-            opacity: 0.05;
-            z-index: 0;
-        }
-
-        .contacto-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mapa-contacto {
+            height: 250px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7));
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            background-color: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--sombra-media);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transicion);
         }
 
-        .mapa {
-            flex: 1;
-            min-width: 300px;
+        .galeria-item:hover .galeria-overlay {
+            opacity: 1;
         }
 
-        .mapa iframe {
+        .galeria-overlay-btn {
+            background-color: var(--azul-logo);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            transform: scale(0) rotate(-180deg);
+            transition: transform 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .galeria-item:hover .galeria-overlay-btn {
+            transform: scale(1) rotate(0);
+        }
+
+        /* Estilos para el modal de imagen */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            min-height: 450px;
-            border: none;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1100;
+            overflow: auto;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-img {
             display: block;
+            max-width: 100%;
+            max-height: 80vh;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: var(--sombra-fuerte);
         }
 
-        .contacto {
-            flex: 1;
-            padding: 40px;
-            min-width: 300px;
-        }
-
-        .contacto h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--fondo-oscuro);
+        .modal-caption {
+            color: white;
             text-align: center;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .contacto p {
-            margin-bottom: 30px;
-            color: var(--texto-oscuro);
+        .modal-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-caption p {
             font-size: 1rem;
             line-height: 1.6;
         }
 
-        .form-group {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .form-icon {
+        .modal-close {
             position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gris-medio);
-        }
-
-        .form-icon.comment {
-            position: absolute;
-            left: 15px;
-            top: 16%;
-            transform: translateY(-50%);
-            color: var(--gris-medio);
-        }
-
-        .form-group textarea + .form-icon {
-            top: 15px;
-            transform: none;
-        }
-
-        .contacto input,
-        .contacto textarea {
-            width: 100%;
-            padding: 15px 15px 15px 45px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: "Montserrat", sans-serif;
-            font-size: 1rem;
-            transition: var(--transicion);
-            background-color: #f9f9f9;
-        }
-
-        .contacto textarea {
-            min-height: 150px;
-            resize: none;
-        }
-
-        .contacto input:focus,
-        .contacto textarea:focus {
-            outline: none;
-            border-color: var(--azul-logo);
-            box-shadow: 0 0 0 3px rgba(0, 136, 255, 0.1);
-            background-color: white;
-        }
-
-        .contacto input::placeholder,
-        .contacto textarea::placeholder {
-            color: #999;
-            font-family: "Montserrat", sans-serif;
-        }
-
-        .contacto button {
-            background: linear-gradient(to right, var(--fondo-oscuro), var(--gris-oscuro));
+            top: 20px;
+            right: 20px;
             color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 2rem;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
             transition: var(--transicion);
-            box-shadow: var(--sombra-suave);
-            width: 100%;
-            max-width: 250px;
-            margin: 0 auto;
-        }
-
-        .contacto button:hover {
-            background: linear-gradient(to right, var(--gris-oscuro), var(--azul-logo));
-            transform: translateY(-3px);
-            box-shadow: var(--sombra-media);
-        }
-
-        .contacto button i {
-            transition: transform 0.3s ease;
-        }
-
-        .contacto button:hover i {
-            transform: translateX(5px);
-        }
-
-        .form-message {
-            margin-top: 20px;
-            display: none;
-        }
-
-        .success-message {
-            background-color: rgba(51, 204, 51, 0.1);
-            color: var(--verde-logo);
-            padding: 15px;
-            border-radius: 10px;
+            z-index: 1101;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 10px;
         }
 
-        .success-message i {
-            font-size: 1.5rem;
+        .modal-close:hover {
+            color: var(--rojo-logo);
+            transform: rotate(90deg);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+            z-index: 1101;
+        }
+
+        .modal-nav-btn {
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transicion);
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-nav-btn:hover {
+            background-color: var(--azul-logo);
+            transform: scale(1.1);
+        }
+
+        /* Categorías */
+        .categoria-instalaciones {
+            background-color: var(--azul-logo);
+        }
+
+        .categoria-eventos {
+            background-color: var(--verde-logo);
+        }
+
+        .categoria-entrenamiento {
+            background-color: var(--naranja-logo);
+        }
+
+        .categoria-equipo {
+            background-color: var(--rojo-logo);
         }
 
         /* Footer */
@@ -1038,10 +919,8 @@
                 font-size: 1rem;
             }
 
-            .comparison-table th,
-            .comparison-table td {
-                padding: 12px 15px;
-                font-size: 0.9rem;
+            .galeria-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
 
@@ -1111,6 +990,10 @@
                 font-size: 2rem;
             }
 
+            .galeria-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+
             .footer-content {
                 flex-direction: column;
                 gap: 30px;
@@ -1121,15 +1004,6 @@
             .footer-contact,
             .footer-newsletter {
                 max-width: 100%;
-            }
-
-            .comparison-table {
-                font-size: 0.8rem;
-            }
-
-            .comparison-table th,
-            .comparison-table td {
-                padding: 10px;
             }
         }
 
@@ -1152,14 +1026,24 @@
                 font-size: 1.8rem;
             }
 
-            .contacto {
-                padding: 30px 20px;
+            .galeria-grid {
+                grid-template-columns: 1fr;
             }
 
-            .comparison-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
+            .modal-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .galeria-filtros {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filtro-btn {
+                width: 100%;
+                max-width: 200px;
             }
         }
     </style>
@@ -1186,10 +1070,8 @@
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="Index.html" class="nav-link">Inicio</a></li>
                     <li class="nav-item"><a href="maquinas.html" class="nav-link">Máquinas</a></li>
-                    <li class="nav-item"><a href="galeria.html" class="nav-link">Galeria</a></li>
                     <li class="nav-item"><a href="Planes.html" class="nav-link">Planes</a></li>
                     <li class="nav-item"><a href="calculadora-imc.html" class="nav-link">Calcula tu IMC</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">MacroGym App</a></li>
                     <li class="nav-item"><a href="inscripcion.html" class="nav-link cta-button">¡Inscríbete ya!</a></li>
                 </ul>
             </div>
@@ -1198,293 +1080,248 @@
         <!-- Hero Section con imagen a pantalla completa -->
         <div class="hero-section">
             <div class="hero-background">
-                <img src="img/imagen1.jpg" alt="Entrenamiento en MacroGym">
+                <img src="img/imagen1.jpg" alt="Galería MacroGym">
             </div>
             <div class="hero-content">
-                <h1 class="hero-title">NUESTROS PLANES</h1>
-                <p class="hero-subtitle">Descubre los planes que tenemos para ti y comienza tu transformación</p>
-                <a href="#planes" class="hero-button">VER PLANES</a>
+                <h1 class="hero-title">NUESTRA GALERÍA</h1>
+                <p class="hero-subtitle">Conoce nuestras instalaciones y a nuestra comunidad fitness</p>
+                <a href="#galeria" class="hero-button">VER FOTOS</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Sección de Planes -->
-        <section id="planes" class="planes-section">
-            <div class="planes-container">
+        <!-- Sección de Galería -->
+        <section id="galeria" class="galeria-section">
+            <div class="galeria-container">
                 <div class="section-header" data-aos="fade-up">
-                    <h2>PLANES DISEÑADOS PARA TI</h2>
+                    <h2>GALERÍA DE FOTOS</h2>
                     <div class="section-divider">
                         <span></span>
-                        <i class="fas fa-dumbbell"></i>
+                        <i class="fas fa-camera"></i>
                         <span></span>
                     </div>
-                    <p>Elige el plan que mejor se adapte a tus necesidades y objetivos</p>
+                    <p>Explora nuestra colección de imágenes y descubre el ambiente de MacroGym</p>
                 </div>
                 
-                <div class="planes-grid">
-                    <div class="plan-card">
-                        <div class="plan-header">
-                            <h3 class="plan-name">PLAN INDIVIDUAL</h3>
-                            <div class="plan-price">150.000 Gs</div>
-                            <div class="plan-duration">por mes</div>
-                        </div>
-                        <div class="plan-features">
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Acceso ilimitado al gimnasio</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Uso de todas las máquinas</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Asesoramiento inicial</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Acceso a vestuarios</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Horario completo</span>
-                            </div>
-                        </div>
-                        <div class="plan-footer">
-                            <a href="inscripcion.html" class="plan-button">
-                                Inscribirme ahora
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="plan-card featured">
-                        <div class="plan-badge">Más popular</div>
-                        <div class="plan-header">
-                            <h3 class="plan-name">PLAN PAREJAS</h3>
-                            <div class="plan-price">200.000 Gs</div>
-                            <div class="plan-duration">por mes (2 personas)</div>
-                        </div>
-                        <div class="plan-features">
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Acceso ilimitado al gimnasio</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Uso de todas las máquinas</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Asesoramiento inicial</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Acceso a vestuarios</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Horario completo</span>
-                            </div>
-                            <div class="plan-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Ahorro del 33% por persona</span>
-                            </div>
-                        </div>
-                        <div class="plan-footer">
-                            <a href="inscripcion.html" class="plan-button">
-                                Inscribirnos ahora
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tabla comparativa de planes -->
-                <div class="planes-comparison">
-                    <div class="comparison-header">
-                        <h3>COMPARATIVA DE PLANES</h3>
-                        <p>Encuentra el plan perfecto para ti</p>
-                    </div>
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Características</th>
-                                <th>Plan Individual</th>
-                                <th>Plan Parejas</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Precio mensual</td>
-                                <td>150.000 Gs</td>
-                                <td>200.000 Gs (100.000 Gs por persona)</td>
-                            </tr>
-                            <tr>
-                                <td>Acceso ilimitado</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Horario completo</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Uso de todas las máquinas</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Asesoramiento inicial</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Acceso a vestuarios</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Ahorro por persona</td>
-                                <td>-</td>
-                                <td>33%</td>
-                            </tr>
-                            <tr>
-                                <td>Ideal para</td>
-                                <td>Personas que entrenan solas</td>
-                                <td>Parejas, amigos o familiares</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección de Preguntas Frecuentes -->
-        <section class="faq-section">
-            <div class="section-header">
-                <h2>PREGUNTAS FRECUENTES</h2>
-                <div class="section-divider">
-                    <span></span>
-                    <i class="fas fa-question-circle"></i>
-                    <span></span>
-                </div>
-                <p>Resolvemos tus dudas sobre nuestros planes y servicios</p>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Cuál es el horario del gimnasio?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Nuestro gimnasio está abierto de lunes a viernes de 6:00 AM a 10:00 PM, sábados de 8:00 AM a 8:00 PM y domingos de 9:00 AM a 2:00 PM.</p>
-                    </div>
+                <!-- Filtros de categoría -->
+                <div class="galeria-filtros">
+                    <button class="filtro-btn active" data-filter="todos">Todos</button>
+                    <button class="filtro-btn" data-filter="instalaciones">Instalaciones</button>
+                    <button class="filtro-btn" data-filter="entrenamiento">Entrenamiento</button>
+                    <button class="filtro-btn" data-filter="eventos">Eventos</button>
+                    <button class="filtro-btn" data-filter="equipo">Equipo</button>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Necesito experiencia previa para inscribirme?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>No, no necesitas experiencia previa. Nuestro equipo de entrenadores te brindará asesoramiento inicial para que puedas comenzar tu entrenamiento de manera segura y efectiva, independientemente de tu nivel de experiencia.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Cómo funciona el Plan Parejas?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>El Plan Parejas permite que dos personas se inscriban juntas por un precio total de 200.000 Gs mensuales, lo que representa un ahorro del 33% por persona comparado con el plan individual. Ambas personas deben inscribirse al mismo tiempo y pueden asistir juntas o por separado al gimnasio.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Puedo cambiar de plan después de inscribirme?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sí, puedes cambiar de plan al finalizar tu período mensual actual. Solo debes notificarlo en recepción con al menos 3 días de anticipación antes de la fecha de renovación.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Qué métodos de pago aceptan?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Aceptamos pagos en efectivo, tarjetas de débito y crédito, y transferencias bancarias. También ofrecemos la opción de pago a través de aplicaciones móviles como Billetera Personal y Tigo Money.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección de Contacto -->
-        <section id="contacto" class="contacto-section">
-            <div class="contacto-container">
-                <div class="mapa-contacto">
-                    <div class="mapa" data-aos="fade-right">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.283346115616!2d-57.64150009999999!3d-25.294682599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da7f8dbeed22b%3A0xa048d11532d0d88!2sMacrogym%20Fitness!5e0!3m2!1ses!2spy!4v1742156043360!5m2!1ses!2spy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="contacto" data-aos="fade-left">
-                        <h2>CONTÁCTANOS</h2>
-                        <div class="section-divider">
-                            <span></span>
-                            <i class="fas fa-envelope"></i>
-                            <span></span>
+                <div class="galeria-grid" id="galeriaGrid">
+                    <!-- Imagen 1 -->
+                    <div class="galeria-item" data-categoria="instalaciones">
+                        <div class="galeria-categoria categoria-instalaciones">Instalaciones</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Área de pesas" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
                         </div>
-                        <p>¿Tienes alguna pregunta sobre nuestros planes? Déjanos un mensaje y te responderemos a la brevedad.</p>
-                        <form action="https://formspree.io/f/mvgkzaln" method="POST">
-                            <div class="form-group">
-                                <div class="form-icon">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <input type="text" name="nombre" placeholder="Nombre (*)" required>
+                        <div class="galeria-info">
+                            <h3>Área de Pesas</h3>
+                            <p>Nuestra zona de pesas cuenta con equipamiento de última generación para todo tipo de entrenamiento.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Enero 2025</span>
                             </div>
-                            <div class="form-group">
-                                <div class="form-icon">
-                                    <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagen 2 -->
+                    <div class="galeria-item" data-categoria="entrenamiento">
+                        <div class="galeria-categoria categoria-entrenamiento">Entrenamiento</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Entrenamiento funcional" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
                                 </div>
-                                <input type="text" name="apellidos" placeholder="Apellidos (*)" required>
                             </div>
-                            <div class="form-group">
-                                <div class="form-icon">
-                                    <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="galeria-info">
+                            <h3>Entrenamiento Funcional</h3>
+                            <p>Sesiones de entrenamiento funcional dirigidas por nuestros entrenadores profesionales.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Febrero 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagen 3 -->
+                    <div class="galeria-item" data-categoria="eventos">
+                        <div class="galeria-categoria categoria-eventos">Eventos</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Competencia de fitness" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
                                 </div>
-                                <input type="email" name="email" placeholder="Email (*)" required>
                             </div>
-                            <div class="form-group">
-                                <div class="form-icon">
-                                    <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="galeria-info">
+                            <h3>Competencia Anual</h3>
+                            <p>Nuestra competencia anual reúne a los mejores atletas de la comunidad fitness.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Marzo 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagen 4 -->
+                    <div class="galeria-item" data-categoria="instalaciones">
+                        <div class="galeria-categoria categoria-instalaciones">Instalaciones</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Área cardiovascular" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
                                 </div>
-                                <input type="tel" name="telefono" placeholder="Teléfono">
                             </div>
-                            <div class="form-group">
-                                <div class="form-icon comment">
-                                    <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="galeria-info">
+                            <h3>Zona Cardio</h3>
+                            <p>Equipos cardiovasculares de última generación para mejorar tu resistencia y quemar calorías.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Abril 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagen 5 -->
+                    <div class="galeria-item" data-categoria="equipo">
+                        <div class="galeria-categoria categoria-equipo">Equipo</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Equipo de entrenadores" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
                                 </div>
-                                <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
                             </div>
-                            <input type="hidden" name="_next" value="https://tu-sitio-web.com/gracias.html">
-                            <input type="hidden" name="_subject" value="Nuevo mensaje de MACRO GYM">
-                            <input type="hidden" name="_captcha" value="false">
-                            <button type="submit">
-                                <span>Enviar mensaje</span>
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                            <div id="message" class="form-message"></div>
-                        </form>
+                        </div>
+                        <div class="galeria-info">
+                            <h3>Nuestros Entrenadores</h3>
+                            <p>Contamos con un equipo de profesionales certificados para guiarte en tu camino fitness.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Mayo 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagen 6 -->
+                    <div class="galeria-item" data-categoria="entrenamiento">
+                        <div class="galeria-categoria categoria-entrenamiento">Entrenamiento</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Clase de spinning" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="galeria-info">
+                            <h3>Clase de Spinning</h3>
+                            <p>Nuestras clases de spinning te ayudarán a mejorar tu resistencia cardiovascular.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Junio 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagen 7 -->
+                    <div class="galeria-item" data-categoria="eventos">
+                        <div class="galeria-categoria categoria-eventos">Eventos</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Maratón benéfica" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="galeria-info">
+                            <h3>Maratón Benéfica</h3>
+                            <p>Organizamos eventos benéficos para apoyar causas sociales en nuestra comunidad.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Julio 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagen 8 -->
+                    <div class="galeria-item" data-categoria="instalaciones">
+                        <div class="galeria-categoria categoria-instalaciones">Instalaciones</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Vestuarios" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="galeria-info">
+                            <h3>Vestuarios Modernos</h3>
+                            <p>Vestuarios amplios y modernos con todas las comodidades para nuestros miembros.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Agosto 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagen 9 -->
+                    <div class="galeria-item" data-categoria="equipo">
+                        <div class="galeria-categoria categoria-equipo">Equipo</div>
+                        <div class="galeria-img-container">
+                            <img src="/placeholder.svg?height=600&width=800" alt="Staff de recepción" class="galeria-img">
+                            <div class="galeria-overlay">
+                                <div class="galeria-overlay-btn">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="galeria-info">
+                            <h3>Nuestro Staff</h3>
+                            <p>Nuestro amable personal de recepción está siempre dispuesto a ayudarte.</p>
+                            <div class="galeria-fecha">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Septiembre 2025</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Modal para ver imagen ampliada -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-content">
+            <img src="/placeholder.svg" alt="Imagen ampliada" class="modal-img" id="modalImg">
+            <div class="modal-caption">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+            </div>
+        </div>
+        <div class="modal-nav">
+            <span class="modal-nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></span>
+            <span class="modal-nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></span>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-main">
@@ -1501,6 +1338,7 @@
                         <li><a href="Index.html">Inicio</a></li>
                         <li><a href="maquinas.html">Máquinas</a></li>
                         <li><a href="Planes.html">Planes</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
                         <li><a href="calculadora-imc.html">Calculadora IMC</a></li>
                     </ul>
                 </div>
@@ -1587,33 +1425,118 @@
                 });
             });
 
-            // Preguntas frecuentes
-            const faqItems = document.querySelectorAll('.faq-item');
+            // Variables para la galería
+            const galeriaItems = document.querySelectorAll('.galeria-item');
+            const imageModal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDesc');
+            const modalClose = document.getElementById('modalClose');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
             
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
+            // Variable para almacenar el índice de la imagen actual en el modal
+            let currentImageIndex = 0;
+            
+            // Abrir modal de imagen
+            galeriaItems.forEach((item, index) => {
+                const overlayBtn = item.querySelector('.galeria-overlay-btn');
                 
-                question.addEventListener('click', () => {
-                    // Cerrar todas las preguntas abiertas
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                    
-                    // Alternar la pregunta actual
-                    item.classList.toggle('active');
+                overlayBtn.addEventListener('click', () => {
+                    openImageModal(index);
                 });
             });
-
-            // Formulario de contacto
-            document.querySelector('form').addEventListener('submit', function(event) {
-                // No prevenimos el evento por defecto para permitir que el formulario se envíe
-                const messageDiv = document.getElementById('message');
-                setTimeout(function() {
-                    messageDiv.innerHTML = '<div class="success-message"><i class="fas fa-check-circle"></i> Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.</div>';
-                    messageDiv.style.display = 'block';
-                }, 1000);
+            
+            // Función para abrir el modal con la imagen seleccionada
+            function openImageModal(index) {
+                if (index >= 0 && index < galeriaItems.length) {
+                    currentImageIndex = index;
+                    const item = galeriaItems[index];
+                    
+                    const img = item.querySelector('.galeria-img');
+                    const title = item.querySelector('h3').textContent;
+                    const desc = item.querySelector('p').textContent;
+                    
+                    modalImg.src = img.src;
+                    modalTitle.textContent = title;
+                    modalDesc.textContent = desc;
+                    
+                    imageModal.style.display = 'flex';
+                    setTimeout(() => {
+                        imageModal.classList.add('show');
+                    }, 10);
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            // Navegar a la imagen anterior
+            prevBtn.addEventListener('click', () => {
+                if (galeriaItems.length > 1) {
+                    currentImageIndex = (currentImageIndex - 1 + galeriaItems.length) % galeriaItems.length;
+                    openImageModal(currentImageIndex);
+                }
+            });
+            
+            // Navegar a la siguiente imagen
+            nextBtn.addEventListener('click', () => {
+                if (galeriaItems.length > 1) {
+                    currentImageIndex = (currentImageIndex + 1) % galeriaItems.length;
+                    openImageModal(currentImageIndex);
+                }
+            });
+            
+            // Cerrar modal de imagen
+            modalClose.addEventListener('click', () => {
+                imageModal.classList.remove('show');
+                setTimeout(() => {
+                    imageModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            });
+            
+            // Filtrar imágenes por categoría
+            const filtroBtns = document.querySelectorAll('.filtro-btn');
+            
+            filtroBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Quitar clase active de todos los botones
+                    filtroBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Agregar clase active al botón clickeado
+                    btn.classList.add('active');
+                    
+                    // Obtener categoría a filtrar
+                    const categoria = btn.getAttribute('data-filter');
+                    
+                    // Filtrar imágenes
+                    galeriaItems.forEach(item => {
+                        if (categoria === 'todos' || item.getAttribute('data-categoria') === categoria) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Cerrar modal al hacer clic fuera de la imagen
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    modalClose.click();
+                }
+            });
+            
+            // Navegación con teclado
+            document.addEventListener('keydown', (e) => {
+                if (imageModal.style.display === 'flex') {
+                    if (e.key === 'ArrowLeft') {
+                        prevBtn.click();
+                    } else if (e.key === 'ArrowRight') {
+                        nextBtn.click();
+                    } else if (e.key === 'Escape') {
+                        modalClose.click();
+                    }
+                }
             });
         });
     </script>
