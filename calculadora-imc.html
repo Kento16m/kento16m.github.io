@@ -456,6 +456,114 @@
             justify-content: center;
             margin-top: 20px;
         }
+
+        /* Estilos para impresión */
+        @media print {
+            body {
+                background-color: white !important;
+                color: black !important;
+                font-size: 12pt;
+            }
+            
+            header, footer, .calculator-card, .back-button, .print-button, 
+            .back-to-top, .navbar, .footer-main, .footer-bottom {
+                display: none !important;
+            }
+            
+            .results-card {
+                display: block !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+            }
+            
+            .results-header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .results-header h3 {
+                font-size: 24pt;
+                margin-bottom: 10px;
+            }
+            
+            .imc-circle {
+                border: 2px solid #333;
+                box-shadow: none !important;
+                animation: none !important;
+                width: 150px !important;
+                height: 150px !important;
+                margin: 20px auto !important;
+                page-break-inside: avoid;
+            }
+            
+            .tab-content {
+                display: block !important;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+            
+            .tabs-nav {
+                display: none !important;
+            }
+            
+            .recommendation-item {
+                page-break-inside: avoid;
+                border: 1px solid #ddd !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .workout-day {
+                page-break-inside: avoid;
+                border: 1px solid #ddd !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .nutrition-table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                page-break-inside: avoid;
+            }
+            
+            .nutrition-table th {
+                background-color: #f0f0f0 !important;
+                color: black !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            .nutrition-table td {
+                border: 1px solid #ddd !important;
+            }
+            
+            h4, h5 {
+                page-break-after: avoid;
+            }
+            
+            .print-header {
+                display: block !important;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .print-footer {
+                display: block !important;
+                text-align: center;
+                margin-top: 20px;
+                font-size: 10pt;
+                color: #666;
+            }
+            
+            .print-section-title {
+                display: block !important;
+                font-size: 16pt;
+                font-weight: bold;
+                margin: 20px 0 10px;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
+            }
+        }
         
         @keyframes fadeInDown {
             from {
@@ -534,6 +642,11 @@
             .workout-exercises {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* Elementos para impresión que normalmente están ocultos */
+        .print-header, .print-footer, .print-section-title {
+            display: none;
         }
     </style>
 </head>
@@ -690,6 +803,12 @@
                 </div>
                 
                 <div class="results-card" id="resultsCard">
+                    <!-- Elementos para impresión -->
+                    <div class="print-header">
+                        <h1>MACRO GYM - Resultados de IMC Personalizados</h1>
+                        <p>Fecha: <span id="printDate"></span></p>
+                    </div>
+                    
                     <div class="results-header">
                         <h3>TUS RESULTADOS</h3>
                         <div class="section-divider">
@@ -735,159 +854,11 @@
                         <div class="tab-content" id="workout">
                             <div class="recommendation-item">
                                 <h4><i class="fas fa-dumbbell"></i> Plan de entrenamiento semanal</h4>
-                                <p>Hemos diseñado este plan de entrenamiento semanal basado en tu tipo de cuerpo, objetivo y nivel de actividad:</p>
+                                <p>Hemos diseñado este plan de entrenamiento semanal basado en tu tipo de cuerpo, objetivo, edad y nivel de actividad:</p>
                             </div>
                             
                             <div id="workoutPlan">
-                                <div class="workout-day">
-                                    <h5>Lunes: Piernas y Glúteos</h5>
-                                    <div class="workout-exercises">
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Sentadillas (4x12)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Peso muerto (4x10)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Prensa (3x15)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Extensiones (3x15)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Elevaciones de cadera (3x20)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="workout-day">
-                                    <h5>Martes: Pecho y Tríceps</h5>
-                                    <div class="workout-exercises">
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Press de banca (4x10)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Aperturas (3x12)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Fondos (3x12)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Extensiones de tríceps (3x15)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="workout-day">
-                                    <h5>Miércoles: Cardio y Core</h5>
-                                    <div class="workout-exercises">
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>HIIT (20 min)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Plancha (3x45s)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Crunches (3x20)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Russian twists (3x20)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="workout-day">
-                                    <h5>Jueves: Espalda y Bíceps</h5>
-                                    <div class="workout-exercises">
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Dominadas (4x8)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Remo (4x12)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Curl de bíceps (3x12)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Curl martillo (3x12)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="workout-day">
-                                    <h5>Viernes: Hombros y Piernas</h5>
-                                    <div class="workout-exercises">
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Press militar (4x10)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Elevaciones laterales (3x15)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Zancadas (3x12)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Curl femoral (3x15)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="workout-day">
-                                    <h5>Sábado: Cardio y Funcional</h5>
-                                    <div class="workout-exercises">
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Cardio (30 min)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Burpees (3x15)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Mountain climbers (3x20)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Saltos al cajón (3x12)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="workout-day">
-                                    <h5>Domingo: Descanso activo</h5>
-                                    <div class="workout-exercises">
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Caminata (30-45 min)</span>
-                                        </div>
-                                        <div class="exercise-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>Estiramientos (15 min)</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- El contenido se generará dinámicamente según el perfil del usuario -->
                             </div>
                         </div>
                         
@@ -909,17 +880,17 @@
                                     <tr>
                                         <td>Proteínas</td>
                                         <td id="proteinAmount">1.8g por kg de peso corporal</td>
-                                        <td>Pollo, pescado, huevos, legumbres, tofu</td>
+                                        <td id="proteinSources">Pollo, pescado, huevos, legumbres, tofu</td>
                                     </tr>
                                     <tr>
                                         <td>Carbohidratos</td>
                                         <td id="carbAmount">3g por kg de peso corporal</td>
-                                        <td>Arroz integral, avena, batata, frutas, verduras</td>
+                                        <td id="carbSources">Arroz integral, avena, batata, frutas, verduras</td>
                                     </tr>
                                     <tr>
                                         <td>Grasas</td>
                                         <td id="fatAmount">0.8g por kg de peso corporal</td>
-                                        <td>Aguacate, frutos secos, aceite de oliva, pescados grasos</td>
+                                        <td id="fatSources">Aguacate, frutos secos, aceite de oliva, pescados grasos</td>
                                     </tr>
                                     <tr>
                                         <td>Agua</td>
@@ -995,6 +966,12 @@
                             <span>Imprimir resultados</span>
                         </button>
                     </div>
+                    
+                    <!-- Pie de página para impresión -->
+                    <div class="print-footer">
+                        <p>Este plan ha sido generado por la Calculadora de IMC de MacroGym Fitness.</p>
+                        <p>Para más información, visita nuestra página web o contacta con nuestros entrenadores.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1030,7 +1007,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-envelope"></i>
-                        <p>info@macrogym.com</p>
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aec7c0c8c1eec3cfcddcc1c9d7c380cdc1c3">[email&#160;protected]</a></p>
                     </div>
                 </div>
                 <div class="footer-newsletter">
@@ -1063,6 +1040,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Menú móvil
@@ -1122,6 +1100,10 @@
             const resultsCard = document.getElementById('resultsCard');
             const backButton = document.getElementById('backButton');
             const printButton = document.getElementById('printButton');
+            
+            // Establecer fecha para impresión
+            const today = new Date();
+            document.getElementById('printDate').textContent = today.toLocaleDateString();
             
             imcForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -1205,7 +1187,7 @@
                         goalRecommendation = `Basado en tu objetivo de mantener salud y tu tipo de cuerpo ${bodyType}, te recomendamos un entrenamiento variado que combine cardio, fuerza y flexibilidad, junto con una dieta equilibrada y variada.`;
                         break;
                     case 'reducir_estres':
-                        goalRecommendation = `Basado en tu objetivo de reducir estrés y tu tipo de cuerpo ${bodyType}, te recomendamos actividades como yoga, pilates y caminatas, junto con técnicas de respiración y una dieta equilibrada rica en alimentos que favorecen el bienestar mental.`;
+                        goalRecommendation = `Basado en tu objetivo de reducir estrés y tu tipo de cuerpo ${bodyType}, te recomendamos actividades como yoga, pilates, caminatas y ejercicios de respiración, junto con una dieta equilibrada rica en alimentos que favorecen el bienestar mental.`;
                         break;
                     case 'mejorar_estetica':
                         goalRecommendation = `Basado en tu objetivo de mejorar estética y tu tipo de cuerpo ${bodyType}, te recomendamos un entrenamiento que combine hipertrofia y definición, con especial atención a las proporciones corporales, junto con una dieta cíclica que alterne fases de volumen y definición.`;
@@ -1283,6 +1265,58 @@
                 document.getElementById('fatAmount').textContent = fatAmount;
                 document.getElementById('waterAmount').textContent = '35ml por kg de peso corporal';
                 
+                // Actualizar fuentes de proteína según preferencia alimentaria
+                if (dietPreference === 'vegetariano') {
+                    document.getElementById('proteinSources').textContent = 'Huevos, lácteos, legumbres, tofu, tempeh, seitan';
+                } else if (dietPreference === 'vegano') {
+                    document.getElementById('proteinSources').textContent = 'Legumbres, tofu, tempeh, seitan, edamame, proteína de guisante';
+                } else if (dietPreference === 'keto') {
+                    document.getElementById('proteinSources').textContent = 'Carnes, pescados, huevos, quesos, proteínas en polvo bajas en carbohidratos';
+                    document.getElementById('carbSources').textContent = 'Verduras de hoja verde, brócoli, coliflor, aguacate (limitados)';
+                } else if (dietPreference === 'paleo') {
+                    document.getElementById('proteinSources').textContent = 'Carnes, pescados, huevos, frutos secos';
+                    document.getElementById('carbSources').textContent = 'Batata, frutas, verduras (sin granos ni legumbres)';
+                }
+                
+                // Generar plan de entrenamiento personalizado según edad, sexo, objetivo y nivel de actividad
+                let workoutPlan = '';
+                
+                // Verificar si el objetivo es reducir estrés
+                if (goal === 'reducir_estres') {
+                    workoutPlan = generarPlanReduccionEstres(age, gender, activityLevel);
+                } 
+                // Verificar si la persona es mayor (más de 50 años)
+                else if (age > 50) {
+                    workoutPlan = generarPlanPersonasMayores(gender, goal, activityLevel);
+                }
+                // Plan para personas jóvenes según objetivo
+                else {
+                    switch (goal) {
+                        case 'ganar_masa':
+                            workoutPlan = generarPlanGanarMasa(gender, bodyType, activityLevel);
+                            break;
+                        case 'perder_grasa':
+                            workoutPlan = generarPlanPerderGrasa(gender, bodyType, activityLevel);
+                            break;
+                        case 'mejorar_resistencia':
+                            workoutPlan = generarPlanMejorarResistencia(gender, age, activityLevel);
+                            break;
+                        case 'aumentar_fuerza':
+                            workoutPlan = generarPlanAumentarFuerza(gender, age, activityLevel);
+                            break;
+                        case 'mantener_salud':
+                            workoutPlan = generarPlanMantenerSalud(gender, age, activityLevel);
+                            break;
+                        case 'mejorar_estetica':
+                            workoutPlan = generarPlanMejorarEstetica(gender, bodyType, activityLevel);
+                            break;
+                        default:
+                            workoutPlan = generarPlanGeneral(gender, age, activityLevel);
+                    }
+                }
+                
+                document.getElementById('workoutPlan').innerHTML = workoutPlan;
+                
                 // Actualizar consejos según tipo de cuerpo
                 let bodyTypeTips = '';
                 
@@ -1311,6 +1345,70 @@
                 
                 document.getElementById('bodyTypeTips').innerHTML = bodyTypeTips;
                 
+                // Actualizar consejos según objetivo
+                let goalTips = '';
+                
+                switch (goal) {
+                    case 'ganar_masa':
+                        goalTips = `
+                            <li>Asegúrate de estar en un superávit calórico (comer más calorías de las que gastas).</li>
+                            <li>Prioriza el entrenamiento de fuerza con pesos pesados y pocas repeticiones.</li>
+                            <li>Descansa adecuadamente entre series y entre días de entrenamiento.</li>
+                            <li>Consume suficiente proteína (1.8-2.2g por kg de peso corporal).</li>
+                        `;
+                        break;
+                    case 'perder_grasa':
+                        goalTips = `
+                            <li>Mantén un déficit calórico moderado (300-500 calorías menos de lo que gastas).</li>
+                            <li>Combina entrenamiento de fuerza y cardio para maximizar la quema de grasa.</li>
+                            <li>Mantén alta la ingesta de proteínas para preservar la masa muscular.</li>
+                            <li>Prioriza alimentos integrales y ricos en fibra para mayor saciedad.</li>
+                        `;
+                        break;
+                    case 'mejorar_resistencia':
+                        goalTips = `
+                            <li>Incrementa gradualmente la duración e intensidad de tus sesiones de cardio.</li>
+                            <li>Incluye entrenamiento por intervalos para mejorar la capacidad cardiovascular.</li>
+                            <li>Mantén una alimentación rica en carbohidratos complejos para tener energía.</li>
+                            <li>Asegúrate de hidratarte adecuadamente antes, durante y después del ejercicio.</li>
+                        `;
+                        break;
+                    case 'aumentar_fuerza':
+                        goalTips = `
+                            <li>Enfócate en ejercicios compuestos con cargas pesadas y pocas repeticiones.</li>
+                            <li>Implementa progresión de carga de forma consistente.</li>
+                            <li>Asegúrate de descansar lo suficiente entre series y entre entrenamientos.</li>
+                            <li>Consume suficientes calorías y proteínas para apoyar el desarrollo de fuerza.</li>
+                        `;
+                        break;
+                    case 'mantener_salud':
+                        goalTips = `
+                            <li>Mantén una rutina de ejercicio variada que incluya cardio, fuerza y flexibilidad.</li>
+                            <li>Prioriza la consistencia sobre la intensidad.</li>
+                            <li>Sigue una alimentación equilibrada con todos los grupos de alimentos.</li>
+                            <li>Escucha a tu cuerpo y ajusta la intensidad según sea necesario.</li>
+                        `;
+                        break;
+                    case 'reducir_estres':
+                        goalTips = `
+                            <li>Incorpora técnicas de respiración y meditación en tu rutina diaria.</li>
+                            <li>Prioriza actividades que disfrutes y te relajen.</li>
+                            <li>Mantén un horario regular de ejercicio para estabilizar los niveles de cortisol.</li>
+                            <li>Incluye alimentos ricos en magnesio y omega-3 que ayudan a reducir el estrés.</li>
+                        `;
+                        break;
+                    case 'mejorar_estetica':
+                        goalTips = `
+                            <li>Alterna fases de volumen y definición para mejorar la composición corporal.</li>
+                            <li>Enfócate en entrenar todos los grupos musculares de forma equilibrada.</li>
+                            <li>Presta atención a la técnica de los ejercicios para maximizar resultados.</li>
+                            <li>Mantén una alimentación que apoye tus objetivos estéticos específicos.</li>
+                        `;
+                        break;
+                }
+                
+                document.getElementById('goalTips').innerHTML = goalTips;
+                
                 // Mostrar resultados
                 calculatorForm.style.display = 'none';
                 resultsCard.style.display = 'block';
@@ -1333,6 +1431,1408 @@
             // Función para ajustar color (oscurecer o aclarar)
             function adjustColor(color, amount) {
                 return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+            }
+            
+            // Funciones para generar planes de entrenamiento personalizados
+            
+            // Plan para reducción de estrés (adaptado a cualquier edad)
+            function generarPlanReduccionEstres(age, gender, activityLevel) {
+                let plan = '';
+                
+                // Intensidad según nivel de actividad
+                let intensidad = 'baja';
+                if (activityLevel === 'moderado' || activityLevel === 'activo') {
+                    intensidad = 'moderada';
+                } else if (activityLevel === 'muy_activo') {
+                    intensidad = 'moderada-alta';
+                }
+                
+                // Ajustes según edad
+                let duracionYoga = '30-45 minutos';
+                let duracionCaminata = '20-30 minutos';
+                let duracionEstiramientos = '15-20 minutos';
+                
+                if (age > 50) {
+                    duracionYoga = '20-30 minutos';
+                    duracionCaminata = '15-20 minutos';
+                    duracionEstiramientos = '10-15 minutos';
+                }
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: Yoga y Meditación</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Yoga suave (${duracionYoga})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Meditación guiada (10 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ejercicios de respiración (5 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: Caminata en la Naturaleza</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata al aire libre (${duracionCaminata})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos suaves (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: Pilates o Estiramiento</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Pilates básico (${duracionEstiramientos})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ejercicios de respiración (5 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Actividad Recreativa</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Actividad que disfrutes: baile, natación suave, etc. (30 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: Yoga y Meditación</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Yoga restaurativo (${duracionYoga})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Meditación mindfulness (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Ejercicio Ligero y Relajación</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata o bicicleta suave (20 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Baño relajante o sauna (si es posible)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Descanso Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Descanso y recuperación</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Meditación o lectura relajante (opcional)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
+            }
+            
+            // Plan para personas mayores (más de 50 años)
+            function generarPlanPersonasMayores(gender, goal, activityLevel) {
+                let plan = '';
+                
+                // Intensidad según nivel de actividad
+                let intensidad = 'baja';
+                if (activityLevel === 'moderado') {
+                    intensidad = 'moderada-baja';
+                } else if (activityLevel === 'activo' || activityLevel === 'muy_activo') {
+                    intensidad = 'moderada';
+                }
+                
+                // Ajustes según objetivo
+                let enfoque = 'general';
+                if (goal === 'perder_grasa') {
+                    enfoque = 'cardio';
+                } else if (goal === 'ganar_masa' || goal === 'aumentar_fuerza') {
+                    enfoque = 'fuerza';
+                } else if (goal === 'mejorar_resistencia') {
+                    enfoque = 'resistencia';
+                }
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: Entrenamiento de Fuerza Suave</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas con silla (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexiones en pared (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones laterales ligeras (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: Cardio Suave</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata (20-30 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ejercicios de equilibrio (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: Yoga o Pilates Adaptado</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Yoga para adultos mayores (30 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ejercicios de respiración (5 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Entrenamiento de Fuerza Suave</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Puente de glúteos (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo con banda elástica (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl de bíceps con peso ligero (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: Actividad Recreativa</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Natación suave o aquagym (si es posible)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Alternativa: Caminata (20 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Movilidad y Flexibilidad</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ejercicios de movilidad articular (15 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos completos (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Descanso Activo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata ligera (15 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos suaves (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
+            }
+            
+            // Plan para ganar masa muscular
+            function generarPlanGanarMasa(gender, bodyType, activityLevel) {
+                let plan = '';
+                
+                // Ajustes según género
+                let intensidadPeso = gender === 'femenino' ? 'moderado' : 'pesado';
+                
+                // Ajustes según tipo de cuerpo
+                let frecuenciaCardio = '2 días';
+                if (bodyType === 'ectomorfo') {
+                    frecuenciaCardio = '1 día ligero';
+                } else if (bodyType === 'endomorfo') {
+                    frecuenciaCardio = '3 días';
+                }
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: Pecho y Tríceps</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press de banca (4x8-10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press inclinado con mancuernas (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Aperturas en máquina (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Fondos para tríceps (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Extensiones de tríceps (3x12)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: Espalda y Bíceps</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Dominadas o jalones al pecho (4x8-10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo con barra (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo en máquina (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl de bíceps con barra (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl martillo (3x12)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: Descanso o Cardio Ligero</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata (20 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Piernas y Glúteos</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (4x8-10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Prensa de piernas (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Extensiones de cuádriceps (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl femoral (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones de pantorrilla (4x15)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: Hombros y Abdominales</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press militar (4x8-10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones laterales (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones frontales (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Crunch abdominal (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (3x30-45s)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Entrenamiento Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Peso muerto (4x8)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press de banca inclinado (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo con mancuerna (3x10 por lado)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Zancadas (3x12 por pierna)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones laterales (3x15)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Descanso Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Descanso y recuperación</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
+            }
+            
+            // Plan para perder grasa
+            function generarPlanPerderGrasa(gender, bodyType, activityLevel) {
+                let plan = '';
+                
+                // Ajustes según nivel de actividad
+                let intensidadCardio = 'moderada';
+                if (activityLevel === 'sedentario' || activityLevel === 'ligero') {
+                    intensidadCardio = 'baja-moderada';
+                } else if (activityLevel === 'activo' || activityLevel === 'muy_activo') {
+                    intensidadCardio = 'alta';
+                }
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: Cardio + Piernas</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cardio (20 min, intensidad ${intensidadCardio})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Zancadas (3x12 por pierna)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones de cadera (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Abdominales (3x20)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: HIIT (Entrenamiento por Intervalos)</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Calentamiento (5 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Intervalos: 30s intenso / 30s descanso (15 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Enfriamiento (5 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: Tren Superior</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexiones (3 series hasta el fallo)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo con mancuernas (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press de hombros (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl de bíceps (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Extensiones de tríceps (3x15)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Cardio Estable</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cardio de intensidad moderada (40 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: Circuito de Cuerpo Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Burpees (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas con salto (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mountain climbers (3x30s)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha lateral (3x30s por lado)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Jumping jacks (3x30s)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Cardio + Core</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cardio (30 min, intensidad variable)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (3x45s)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Russian twists (3x20 por lado)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones de piernas (3x15)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Descanso Activo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata ligera (30 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos completos (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
+            }
+            
+            // Plan para mejorar resistencia
+            function generarPlanMejorarResistencia(gender, age, activityLevel) {
+                let plan = '';
+                
+                // Ajustes según edad y nivel de actividad
+                let intensidadBase = 'moderada';
+                let duracionBase = '30 min';
+                
+                if (age > 40) {
+                    intensidadBase = 'moderada-baja';
+                }
+                
+                if (activityLevel === 'sedentario' || activityLevel === 'ligero') {
+                    duracionBase = '20 min';
+                } else if (activityLevel === 'activo' || activityLevel === 'muy_activo') {
+                    duracionBase = '45 min';
+                }
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: Cardio Base</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Carrera/Caminata continua (${duracionBase})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: Fuerza para Resistencia</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Circuito: 4 rondas con descanso mínimo</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (15 reps)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexiones (10-15 reps)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (45 segundos)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Jumping jacks (30 segundos)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: Intervalos</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Calentamiento (10 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Intervalos: 1 min intenso / 2 min suave (8 rondas)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Enfriamiento (5 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Descanso Activo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata ligera o natación suave (20 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos completos (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: Cardio Largo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cardio continuo a intensidad moderada (45-60 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Entrenamiento Mixto</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cardio (15 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Circuito de fuerza-resistencia (20 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cardio (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Recuperación</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Yoga o estiramientos (30 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Movilidad articular (10 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
+            }
+            
+            // Plan para aumentar fuerza
+            function generarPlanAumentarFuerza(gender, age, activityLevel) {
+                let plan = '';
+                
+                // Ajustes según edad
+                let intensidadPeso = 'pesado';
+                let repeticiones = '5-8';
+                
+                if (age > 40) {
+                    intensidadPeso = 'moderado-pesado';
+                    repeticiones = '6-10';
+                }
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: Fuerza - Piernas</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (5x${repeticiones})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Peso muerto (4x${repeticiones})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Prensa de piernas (3x8)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones de pantorrilla (3x12)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: Descanso o Cardio Ligero</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata (20 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: Fuerza - Pecho y Tríceps</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press de banca (5x${repeticiones})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press inclinado (4x${repeticiones})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Fondos para tríceps (3x8)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Extensiones de tríceps (3x10)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Descanso o Movilidad</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Yoga o movilidad (30 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: Fuerza - Espalda y Bíceps</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Dominadas (4 series)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo con barra (4x${repeticiones})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl de bíceps (3x8)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl martillo (3x10)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Fuerza - Hombros y Core</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press militar (4x${repeticiones})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones laterales (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (3x60s)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Rueda abdominal (3x10)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Descanso Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Descanso y recuperación</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
+            }
+            
+            // Plan para mantener salud
+            function generarPlanMantenerSalud(gender, age, activityLevel) {
+                let plan = '';
+                
+                // Ajustes según edad
+                let intensidad = 'moderada';
+                if (age > 40) {
+                    intensidad = 'moderada-baja';
+                }
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: Cardio y Movilidad</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata o bicicleta (30 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ejercicios de movilidad (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: Fuerza - Cuerpo Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexiones o press de banca (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones laterales (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (3x30s)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: Yoga o Pilates</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sesión de yoga o pilates (45 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Cardio Intervalos</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Calentamiento (5 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Intervalos: 1 min rápido / 2 min suave (8 rondas)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Enfriamiento (5 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: Fuerza - Cuerpo Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Zancadas (3x10 por pierna)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press de hombros (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Dominadas asistidas o jalones (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl de bíceps (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Russian twists (3x15 por lado)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Actividad Recreativa</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Actividad al aire libre: senderismo, natación, baile, etc. (60 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Descanso Activo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata ligera (20 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos completos (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
+            }
+            
+            // Plan para mejorar estética
+            function generarPlanMejorarEstetica(gender, bodyType, activityLevel) {
+                let plan = '';
+                
+                // Ajustes según género
+                let enfoqueFemenino = gender === 'femenino';
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: ${enfoqueFemenino ? 'Glúteos y Piernas' : 'Pecho y Tríceps'}</h5>
+                        <div class="workout-exercises">
+                            ${enfoqueFemenino ? `
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (4x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hip thrust (4x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Zancadas (3x12 por pierna)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Abductores (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones de pantorrilla (3x20)</span>
+                            </div>
+                            ` : `
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press de banca (4x10-12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press inclinado (3x10-12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Aperturas con mancuernas (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Fondos para tríceps (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Extensiones de tríceps (3x15)</span>
+                            </div>
+                            `}
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: Cardio y Core</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>HIIT (20 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (3x45s)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Crunch abdominal (3x20)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Russian twists (3x20 por lado)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: ${enfoqueFemenino ? 'Espalda y Hombros' : 'Espalda y Bíceps'}</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Dominadas asistidas o jalones (4x10-12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo con mancuerna (3x12 por lado)</span>
+                            </div>
+                            ${enfoqueFemenino ? `
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones laterales (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press de hombros (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Face pull (3x15)</span>
+                            </div>
+                            ` : `
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo en máquina (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl de bíceps con barra (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl martillo (3x12)</span>
+                            </div>
+                            `}
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Cardio y Movilidad</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cardio estable (30 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Yoga o estiramientos (20 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: ${enfoqueFemenino ? 'Brazos y Core' : 'Piernas y Hombros'}</h5>
+                        <div class="workout-exercises">
+                            ${enfoqueFemenino ? `
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl de bíceps (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Extensiones de tríceps (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexiones de rodillas (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha lateral (3x30s por lado)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Abdominales inferiores (3x15)</span>
+                            </div>
+                            ` : `
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (4x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Prensa de piernas (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl femoral (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press militar (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones laterales (3x15)</span>
+                            </div>
+                            `}
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Circuito de Cuerpo Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Circuito: 3-4 rondas</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Burpees (12 reps)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas con salto (15 reps)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexiones (12 reps)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mountain climbers (30 reps)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (45 segundos)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Descanso Activo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata o actividad recreativa (30-45 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos completos (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
+            }
+            
+            // Plan general (para cualquier objetivo no específico)
+            function generarPlanGeneral(gender, age, activityLevel) {
+                let plan = '';
+                
+                // Ajustes según edad
+                let intensidad = 'moderada';
+                if (age > 50) {
+                    intensidad = 'baja-moderada';
+                } else if (age < 30) {
+                    intensidad = 'moderada-alta';
+                }
+                
+                plan += `
+                    <div class="workout-day">
+                        <h5>Lunes: Cardio y Core</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cardio (30 min, intensidad ${intensidad})</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (3x30s)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Crunch abdominal (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Russian twists (3x15 por lado)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Martes: Tren Superior</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexiones (3x10)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo con mancuerna (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Press de hombros (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Curl de bíceps (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Extensiones de tríceps (3x12)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Miércoles: Descanso Activo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Caminata (20-30 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Estiramientos (15 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Jueves: Tren Inferior</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Zancadas (3x10 por pierna)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones de cadera (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones de pantorrilla (3x20)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Viernes: Cardio Intervalos</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Calentamiento (5 min)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Intervalos: 30s intenso / 90s suave (10 rondas)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Enfriamiento (5 min)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Sábado: Cuerpo Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sentadillas (3x15)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Flexiones (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Remo (3x12)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Plancha (3x45s)</span>
+                            </div>
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Elevaciones laterales (3x15)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workout-day">
+                        <h5>Domingo: Descanso Completo</h5>
+                        <div class="workout-exercises">
+                            <div class="exercise-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Descanso y recuperación</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return plan;
             }
         });
     </script>
