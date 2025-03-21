@@ -407,15 +407,15 @@
         }
 
         .galeria-item {
-            position: relative;
-            border-radius: 15px;
+            background-color: white;
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--sombra-suave);
             transition: var(--transicion);
-            background-color: white;
-            height: 350px;
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            position: relative;
+            height: auto; 
+            display: flex;
+            flex-direction: column;
         }
 
         .galeria-item:hover {
@@ -424,7 +424,6 @@
         }
 
         .galeria-img-container {
-            width: 100%;
             height: 250px;
             overflow: hidden;
             position: relative;
@@ -446,6 +445,9 @@
             padding: 20px;
             position: relative;
             z-index: 2;
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
         }
 
         .galeria-categoria {
@@ -475,6 +477,7 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            flex-grow: 1; 
         }
 
         .galeria-fecha {
