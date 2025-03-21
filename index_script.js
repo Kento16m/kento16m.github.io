@@ -20,13 +20,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Botón para ir al inicio
     const backToTopButton = document.getElementById('back-to-top');
+    // Botón de whatsapp
+    const whatsappBtn = document.querySelector('.whatsapp-btn');
 
-    // Mostrar/Esconder el botón para ir al inicio
+    // Mostrar/Esconder los botones al hacer scroll
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) { 
             backToTopButton.classList.add('visible');
+            if (whatsappBtn) {
+                whatsappBtn.classList.add('visible');
+            }
         } else {
             backToTopButton.classList.remove('visible');
+            if (whatsappBtn) {
+                whatsappBtn.classList.remove('visible');
+            }
         }
     });
 
@@ -37,6 +45,17 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
+
+    // Animación para el botón de WhatsApp
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('mouseenter', () => {
+            whatsappBtn.style.animation = 'pulse 1s infinite';
+        });
+        
+        whatsappBtn.addEventListener('mouseleave', () => {
+            whatsappBtn.style.animation = 'none';
+        });
+    }
 
     // Cambiar estilo del navbar al hacer scroll
     const navbar = document.querySelector('.navbar');

@@ -88,6 +88,41 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
+
+        /* Botón de WhatsApp */
+        .whatsapp-btn {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: #25D366;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        box-shadow: var(--sombra-media);
+        z-index: 999;
+        transition: var(--transicion);
+        opacity: 0;
+        visibility: hidden;
+        }
+
+        .whatsapp-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: var(--sombra-fuerte);
+        }
+
+        .whatsapp-btn.visible {
+        opacity: 1;
+        visibility: visible;
+        }
+
+        /* Hasta aquí */
         
         .form-group {
             position: relative;
@@ -655,6 +690,11 @@
     <button id="back-to-top" class="back-to-top">
         <i class="fas fa-chevron-up"></i>
     </button>
+
+    <!-- Botón de whatsapp -->
+    <a href="https://api.whatsapp.com/send?phone=%2B595994741907" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <header>
         <nav class="navbar">
@@ -2837,5 +2877,6 @@
             }
         });
     </script>
+    <script src="index_script.js"></script>
 </body>
 </html>

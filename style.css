@@ -118,6 +118,41 @@ img {
   transform: translateY(-5px);
 }
 
+/* Botón de WhatsApp */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  box-shadow: var(--sombra-media);
+  z-index: 999;
+  transition: var(--transicion);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.whatsapp-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hasta aquí */
+
 /* Estilos del navbar */
 .navbar {
   background-color: rgba(255, 255, 255, 0.95);
