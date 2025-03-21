@@ -3,157 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MACRO GYM - Administrador</title>
+    <title>MACRO GYM - Panel de Administración</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <style>
-        .admin-section {
-            padding: 120px 20px 80px;
-            background-color: #f8f8f8;
-            position: relative;
-        }
-        
-        .admin-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("img/pattern.png");
-            opacity: 0.05;
-            z-index: 0;
-        }
-        
-        .admin-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: var(--sombra-media);
-            padding: 40px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .admin-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .admin-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--fondo-oscuro);
-        }
-        
-        .admin-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .admin-search {
-            display: flex;
-            gap: 10px;
-            flex: 1;
-            max-width: 500px;
-        }
-        
-        .admin-search input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: "Montserrat", sans-serif;
-        }
-        
-        .admin-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .admin-button {
-            background-color: var(--fondo-oscuro);
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: var(--transicion);
-        }
-        
-        .admin-button:hover {
-            background-color: var(--azul-logo);
-            transform: translateY(-3px);
-        }
-        
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        
-        .admin-table th, 
-        .admin-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .admin-table th {
-            background-color: var(--fondo-oscuro);
-            color: white;
-            position: sticky;
-            top: 0;
-        }
-        
-        .admin-table tr:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .table-container {
-            max-height: 500px;
-            overflow-y: auto;
-            margin-top: 20px;
-        }
-        
-        .no-data {
-            text-align: center;
-            padding: 30px;
-            color: #888;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .admin-actions {
-                flex-direction: column;
-            }
-            
-            .admin-search {
-                max-width: 100%;
-            }
-            
-            .admin-table {
-                font-size: 0.9rem;
-            }
-            
-            .admin-container {
-                padding: 20px 15px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- ボタンを上に戻る -->
+    <!-- Botón para volver arriba -->
     <button id="back-to-top" class="back-to-top">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -166,6 +26,20 @@
                         <img src="img/logo.png" alt="Logo MacroGym Fitness">
                     </a>
                 </div>
+                
+                <!-- Buscador para navbar -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar miembros..." id="navbarSearch">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="search-results" id="searchResults">
+                        <!-- Resultados de búsqueda se mostrarán aquí -->
+                    </div>
+                </div>
+                
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -174,7 +48,7 @@
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="Index.html" class="nav-link">Inicio</a></li>
                     <li class="nav-item"><a href="inscripcion.html" class="nav-link">Registro</a></li>
-                    
+                    <li class="nav-item"><a href="#" class="nav-link active">Administración</a></li>
                 </ul>
             </div>
         </nav>
@@ -184,7 +58,7 @@
         <section class="admin-section">
             <div class="admin-container">
                 <div class="admin-header">
-                    <h2>Gestión de suscriptores</h2>
+                    <h2>Gestión de Suscriptores</h2>
                     <div class="section-divider">
                         <span></span>
                         <i class="fas fa-users-cog"></i>
@@ -195,9 +69,21 @@
                 
                 <div class="admin-actions">
                     <div class="admin-search">
-                        <input type="text" id="searchInput" placeholder="Buscar por Nombre, Apellido o Numero de Telefono">
+                        <input type="text" id="searchInput" placeholder="Buscar por Nombre, Apellido o Número de Teléfono">
                         <button class="admin-button" id="searchButton">
                             <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+                    
+                    <div class="admin-filters">
+                        <select id="expirationFilter">
+                            <option value="all">Todos los miembros</option>
+                            <option value="expiring">Próximos a vencer (7 días)</option>
+                            <option value="expired">Cuotas vencidas</option>
+                            <option value="active">Activos</option>
+                        </select>
+                        <button class="admin-button" id="applyFilter">
+                            <i class="fas fa-filter"></i> Aplicar Filtro
                         </button>
                     </div>
                     
@@ -205,7 +91,7 @@
                         <button class="admin-button" id="exportExcel">
                             <i class="fas fa-file-excel"></i> Exportar a Excel
                         </button>
-                        <button class="admin-button" id="clearData">
+                        <button class="admin-button danger" id="clearData">
                             <i class="fas fa-trash"></i> Borrar Datos
                         </button>
                     </div>
@@ -217,21 +103,54 @@
                             <tr>
                                 <th>Apellido</th>
                                 <th>Nombre</th>
-                                <th>Numero de Identificacion</th>
-                                <th>Numero de Telefono</th>
-                                <th>Correo Electronico</th>
+                                <th>Número de Identificación</th>
+                                <th>Número de Teléfono</th>
+                                <th>Correo Electrónico</th>
                                 <th>Plan</th>
                                 <th>Horario</th>
                                 <th>Fecha de Registro</th>
+                                <th>Vencimiento</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            <!-- JavaScriptでデータが挿入されます -->
+                            <!-- Los datos se insertarán dinámicamente con JavaScript -->
                         </tbody>
                     </table>
                     <div id="noData" class="no-data">
-                        <i class="fas fa-info-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <i class="fas fa-info-circle"></i>
                         <p>No hay datos de Registro</p>
+                    </div>
+                </div>
+                
+                <!-- Modal de renovación -->
+                <div id="renewModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Renovar Membresía</h3>
+                        <form id="renewForm">
+                            <input type="hidden" id="memberId">
+                            <div class="form-group">
+                                <label for="renewPlan">Plan:</label>
+                                <select id="renewPlan" required>
+                                    <option value="Normal">Normal - ₲ 150.000/mes</option>
+                                    <option value="2 meses">2 meses - ₲ 200.000/mes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="paymentMethod">Método de Pago:</label>
+                                <select id="paymentMethod" required>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                                    <option value="transferencia">Transferencia Bancaria</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="cancel-button" id="cancelRenew">Cancelar</button>
+                                <button type="submit" class="submit-button">Renovar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -248,15 +167,16 @@
                     <p>MacroGym Fitness es tu mejor opción con equipos de última generación y entrenadores profesionales para ayudarte a alcanzar tus objetivos de entrenamiento.</p>
                 </div>
                 <div class="footer-links">
-                    <h3>Enlaces Rapidos</h3>
+                    <h3>Enlaces Rápidos</h3>
                     <ul>
-                        <li><a href="Index.html">Hogar</a></li>
+                        <li><a href="Index.html">Inicio</a></li>
                         <li><a href="inscripcion.html">Registro</a></li>
                         <li><a href="Index.html#contacto">Consulta</a></li>
+                        <li><a href="fitness-wiki.html">Fitness Wiki</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h3>dirección de contacto</h3>
+                    <h3>Información de Contacto</h3>
                     <div class="footer-contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <p>Av. Francisco Acuña De Figueroa casi, Asunción 001102</p>
@@ -267,7 +187,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-envelope"></i>
-                        <p>info@macrogym.com</p>
+                        <p><a href="mailto:info@macrogymfitness.com">info@macrogymfitness.com</a></p>
                     </div>
                 </div>
                 <div class="footer-newsletter">
@@ -295,14 +215,14 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="copyright">Copyright © 2025 - MacroGym Fitness Todos los derechos reservados</p>
+            <p class="copyright">Copyright &copy; 2025 - MacroGym Fitness Todos los derechos reservados</p>
         </div>
     </footer>
 
-    <!-- スクリプト -->
+    <script src="js/search.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // モバイルメニュー
+            // Menú móvil
             const mobileMenu = document.getElementById('mobile-menu');
             const navMenu = document.querySelector('.nav-menu');
             
@@ -311,7 +231,7 @@
                 navMenu.classList.toggle('active');
             });
 
-            // リンクをクリックしたときにメニューを閉じる
+            // Cerrar menú al hacer clic en un enlace
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.remove('active');
@@ -319,7 +239,7 @@
                 });
             });
 
-            // トップに戻るボタン
+            // Botón para volver arriba
             const backToTopButton = document.getElementById('back-to-top');
             
             window.addEventListener('scroll', function() {
@@ -337,21 +257,32 @@
                 });
             });
 
-            // テーブルデータの読み込みと表示
+            // Funciones para administración de miembros
             const tableBody = document.getElementById('tableBody');
             const noData = document.getElementById('noData');
             const searchInput = document.getElementById('searchInput');
             const searchButton = document.getElementById('searchButton');
             const exportExcelButton = document.getElementById('exportExcel');
             const clearDataButton = document.getElementById('clearData');
+            const expirationFilter = document.getElementById('expirationFilter');
+            const applyFilterButton = document.getElementById('applyFilter');
+            const renewModal = document.getElementById('renewModal');
+            const renewForm = document.getElementById('renewForm');
+            const cancelRenew = document.getElementById('cancelRenew');
+            const memberId = document.getElementById('memberId');
             
-            // ローカルストレージからデータを読み込む
+            // Cargar datos simulados si no hay datos existentes
+            if (!localStorage.getItem('inscripcionData')) {
+                loadMockData();
+            }
+            
+            // Cargar datos de miembros
             function loadData() {
                 const data = JSON.parse(localStorage.getItem('inscripcionData')) || [];
                 return data;
             }
             
-            // テーブルにデータを表示する
+            // Mostrar datos en la tabla
             function displayData(data) {
                 tableBody.innerHTML = '';
                 
@@ -362,8 +293,44 @@
                 
                 noData.style.display = 'none';
                 
-                data.forEach(item => {
+                // Fecha actual para cálculos de vencimiento
+                const currentDate = new Date();
+                
+                data.forEach((item, index) => {
+                    // Calcular fecha de vencimiento (30 días después del registro o de la última renovación)
+                    const registrationDate = new Date(item.fecha_inscripcion);
+                    const lastRenewalDate = item.ultima_renovacion ? new Date(item.ultima_renovacion) : registrationDate;
+                    
+                    // Duración del plan en días
+                    let planDuration = 30; // por defecto un mes
+                    if (item.plan.includes("2 meses")) {
+                        planDuration = 60;
+                    }
+                    
+                    const expirationDate = new Date(lastRenewalDate);
+                    expirationDate.setDate(expirationDate.getDate() + planDuration);
+                    
+                    // Formato de fecha legible
+                    const expirationDateFormatted = expirationDate.toLocaleDateString('es-ES');
+                    
+                    // Verificar estado de la membresía
+                    let status = 'Activo';
+                    let statusClass = 'status-active';
+                    
+                    // Calcular días hasta el vencimiento
+                    const daysToExpiration = Math.ceil((expirationDate - currentDate) / (1000 * 60 * 60 * 24));
+                    
+                    if (daysToExpiration <= 0) {
+                        status = 'Vencido';
+                        statusClass = 'status-expired';
+                    } else if (daysToExpiration <= 7) {
+                        status = `Por vencer (${daysToExpiration} día${daysToExpiration > 1 ? 's' : ''})`;
+                        statusClass = 'status-expiring';
+                    }
+                    
+                    // Crear fila de la tabla
                     const row = document.createElement('tr');
+                    row.className = statusClass;
                     
                     row.innerHTML = `
                         <td>${item.apellido}</td>
@@ -374,15 +341,106 @@
                         <td>${item.plan}</td>
                         <td>${item.horario}</td>
                         <td>${item.fecha_inscripcion}</td>
+                        <td>${expirationDateFormatted}</td>
+                        <td class="${statusClass}">${status}</td>
+                        <td class="actions">
+                            <button class="action-btn renew-btn" data-index="${index}" title="Renovar membresía">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <button class="action-btn edit-btn" data-index="${index}" title="Editar miembro">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn delete-btn" data-index="${index}" title="Eliminar miembro">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
                     `;
                     
                     tableBody.appendChild(row);
                 });
+                
+                // Agregar event listeners a los botones de acción
+                document.querySelectorAll('.renew-btn').forEach(btn => {
+                    btn.addEventListener('click', openRenewModal);
+                });
+                
+                document.querySelectorAll('.edit-btn').forEach(btn => {
+                    btn.addEventListener('click', editMember);
+                });
+                
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', deleteMember);
+                });
             }
             
-            // 検索機能
-            function searchData() {
-                const searchTerm = searchInput.value.toLowerCase();
+            // Abrir modal de renovación
+            function openRenewModal() {
+                const index = this.getAttribute('data-index');
+                memberId.value = index;
+                renewModal.style.display = 'block';
+            }
+            
+            // Cerrar modal de renovación
+            function closeRenewModal() {
+                renewModal.style.display = 'none';
+            }
+            
+            // Renovar membresía
+            function renewMembership(e) {
+                e.preventDefault();
+                
+                const index = parseInt(memberId.value);
+                const plan = document.getElementById('renewPlan').value;
+                const paymentMethod = document.getElementById('paymentMethod').value;
+                
+                // Obtener datos actuales
+                const data = loadData();
+                
+                // Actualizar información de membresía
+                data[index].plan = plan;
+                data[index].ultima_renovacion = new Date().toISOString().split('T')[0];
+                data[index].metodo_pago = paymentMethod;
+                
+                // Guardar datos actualizados
+                localStorage.setItem('inscripcionData', JSON.stringify(data));
+                
+                // Cerrar modal y actualizar vista
+                closeRenewModal();
+                displayData(data);
+                
+                // Mostrar mensaje de éxito
+                alert('Membresía renovada exitosamente');
+            }
+            
+            // Editar miembro
+            function editMember() {
+                const index = this.getAttribute('data-index');
+                alert('Editar miembro con índice: ' + index + '\nFuncionalidad por implementar');
+                // Aquí puedes implementar la lógica para editar un miembro
+            }
+            
+            // Eliminar miembro
+            function deleteMember() {
+                if (!confirm('¿Está seguro que desea eliminar este miembro?')) {
+                    return;
+                }
+                
+                const index = this.getAttribute('data-index');
+                const data = loadData();
+                
+                // Eliminar miembro del array
+                data.splice(index, 1);
+                
+                // Guardar datos actualizados
+                localStorage.setItem('inscripcionData', JSON.stringify(data));
+                
+                // Actualizar vista
+                displayData(data);
+            }
+            
+            // Búsqueda de miembros
+            function searchMembers() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
                 const data = loadData();
                 
                 if (!searchTerm) {
@@ -394,54 +452,229 @@
                     item.nombre.toLowerCase().includes(searchTerm) ||
                     item.apellido.toLowerCase().includes(searchTerm) ||
                     item.telefono.includes(searchTerm) ||
-                    item.email.toLowerCase().includes(searchTerm)
+                    item.email.toLowerCase().includes(searchTerm) ||
+                    item.cedula.includes(searchTerm)
                 );
                 
                 displayData(filteredData);
             }
             
-            // Excelにエクスポート
+            // Aplicar filtro de vencimiento
+            function applyExpirationFilter() {
+                const filterValue = expirationFilter.value;
+                const data = loadData();
+                
+                if (filterValue === 'all') {
+                    displayData(data);
+                    return;
+                }
+                
+                const currentDate = new Date();
+                
+                const filteredData = data.filter(item => {
+                    // Calcular fecha de vencimiento
+                    const registrationDate = new Date(item.fecha_inscripcion);
+                    const lastRenewalDate = item.ultima_renovacion ? new Date(item.ultima_renovacion) : registrationDate;
+                    
+                    // Duración del plan en días
+                    let planDuration = 30; // por defecto un mes
+                    if (item.plan.includes("2 meses")) {
+                        planDuration = 60;
+                    }
+                    
+                    const expirationDate = new Date(lastRenewalDate);
+                    expirationDate.setDate(expirationDate.getDate() + planDuration);
+                    
+                    // Calcular días hasta el vencimiento
+                    const daysToExpiration = Math.ceil((expirationDate - currentDate) / (1000 * 60 * 60 * 24));
+                    
+                    if (filterValue === 'expired') {
+                        return daysToExpiration <= 0;
+                    } else if (filterValue === 'expiring') {
+                        return daysToExpiration > 0 && daysToExpiration <= 7;
+                    } else if (filterValue === 'active') {
+                        return daysToExpiration > 7;
+                    }
+                    
+                    return true;
+                });
+                
+                displayData(filteredData);
+            }
+            
+            // Exportar a Excel
             function exportToExcel() {
                 const data = loadData();
                 
                 if (data.length === 0) {
-                    alert('No hay Datos para Exportar');
+                    alert('No hay datos para exportar');
                     return;
                 }
                 
-                // SheetJSを使用してExcelファイルを作成
-                const ws = XLSX.utils.json_to_sheet(data);
+                // Preparar datos para exportación
+                const exportData = data.map(item => {
+                    // Calcular fecha de vencimiento
+                    const registrationDate = new Date(item.fecha_inscripcion);
+                    const lastRenewalDate = item.ultima_renovacion ? new Date(item.ultima_renovacion) : registrationDate;
+                    
+                    // Duración del plan en días
+                    let planDuration = 30; // por defecto un mes
+                    if (item.plan.includes("2 meses")) {
+                        planDuration = 60;
+                    }
+                    
+                    const expirationDate = new Date(lastRenewalDate);
+                    expirationDate.setDate(expirationDate.getDate() + planDuration);
+                    
+                    return {
+                        Apellido: item.apellido,
+                        Nombre: item.nombre,
+                        Cédula: item.cedula,
+                        Teléfono: item.telefono,
+                        Email: item.email,
+                        Plan: item.plan,
+                        Horario: item.horario,
+                        "Fecha de Registro": item.fecha_inscripcion,
+                        "Fecha de Vencimiento": expirationDate.toLocaleDateString('es-ES')
+                    };
+                });
+                
+                // Crear hoja de Excel
+                const ws = XLSX.utils.json_to_sheet(exportData);
                 const wb = XLSX.utils.book_new();
-                XLSX.utils.book_append_sheet(wb, ws, "登録者リスト");
+                XLSX.utils.book_append_sheet(wb, ws, "Miembros");
                 
-                // ファイル名に日付を追加
+                // Generar nombre de archivo con fecha
                 const date = new Date();
-                const fileName = `MACROGYM_登録者リスト_${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}.xlsx`;
+                const fileName = `MacroGym_Miembros_${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}.xlsx`;
                 
-                // ファイルをダウンロード
+                // Descargar archivo
                 XLSX.writeFile(wb, fileName);
             }
             
-            // データをクリア
+            // Borrar todos los datos
             function clearAllData() {
-                if (confirm('すべての登録データを削除してもよろしいですか？この操作は元に戻せません。')) {
-                    localStorage.removeItem('inscripcionData');
-                    displayData([]);
+                if (!confirm('¿Está seguro que desea borrar todos los datos? Esta acción no se puede deshacer.')) {
+                    return;
                 }
+                
+                localStorage.removeItem('inscripcionData');
+                displayData([]);
             }
             
-            // イベントリスナーの設定
-            searchButton.addEventListener('click', searchData);
+            // Cargar datos simulados para pruebas
+            function loadMockData() {
+                const mockData = [
+                    {
+                        nombre: "Carlos",
+                        apellido: "Gómez",
+                        cedula: "1234567",
+                        telefono: "0991123456",
+                        email: "carlos@gmail.com",
+                        fecha_nacimiento: "1985-05-15",
+                        plan: "Normal",
+                        horario: "Mañana",
+                        direccion: "Av. Mariscal López 1234",
+                        fecha_inscripcion: "2023-03-10"
+                    },
+                    {
+                        nombre: "Ana",
+                        apellido: "Martínez",
+                        cedula: "2345678",
+                        telefono: "0992234567",
+                        email: "ana@hotmail.com",
+                        fecha_nacimiento: "1990-08-22",
+                        plan: "2 meses",
+                        horario: "Tarde",
+                        direccion: "Av. España 567",
+                        fecha_inscripcion: "2023-02-05",
+                        ultima_renovacion: "2023-04-01"
+                    },
+                    {
+                        nombre: "Jorge",
+                        apellido: "Benítez",
+                        cedula: "3456789",
+                        telefono: "0993345678",
+                        email: "jorge@gmail.com",
+                        fecha_nacimiento: "1992-11-10",
+                        plan: "Normal",
+                        horario: "Noche",
+                        direccion: "Calle Palma 890",
+                        fecha_inscripcion: "2023-04-15"
+                    },
+                    {
+                        nombre: "Sofía",
+                        apellido: "Duarte",
+                        cedula: "4567890",
+                        telefono: "0994456789",
+                        email: "sofia@yahoo.com",
+                        fecha_nacimiento: "1988-03-25",
+                        plan: "2 meses",
+                        horario: "Mañana",
+                        direccion: "Av. Aviadores del Chaco 1200",
+                        fecha_inscripcion: "2023-03-20"
+                    },
+                    {
+                        nombre: "Miguel",
+                        apellido: "Acosta",
+                        cedula: "5678901",
+                        telefono: "0995567890",
+                        email: "miguel@gmail.com",
+                        fecha_nacimiento: "1995-07-08",
+                        plan: "Normal",
+                        horario: "Tarde",
+                        direccion: "Calle Colón 345",
+                        fecha_inscripcion: "2023-04-01"
+                    }
+                ];
+                
+                // Agregar fechas de vencimiento simuladas
+                const today = new Date();
+                
+                // Miembro con membresía vencida
+                const expiredDate = new Date(today);
+                expiredDate.setDate(expiredDate.getDate() - 5);
+                mockData[0].fecha_inscripcion = expiredDate.toISOString().split('T')[0];
+                
+                // Miembro por vencer en 3 días
+                const nearExpirationDate = new Date(today);
+                nearExpirationDate.setDate(nearExpirationDate.getDate() - 27);
+                mockData[1].fecha_inscripcion = nearExpirationDate.toISOString().split('T')[0];
+                
+                // Miembro por vencer en 5 días
+                const upcomingExpirationDate = new Date(today);
+                upcomingExpirationDate.setDate(upcomingExpirationDate.getDate() - 25);
+                mockData[2].fecha_inscripcion = upcomingExpirationDate.toISOString().split('T')[0];
+                
+                localStorage.setItem('inscripcionData', JSON.stringify(mockData));
+            }
+            
+            // Event listeners
+            searchButton.addEventListener('click', searchMembers);
             searchInput.addEventListener('keyup', function(e) {
                 if (e.key === 'Enter') {
-                    searchData();
+                    searchMembers();
                 }
             });
+            
+            applyFilterButton.addEventListener('click', applyExpirationFilter);
             
             exportExcelButton.addEventListener('click', exportToExcel);
             clearDataButton.addEventListener('click', clearAllData);
             
-            // 初期データの表示
+            // Event listeners para el modal de renovación
+            document.querySelector('.close-modal').addEventListener('click', closeRenewModal);
+            cancelRenew.addEventListener('click', closeRenewModal);
+            renewForm.addEventListener('submit', renewMembership);
+            
+            // Cerrar el modal al hacer clic fuera de él
+            window.addEventListener('click', function(event) {
+                if (event.target === renewModal) {
+                    closeRenewModal();
+                }
+            });
+            
+            // Cargar datos iniciales
             displayData(loadData());
         });
     </script>
