@@ -512,3 +512,423 @@
         width: 100%;
     }
 }
+/* Animaciones adicionales para la Wiki de Fitness */
+
+/* Animación para categorías y temas */
+.category-item,
+.popular-topic {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-item::after,
+.popular-topic::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--azul-logo);
+  transition: width 0.3s ease;
+}
+
+.category-item:hover::after,
+.popular-topic:hover::after {
+  width: 100%;
+}
+
+.category-item.active::after {
+  background-color: white;
+  width: 100%;
+}
+
+/* Animación para artículos */
+.wiki-article {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, opacity 0.4s ease;
+}
+
+.wiki-article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.wiki-article.highlight {
+  animation: pulse 1.5s ease;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 5px 15px rgba(0, 136, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 5px 30px rgba(0, 136, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 5px 15px rgba(0, 136, 255, 0.1);
+  }
+}
+
+/* Animación para botones y enlaces */
+.wiki-search-btn,
+.back-to-top,
+.article-content a {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wiki-search-btn:hover,
+.back-to-top:hover {
+  transform: scale(1.1);
+}
+
+.article-content a {
+  position: relative;
+  color: var(--azul-logo);
+  text-decoration: none;
+}
+
+.article-content a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--azul-logo);
+  transition: width 0.3s ease;
+}
+
+.article-content a:hover::after {
+  width: 100%;
+}
+
+/* Animación para imágenes */
+.article-image {
+  overflow: hidden;
+}
+
+.article-image img {
+  transition: transform 0.5s ease;
+}
+
+.article-image:hover img {
+  transform: scale(1.03);
+}
+
+/* Animación para tablas */
+.info-table {
+  transition: all 0.3s ease;
+}
+
+.info-table:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.info-table tr {
+  transition: background-color 0.3s ease;
+}
+
+.info-table tr:hover {
+  background-color: #f0f7ff !important;
+}
+
+/* Animación para tarjetas de información */
+.info-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación para consejos prácticos */
+.article-tips {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-tips:hover {
+  transform: translateX(5px);
+  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.05);
+}
+/* Animaciones adicionales para la Wiki de Fitness */
+
+/* Animación para categorías y temas */
+.category-item,
+.popular-topic {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-item::after,
+.popular-topic::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--azul-logo);
+  transition: width 0.3s ease;
+}
+
+.category-item:hover::after,
+.popular-topic:hover::after {
+  width: 100%;
+}
+
+.category-item.active::after {
+  background-color: white;
+  width: 100%;
+}
+
+/* Animación para artículos */
+.wiki-article {
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease, opacity 0.5s ease,
+    background-color 0.5s ease;
+}
+
+.wiki-article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.wiki-article.highlight {
+  animation: article-highlight 1.5s ease;
+}
+
+@keyframes article-highlight {
+  0% {
+    background-color: rgba(0, 136, 255, 0.05);
+    box-shadow: 0 8px 30px rgba(0, 136, 255, 0.2);
+  }
+  50% {
+    background-color: rgba(0, 136, 255, 0.05);
+    box-shadow: 0 8px 30px rgba(0, 136, 255, 0.2);
+  }
+  100% {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Animación para botones y enlaces */
+.wiki-search-btn,
+.back-to-top {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wiki-search-btn:hover,
+.back-to-top:hover {
+  transform: scale(1.1);
+}
+
+.article-content a {
+  position: relative;
+  color: var(--azul-logo);
+  text-decoration: none;
+}
+
+.article-content a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--azul-logo);
+  transition: width 0.3s ease;
+}
+
+.article-content a:hover::after {
+  width: 100%;
+}
+
+/* Animación para imágenes */
+.article-image {
+  overflow: hidden;
+}
+
+.article-image img {
+  transition: transform 0.5s ease;
+}
+
+.article-image:hover img {
+  transform: scale(1.03);
+}
+
+/* Animación para tablas */
+.info-table {
+  transition: all 0.3s ease;
+}
+
+.info-table:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.info-table tr {
+  transition: background-color 0.3s ease;
+}
+
+.info-table tr:hover {
+  background-color: #f0f7ff !important;
+}
+
+/* Animación para tarjetas de información */
+.info-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación para consejos prácticos */
+.article-tips {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-tips:hover {
+  transform: translateX(5px);
+  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Añadir al final del archivo */
+
+/* Animaciones mejoradas para todos los enlaces */
+a {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+a:active {
+  transform: scale(0.95);
+}
+
+/* Efecto de destino para elementos al navegar a ellos */
+.highlight-target {
+  animation: target-fade 1.5s ease;
+}
+
+@keyframes target-fade {
+  0% {
+    background-color: rgba(0, 136, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 136, 255, 0.3);
+  }
+  70% {
+    background-color: rgba(0, 136, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 136, 255, 0.3);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+/* Animaciones específicas para enlaces de categorías */
+.sidebar-header + .popular-topics .popular-topic {
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-header + .popular-topics .popular-topic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 136, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.sidebar-header + .popular-topics .popular-topic:hover::before {
+  left: 100%;
+}
+
+/* Animaciones para enlaces de navegación principal */
+.nav-menu .nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-menu .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--azul-logo);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-menu .nav-link:hover::after {
+  width: 80%;
+}
+
+.nav-menu .nav-link.active::after {
+  width: 80%;
+  background-color: white;
+}
+
+/* Animación para todos los botones */
+button {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  position: relative;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+button:active::after {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  transform: scale(0, 0) translate(-50%, -50%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Animación para enlaces de categorías específicas */
+.category-list .category-item {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-list .category-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.category-list .category-item:hover::before {
+  left: 100%;
+}
+
+.category-list .category-item:active {
+  transform: scale(0.95);
+}
+
