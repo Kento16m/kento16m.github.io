@@ -982,175 +982,441 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Styles */
         @media screen and (max-width: 1200px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
+  .hero-title {
+    font-size: 3.5rem;
+  }
 
-            .hero-subtitle {
-                font-size: 1.3rem;
-            }
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
 
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
-        }
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
 
-        @media screen and (max-width: 992px) {
-            .nav-menu {
-                gap: 10px;
-            }
+  .boxeo-contenido h2 {
+    font-size: 2.2rem;
+  }
+}
 
-            .nav-item {
-                margin-left: 10px;
-            }
+@media screen and (max-width: 1020px) {
+  /* Show hamburger menu at 1020px */
+  .menu-toggle {
+    display: block;
+    z-index: 101;
+  }
 
-            .nav-link {
-                font-size: 0.9rem;
-                padding: 6px 10px;
-            }
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
 
-            .hero-title {
-                font-size: 3rem;
-            }
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
 
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 
-            .hero-button {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    padding-top: 80px;
+    z-index: 100;
+  }
 
-            .galeria-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-        }
+  .nav-menu.active {
+    left: 0;
+  }
 
-        @media screen and (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-                z-index: 101;
-            }
+  .nav-item {
+    margin: 15px 0;
+  }
 
-            .menu-toggle.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
+  .nav-link {
+    font-size: 1.1rem;
+  }
 
-            .menu-toggle.active .bar:nth-child(2) {
-                opacity: 0;
-            }
+  .cta-button {
+    margin-top: 20px;
+    padding: 12px 20px;
+  }
 
-            .menu-toggle.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
+  .hero-title {
+    font-size: 3rem;
+  }
 
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 0;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                height: 100vh;
-                text-align: center;
-                transition: 0.3s;
-                padding-top: 80px;
-                z-index: 100;
-            }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
 
-            .nav-menu.active {
-                left: 0;
-            }
+  .hero-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
 
-            .nav-item {
-                margin: 15px 0;
-            }
+  .boxeo-container {
+    flex-direction: column;
+  }
 
-            .nav-link {
-                font-size: 1.2rem;
-            }
+  .boxeo-imagen {
+    width: 100%;
+    max-height: 400px;
+  }
 
-            .cta-button {
-                margin-top: 20px;
-                padding: 12px 20px;
-            }
+  .entrenador-card {
+    max-width: 700px;
+  }
+}
 
-            .hero-title {
-                font-size: 2.5rem;
-            }
+@media screen and (width: 800px) and (height: 1280px), 
+       screen and (width: 1280px) and (height: 800px),
+       screen and (min-width: 768px) and (max-width: 1020px) {
+  .menu-toggle {
+    display: block;
+    z-index: 101;
+  }
 
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
 
-            .hero-button {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
 
-            .section-header h2 {
-                font-size: 2rem;
-            }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 
-            .galeria-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            }
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    padding-top: 80px;
+    z-index: 100;
+  }
 
-            .footer-content {
-                flex-direction: column;
-                gap: 30px;
-            }
+  .nav-menu.active {
+    left: 0;
+  }
 
-            .footer-info,
-            .footer-links,
-            .footer-contact,
-            .footer-newsletter {
-                max-width: 100%;
-            }
-        }
+  .nav-item {
+    margin: 15px 0;
+  }
 
-        @media screen and (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
+  .nav-link {
+    font-size: 1.1rem;
+  }
 
-            .hero-subtitle {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
+  .cta-button {
+    margin-top: 20px;
+    padding: 12px 20px;
+  }
 
-            .hero-button {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
+  .hero-title {
+    font-size: 2.8rem;
+  }
 
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
 
-            .galeria-grid {
-                grid-template-columns: 1fr;
-            }
+  .hero-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
 
-            .modal-nav-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 
-            .galeria-filtros {
-                flex-direction: column;
-                align-items: center;
-            }
+  .boxeo-container {
+    flex-direction: column;
+  }
 
-            .filtro-btn {
-                width: 100%;
-                max-width: 200px;
-            }
-        }
+  .boxeo-imagen {
+    width: 100%;
+    max-height: 400px;
+  }
+
+  .boxeo-contenido {
+    padding: 30px 20px;
+  }
+
+  .entrenador-card {
+    max-width: 700px;
+  }
+
+  .entrenador-img {
+    min-width: 180px;
+  }
+
+  .programas-grid,
+  .planes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .menu-toggle {
+    display: block;
+    z-index: 101;
+  }
+
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    padding-top: 80px;
+    z-index: 100;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 15px 0;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+  }
+
+  .cta-button {
+    margin-top: 20px;
+    padding: 12px 20px;
+  }
+
+  /* Other tablet adjustments */
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .boxeo-container {
+    flex-direction: column;
+  }
+
+  .boxeo-imagen {
+    width: 100%;
+    max-height: 400px;
+  }
+
+  .entrenador-card {
+    max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+    z-index: 101;
+  }
+
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    padding-top: 80px;
+    z-index: 100;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 15px 0;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+  }
+
+  .cta-button {
+    margin-top: 20px;
+    padding: 12px 20px;
+  }
+
+  /* Other tablet adjustments */
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .boxeo-container {
+    flex-direction: column;
+  }
+
+  .boxeo-imagen {
+    width: 100%;
+    max-height: 400px;
+  }
+
+  .entrenador-card {
+    max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-link {
+    font-size: 1.2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .entrenador-card {
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  .entrenador-img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-info,
+  .footer-links,
+  .footer-contact,
+  .footer-newsletter {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .entrenador-card {
+    max-width: 100%;
+  }
+
+  .entrenador-img {
+    height: 200px;
+  }
+
+  .entrenador-info {
+    padding: 20px 15px;
+  }
+
+  .contacto {
+    padding: 30px 20px;
+  }
+
+  .programa-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
     </style>
 </head>
 <body>
