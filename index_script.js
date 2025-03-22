@@ -1,5 +1,26 @@
+// Función para manejar la pantalla de carga
+function handleLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // Ocultar la pantalla de carga cuando la página esté completamente cargada
+    window.addEventListener('load', function() {
+        // Pequeño retraso para asegurar que todo esté renderizado
+        setTimeout(function() {
+            loadingScreen.classList.add('hidden');
+            // Habilitar el scroll después de que la pantalla de carga desaparezca
+            document.body.style.overflow = 'auto';
+        }, 500);
+    });
+    
+    // Deshabilitar el scroll mientras se muestra la pantalla de carga
+    document.body.style.overflow = 'hidden';
+}
+
 // Inicializar AOS (Animate On Scroll)
 document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar la pantalla de carga
+    handleLoadingScreen();
+
     // Smooth scrolling para el navbar
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
