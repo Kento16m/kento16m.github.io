@@ -145,12 +145,14 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     max-height: 600px;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en iOS */
 }
 
 .admin-table {
     width: 100%;
     border-collapse: collapse;
     white-space: nowrap;
+    min-width: 800px; /* Ancho mínimo para evitar compresión excesiva */
 }
 
 .admin-table th, 
@@ -396,6 +398,10 @@ tr.status-expiring:hover {
 
 /* Responsive */
 @media (max-width: 992px) {
+    .admin-container {
+        padding: 30px 20px;
+    }
+    
     .admin-actions {
         flex-direction: column;
         align-items: flex-start;
@@ -415,24 +421,57 @@ tr.status-expiring:hover {
 
 @media (max-width: 768px) {
     .admin-container {
-        padding: 30px 15px;
+        padding: 20px 15px;
+        border-radius: 10px;
     }
     
     .admin-header h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+    
+    .admin-search {
+        flex-direction: column;
+    }
+    
+    .admin-search input {
+        width: 100%;
+    }
+    
+    .admin-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .admin-filters select {
+        width: 100%;
     }
     
     .actions {
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
         gap: 5px;
     }
     
+    .action-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
     .modal-content {
-        padding: 30px 20px;
+        padding: 25px 15px;
+    }
+    
+    .modal-content h3 {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
+    .admin-section {
+        padding: 100px 10px 60px;
+    }
+    
     .admin-buttons {
         flex-direction: column;
         align-items: stretch;
@@ -440,9 +479,27 @@ tr.status-expiring:hover {
     
     .admin-button {
         justify-content: center;
+        padding: 10px 15px;
+        font-size: 0.9rem;
     }
     
     .form-actions {
         flex-direction: column;
+    }
+    
+    .submit-button,
+    .cancel-button {
+        width: 100%;
+    }
+    
+    .admin-table th, 
+    .admin-table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    /* Ajustar el tamaño de la tabla para móviles */
+    .admin-table {
+        font-size: 0.85rem;
     }
 }

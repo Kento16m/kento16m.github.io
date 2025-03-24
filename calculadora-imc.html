@@ -2888,5 +2888,65 @@
         });
     </script>
     <script src="index_script.js"></script>
+    <!-- Este código debe agregarse al final del archivo HTML, justo antes del cierre de </body> -->
+<script>
+    // Script para corregir problemas de visualización en móviles
+    document.addEventListener('DOMContentLoaded', function() {
+        // Función para ajustar la altura de la tabla de nutrición en móviles
+        function adjustNutritionTable() {
+            const nutritionTable = document.querySelector('.nutrition-table');
+            if (nutritionTable && window.innerWidth <= 768) {
+                // Asegurar que la tabla sea scrollable horizontalmente
+                nutritionTable.parentElement.style.overflowX = 'auto';
+                nutritionTable.style.minWidth = '500px';
+            }
+        }
+        
+        // Función para ajustar el tamaño del texto en resultados IMC
+        function adjustIMCText() {
+            const imcValue = document.getElementById('imcValue');
+            const imcCategory = document.getElementById('imcCategory');
+            
+            if (imcValue && imcCategory && window.innerWidth <= 480) {
+                // Ajustar tamaño según el contenido
+                if (imcValue.textContent.length > 4) {
+                    imcValue.style.fontSize = '1.8rem';
+                }
+                
+                if (imcCategory.textContent.length > 10) {
+                    imcCategory.style.fontSize = '0.8rem';
+                }
+            }
+        }
+        
+        // Ejecutar ajustes al cargar y al cambiar el tamaño de la ventana
+        adjustNutritionTable();
+        window.addEventListener('resize', adjustNutritionTable);
+        
+        // Ajustar texto IMC cuando se calcule
+        const imcForm = document.getElementById('imcForm');
+        if (imcForm) {
+            imcForm.addEventListener('submit', function() {
+                // Esperar a que se muestren los resultados
+                setTimeout(adjustIMCText, 100);
+            });
+        }
+        
+        // Mejorar la experiencia en móviles para los tabs
+        const tabButtons = document.querySelectorAll('.tab-button');
+        if (tabButtons.length > 0 && window.innerWidth <= 768) {
+            // Hacer que el tab activo sea visible al hacer scroll
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                });
+            });
+        }
+    });
+</script>
 </body>
 </html>

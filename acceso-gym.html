@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACRO GYM - Control de Acceso</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="acceso-styles.css">
+</head>
+<body>
+    <!-- Botón para volver arriba -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <a href="Index.html">
+                        <img src="img/logo.png" alt="Logo MacroGym Fitness">
+                    </a>
+                </div>
+                
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="Index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="inscripcion.html" class="nav-link">Registro</a></li>
+                    <li class="nav-item"><a href="admin.html" class="nav-link">Administración</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="access-section">
+            <div class="access-container">
+                <div class="access-header">
+                    <h2>CONTROL DE ACCESO</h2>
+                    <div class="section-divider">
+                        <span></span>
+                        <i class="fas fa-dumbbell"></i>
+                        <span></span>
+                    </div>
+                    <p>Registra tu entrada al gimnasio con tu número de documento</p>
+                </div>
+                
+                <div class="access-card">
+                    <div class="access-form-container">
+                        <form id="accessForm" class="access-form">
+                            <div class="form-group">
+                                <label for="documentNumber">Número de Documento (C.I.)</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-id-card form-icon"></i>
+                                    <input type="text" id="documentNumber" name="documentNumber" placeholder="Ingresa tu número de documento" required>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="access-button">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    <span>Registrar Acceso</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="access-result" id="accessResult">
+                        <!-- Aquí se mostrará el resultado del acceso -->
+                    </div>
+                </div>
+                
+                <div id="userInfoCard" class="user-info-card">
+                    <!-- La información del usuario se mostrará aquí cuando acceda -->
+                </div>
+                
+                <!-- Historial de accesos -->
+                <div id="accessHistoryCard" class="access-history-card">
+                    <h3>
+                        <i class="fas fa-history"></i>
+                        Últimos Accesos
+                    </h3>
+                    <div class="access-history-content">
+                        <div id="accessHistory" class="access-history-list">
+                            <!-- El historial de accesos se mostrará aquí -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="Logo MacroGym Fitness">
+                    </div>
+                    <p>MacroGym Fitness es tu mejor opción con equipos de última generación y entrenadores profesionales para ayudarte a alcanzar tus objetivos de entrenamiento.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="Index.html">Inicio</a></li>
+                        <li><a href="inscripcion.html">Registro</a></li>
+                        <li><a href="Index.html#contacto">Consulta</a></li>
+                        <li><a href="fitness-wiki.html">Fitness Wiki</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Información de Contacto</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Av. Francisco Acuña De Figueroa casi, Asunción 001102</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+595 991 765 892</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@macrogym.com</p>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Suscripción al boletín informativo</h3>
+                    <p>Recibe noticias, promociones y consejos de fitness por correo electrónico.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Correo Electronico">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/macrogympy/?locale=es_LA" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/macrogymfitness/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=%2B595991765892" target="_blank" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">Copyright &copy; 2025 - MacroGym Fitness Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="js/acceso-gym.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menú móvil
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+    
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+    
+            // Botón para volver arriba
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
