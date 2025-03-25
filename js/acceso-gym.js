@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Mostrar solo los últimos 10 accesos
-        const recentAccesses = sortedAccesses.slice(0, 10);
+        const recentAccesses = sortedAccesses.slice(0, 5);
         
         // Limpiar lista actual
         accessHistoryList.innerHTML = '';
