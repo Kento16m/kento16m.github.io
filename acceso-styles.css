@@ -502,3 +502,140 @@
         gap: 5px;
     }
 }
+
+/* 既存のスタイルに追加 */
+
+.view-details-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .view-details-button {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 136, 255, 0.2);
+  }
+  
+  .view-details-button i {
+    margin-right: 8px;
+  }
+  
+  .view-details-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 136, 255, 0.3);
+    background: linear-gradient(135deg, #0066cc 0%, var(--primary-color) 100%);
+  }
+  
+  /* 月別統計のスタイル */
+  .monthly-stats-container {
+    margin-top: 30px;
+  }
+  
+  .monthly-stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .monthly-stats-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+  }
+  
+  .month-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .month-tab {
+    padding: 8px 15px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .month-tab.active {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .month-tab:hover:not(.active) {
+    background-color: #e0e0e0;
+  }
+  
+  .month-content {
+    display: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .month-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .month-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .month-stat-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .month-stat-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .month-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+  }
+  
+  .month-stat-label {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .month-attendance-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .month-tabs {
+      overflow-x: auto;
+      padding-bottom: 5px;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .month-tab {
+      flex: 0 0 auto;
+    }
+  }
