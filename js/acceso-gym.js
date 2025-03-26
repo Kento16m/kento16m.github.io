@@ -361,3 +361,34 @@ document.addEventListener('DOMContentLoaded', function() {
         documentNumberInput.value = '';
     });
 });
+// programa que adelanta 1 hora para el control de acceso
+function getCorrectDateTime() {
+    const now = new Date();
+    // adelantar una hora
+    now.setHours(now.getHours() + 1);
+    return now;
+}
+
+// registerAccess
+function registerAccess(user) {
+    const now = getCorrectDateTime();
+    const timestamp = now.toISOString();
+    
+    // Nuevo objeto de acceso
+    const newAccess = {
+        cedula: user.cedula,
+        nombre: user.nombre,
+        apellido: user.apellido,
+        timestamp: timestamp,
+        tipo: 'entrada'
+    };
+    
+    // Obtener datos actuales y agregar el nuevo acceso
+    const accessData = JSON.parse(localStorage.getItem('accessData')) || [];
+    accessData.push(newAccess);
+    
+    // Guardar datos actualizados
+    localStorage.setItem('accessData', JSON.stringify(accessData));
+    
+    return newAccess;
+}
