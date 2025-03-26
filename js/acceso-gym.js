@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Variable para almacenar el usuario actual
     let currentUser = null;
     
+    // Función para ajustar la hora (adelantar 1 hora)
+    function getCorrectDateTime() {
+        const now = new Date();
+        now.setHours(now.getHours() + 1);
+        return now;
+    }
+    
     // Función para inicializar datos de ejemplo si no existen
     function initializeData() {
         // Si no existe la data de inscripciones, cargar datos de ejemplo
@@ -95,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para verificar si la membresía está activa
     function isMembershipActive(user) {
         const expirationDate = calculateExpirationDate(user);
-        const currentDate = new Date();
+        const currentDate = getCorrectDateTime(); // Usar hora corregida
         
         return currentDate <= expirationDate;
     }
@@ -103,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para calcular días restantes hasta el vencimiento
     function calculateRemainingDays(user) {
         const expirationDate = calculateExpirationDate(user);
-        const currentDate = new Date();
+        const currentDate = getCorrectDateTime(); // Usar hora corregida
         
         // Calcular diferencia en días
         const diffTime = expirationDate - currentDate;
@@ -116,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function calculateDaysSinceRegistration(user) {
         const registrationDate = new Date(user.fecha_inscripcion);
         const lastRenewalDate = user.ultima_renovacion ? new Date(user.ultima_renovacion) : registrationDate;
-        const currentDate = new Date();
+        const currentDate = getCorrectDateTime(); // Usar hora corregida
         
         // Calcular diferencia en días
         const diffTime = currentDate - lastRenewalDate;
@@ -130,14 +137,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const monthlyAccesses = {};
         
         accesses.forEach(access => {
+            // Ajustar la hora del acceso
             const date = new Date(access.timestamp);
+            date.setHours(date.getHours() + 1); // Adelantar 1 hora
+            
             const monthYear = `${date.getMonth() + 1}-${date.getFullYear()}`;
             
             if (!monthlyAccesses[monthYear]) {
                 monthlyAccesses[monthYear] = [];
             }
             
-            monthlyAccesses[monthYear].push(access);
+            monthlyAccesses[monthYear].push({...access, adjustedDate: date});
         });
         
         return monthlyAccesses;
@@ -151,7 +161,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const uniqueDays = new Set();
             
             accesses.forEach(access => {
-                const date = new Date(access.timestamp);
+                // Usar la fecha ajustada si está disponible, o ajustar la fecha original
+                const date = access.adjustedDate || (() => {
+                    const d = new Date(access.timestamp);
+                    d.setHours(d.getHours() + 1);
+                    return d;
+                })();
+                
                 const dayString = date.toISOString().split('T')[0];
                 uniqueDays.add(dayString);
             });
@@ -164,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Función para registrar un acceso nuevo
     function registerAccess(user) {
-        const now = new Date();
+        const now = getCorrectDateTime(); // Usar hora corregida
         const timestamp = now.toISOString();
         
         // Nuevo objeto de acceso
@@ -215,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalAttendanceDays = Object.values(monthlyDays).reduce((sum, days) => sum + days, 0);
         
         // Obtener el mes actual
-        const currentDate = new Date();
+        const currentDate = getCorrectDateTime(); // Usar hora corregida
         const currentMonthYear = `${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
         
         // Días asistidos en el mes actual
@@ -276,7 +292,9 @@ document.addEventListener('DOMContentLoaded', function() {
             accessHistoryList.innerHTML = '<div class="history-item">No hay registros de acceso previos</div>';
         } else {
             recentAccesses.forEach(access => {
+                // Ajustar la hora del acceso
                 const accessDate = new Date(access.timestamp);
+                accessDate.setHours(accessDate.getHours() + 0); // Adelantar 1 hora
                 
                 // Formatear fecha y hora
                 const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -361,34 +379,3 @@ document.addEventListener('DOMContentLoaded', function() {
         documentNumberInput.value = '';
     });
 });
-// programa que adelanta 1 hora para el control de acceso
-function getCorrectDateTime() {
-    const now = new Date();
-    // adelantar una hora
-    now.setHours(now.getHours() + 1);
-    return now;
-}
-
-// registerAccess
-function registerAccess(user) {
-    const now = getCorrectDateTime();
-    const timestamp = now.toISOString();
-    
-    // Nuevo objeto de acceso
-    const newAccess = {
-        cedula: user.cedula,
-        nombre: user.nombre,
-        apellido: user.apellido,
-        timestamp: timestamp,
-        tipo: 'entrada'
-    };
-    
-    // Obtener datos actuales y agregar el nuevo acceso
-    const accessData = JSON.parse(localStorage.getItem('accessData')) || [];
-    accessData.push(newAccess);
-    
-    // Guardar datos actualizados
-    localStorage.setItem('accessData', JSON.stringify(accessData));
-    
-    return newAccess;
-}
