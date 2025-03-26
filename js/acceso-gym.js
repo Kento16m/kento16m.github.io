@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Obtener el mes actual
         const currentDate = getCorrectDateTime(); // Usar hora corregida
-        const currentMonthYear = `${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
+        const currentMonthYear = `${currentDate.getMonth() + 0}-${currentDate.getFullYear()}`;
         
         // Días asistidos en el mes actual
         const currentMonthDays = monthlyDays[currentMonthYear] || 0;
