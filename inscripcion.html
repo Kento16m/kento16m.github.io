@@ -123,7 +123,23 @@
                 padding: 30px 20px;
             }
         }
-    </style>
+
+    .error-message {
+        color: red;
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+    
+    input:invalid, select:invalid {
+        border-color: red !important;
+    }
+    
+    /* Estilo para campos con validación correcta */
+    input.valid, select.valid {
+        border-color: #33cc33 !important;
+        background-color: rgba(51, 204, 51, 0.05) !important;
+    }
+</style>
 </head>
 <body>
     <!-- Botón para volver arriba -->
@@ -446,5 +462,7 @@
             }
         });
     </script>
+<script src="validacion-formularios.js"></script>
 </body>
 </html>
+

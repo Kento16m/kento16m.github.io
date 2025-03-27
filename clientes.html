@@ -231,7 +231,23 @@
                 max-width: none;
             }
         }
-    </style>
+
+    .error-message {
+        color: red;
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+    
+    input:invalid, select:invalid {
+        border-color: red !important;
+    }
+    
+    /* Estilo para campos con validación correcta */
+    input.valid, select.valid {
+        border-color: #33cc33 !important;
+        background-color: rgba(51, 204, 51, 0.05) !important;
+    }
+</style>
 </head>
 <body>
     <!-- Botón para volver arriba -->
@@ -429,7 +445,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-envelope"></i>
-                        <p>info@macrogym.com</p>
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e474048416e434f4d5c41495743004d4143">[email&#160;protected]</a></p>
                     </div>
                 </div>
                 <div class="footer-newsletter">
@@ -462,7 +478,7 @@
     </footer>
 
     <!-- スクリプト -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', function() {
             // モバイルメニュー
             const mobileMenu = document.getElementById('mobile-menu');
@@ -556,5 +572,7 @@
             }
         });
     </script>
+<script src="validacion-formularios.js"></script>
 </body>
 </html>
+
