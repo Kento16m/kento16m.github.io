@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Mailchimp form styles -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- Pantalla de carga -->
@@ -491,10 +493,30 @@
                 <div class="footer-newsletter">
                     <h3>Suscríbete a nuestro boletín</h3>
                     <p>Recibe noticias, promociones y consejos fitness directamente en tu correo.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico">
-                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
-                    </form>
+                    <div id="mc_embed_signup">
+                        <form action="https://github.us20.list-manage.com/subscribe/post?u=f974535094c528b54ccec5acd&amp;id=43f65c75b1&amp;f_id=00efc2e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                            <div id="mc_embed_signup_scroll">
+                                <div class="indicates-required"><span class="asterisk">*</span> indica que es obligatorio</div>
+                                <div class="mc-field-group">
+                                    <label for="mce-EMAIL">Dirección de correo electrónico <span class="asterisk">*</span></label>
+                                    <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" placeholder="Tu correo electrónico">
+                                </div>
+                                <div id="mce-responses" class="clear foot">
+                                    <div class="response" id="mce-error-response" style="display: none;"></div>
+                                    <div class="response" id="mce-success-response" style="display: none;"></div>
+                                </div>
+                                <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups -->
+                                    <input type="text" name="b_f974535094c528b54ccec5acd_43f65c75b1" tabindex="-1" value="">
+                                </div>
+                                <div class="optionalParent">
+                                    <div class="clear foot">
+                                        <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Suscribirse">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="footer-social">
@@ -520,6 +542,29 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="index_script.js"></script>
+    <!-- Mailchimp form validation -->
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+    <script type="text/javascript">
+        (function($) {
+            window.fnames = new Array(); 
+            window.ftypes = new Array();
+            fnames[0]='EMAIL';
+            ftypes[0]='email';
+            fnames[1]='FNAME';
+            ftypes[1]='text';
+            fnames[2]='LNAME';
+            ftypes[2]='text';
+            fnames[3]='ADDRESS';
+            ftypes[3]='address';
+            fnames[4]='PHONE';
+            ftypes[4]='phone';
+            fnames[5]='BIRTHDAY';
+            ftypes[5]='birthday';
+            fnames[6]='COMPANY';
+            ftypes[6]='text';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
     <script>
         // Inicializar AOS (Animate On Scroll)
         AOS.init({
