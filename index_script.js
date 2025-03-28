@@ -102,37 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Formulario de newsletter con Mailchimp
-    const newsletterForm = document.getElementById('mc-embedded-subscribe-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(event) {
-            // Solo para mostrar feedback visual al usuario
-            const email = document.getElementById('mce-EMAIL').value;
-            if (email && isValidEmail(email)) {
-                // El formulario se enviará a Mailchimp, esto es solo para UX
-                const successMessage = document.createElement('div');
-                successMessage.className = 'newsletter-success';
-                successMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Gracias por suscribirte!';
-                
-                // Insertar mensaje después del formulario
-                newsletterForm.insertAdjacentElement('afterend', successMessage);
-                
-                // Eliminar el mensaje después de 5 segundos
-                setTimeout(() => {
-                    if (successMessage.parentNode) {
-                        successMessage.parentNode.removeChild(successMessage);
-                    }
-                }, 5000);
-            }
-        });
-    }
-
-    // Función para validar email
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
     // Animación para las tarjetas de servicios
     const servicioItems = document.querySelectorAll('.servicio-item');
     servicioItems.forEach(item => {

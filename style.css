@@ -1842,59 +1842,6 @@ img {
   transform: translateY(-3px);
 }
 
-.newsletter-success {
-  color: #33cc33;
-  margin-top: 10px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.newsletter-success i {
-  font-size: 1.2rem;
-}
-
-#mc_embed_signup{background:transparent; clear:left; font:14px Montserrat,Arial,sans-serif; width: 100%;}
-        /* Custom Mailchimp form styles to match site design */
-        #mc_embed_signup .indicates-required {
-            text-align: right;
-            font-size: 11px;
-            margin-bottom: 10px;
-            color: var(--texto-claro);
-        }
-        #mc_embed_signup .asterisk {
-            color: var(--rojo-logo);
-        }
-        #mc_embed_signup h2 {
-            display: none;
-        }
-        #mc_embed_signup .mc-field-group label {
-            display: none;
-        }
-        #mc_embed_signup .mc-field-group input {
-            border-radius: 30px;
-            padding: 12px 20px;
-            border: none;
-            width: 100%;
-            font-family: 'Montserrat', sans-serif;
-        }
-        #mc_embed_signup .button {
-            background-color: var(--azul-logo);
-            border-radius: 30px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            padding: 12px 25px;
-            height: auto;
-            transition: all 0.3s ease;
-        }
-        #mc_embed_signup .button:hover {
-            background-color: var(--rojo-logo);
-        }
-        #mc_embed_signup .foot p {
-            display: none;
-        }
-
 /* Responsive Styles */
 @media screen and (max-width: 1200px) {
   .hero-title {
@@ -2500,4 +2447,3 @@ img {
 .entrenador-social-overlay a i {
   font-size: 1rem;
 }
-
