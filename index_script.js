@@ -139,3 +139,49 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Funcionalidad para el formulario de newsletter
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.getElementById('mc-embedded-subscribe-form');
+    const successMessage = document.getElementById('newsletter-success');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(event) {
+            // Validar el email antes de enviar
+            const emailInput = document.getElementById('mce-EMAIL');
+            const email = emailInput.value.trim();
+            
+            if (!isValidEmail(email)) {
+                event.preventDefault();
+                emailInput.style.borderColor = 'var(--rojo-logo)';
+                return false;
+            }
+            
+            // Mostrar mensaje de éxito después de enviar
+            // Nota: En producción, esto se manejará por la respuesta de Mailchimp
+            setTimeout(() => {
+                if (successMessage) {
+                    newsletterForm.style.opacity = '0';
+                    setTimeout(() => {
+                        newsletterForm.style.display = 'none';
+                        successMessage.style.display = 'flex';
+                    }, 300);
+                }
+            }, 1000);
+        });
+        
+        // Restaurar estilo al escribir
+        const emailInput = document.getElementById('mce-EMAIL');
+        if (emailInput) {
+            emailInput.addEventListener('input', function() {
+                this.style.borderColor = '';
+            });
+        }
+    }
+    
+    // Función para validar email
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+});

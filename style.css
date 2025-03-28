@@ -1338,6 +1338,29 @@ img {
   transition: var(--transicion);
 }
 
+/* Estilos para el mensaje de éxito del newsletter */
+.newsletter-success {
+  margin-top: 15px;
+  background: rgba(51, 204, 51, 0.2);
+  border-left: 4px solid var(--verde-logo);
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--texto-claro);
+}
+
+.newsletter-success i {
+  color: var(--verde-logo);
+  font-size: 1.2rem;
+}
+
+.newsletter-success p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
 .newsletter-form button:hover {
   background-color: var(--rojo-logo);
   transform: scale(1.1);

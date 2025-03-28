@@ -491,10 +491,29 @@
                 <div class="footer-newsletter">
                     <h3>Suscríbete a nuestro boletín</h3>
                     <p>Recibe noticias, promociones y consejos fitness directamente en tu correo.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico">
-                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    <form action="https://macrogymfitness.us21.list-manage.com/subscribe/post?u=20&amp;id=43f65c75b1" 
+                        method="post" 
+                        id="mc-embedded-subscribe-form" 
+                        name="mc-embedded-subscribe-form" 
+                        class="newsletter-form validate" 
+                        target="_blank">
+                        <input type="email" 
+                            name="EMAIL" 
+                            id="mce-EMAIL" 
+                            placeholder="Tu correo electrónico" 
+                            required>
+                        <button type="submit" name="subscribe" id="mc-embedded-subscribe">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <!-- Honeypot para evitar bots -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_20_43f65c75b1" tabindex="-1" value="">
+                        </div>
                     </form>
+                    <div id="newsletter-success" class="newsletter-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <p>¡Gracias por suscribirte! Revisa tu correo para confirmar.</p>
+                    </div>
                 </div>
             </div>
             <div class="footer-social">
