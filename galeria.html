@@ -809,8 +809,7 @@
         }
 
         .footer-links h3,
-        .footer-contact h3,
-        .footer-newsletter h3 {
+        .footer-contact h3 {
             color: white;
             margin-bottom: 20px;
             font-size: 1.3rem;
@@ -819,8 +818,7 @@
         }
 
         .footer-links h3::after,
-        .footer-contact h3::after,
-        .footer-newsletter h3::after {
+        .footer-contact h3::after {
             content: "";
             position: absolute;
             bottom: 0;
@@ -890,59 +888,6 @@
             line-height: 1.5;
             font-size: 0.95rem;
             margin: 0;
-        }
-
-        .footer-newsletter {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .footer-newsletter p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .newsletter-form {
-            display: flex;
-            position: relative;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 30px;
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.95rem;
-            padding-right: 50px;
-        }
-
-        .newsletter-form input:focus {
-            outline: none;
-        }
-
-        .newsletter-form button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            background-color: var(--azul-logo);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: var(--transicion);
-        }
-
-        .newsletter-form button:hover {
-            background-color: var(--rojo-logo);
-            transform: scale(1.1);
         }
 
         .footer-social {
@@ -1367,8 +1312,7 @@
 
   .footer-info,
   .footer-links,
-  .footer-contact,
-  .footer-newsletter {
+  .footer-contact {
     max-width: 100%;
   }
 }
@@ -1743,14 +1687,6 @@
                         <i class="fas fa-envelope"></i>
                         <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aec7c0c8c1eec3cfcddcc1c9d7c380cdc1c3">info@macrogymfitness.com</a></p>
                     </div>
-                </div>
-                <div class="footer-newsletter">
-                    <h3>Suscríbete a nuestro boletín</h3>
-                    <p>Recibe noticias, promociones y consejos fitness directamente en tu correo.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico">
-                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
-                    </form>
                 </div>
             </div>
             <div class="footer-social">

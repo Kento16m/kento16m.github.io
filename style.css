@@ -1207,8 +1207,7 @@ img {
 }
 
 .footer-links h3,
-.footer-contact h3,
-.footer-newsletter h3 {
+.footer-contact h3 {
   color: white;
   margin-bottom: 20px;
   font-size: 1.3rem;
@@ -1217,8 +1216,7 @@ img {
 }
 
 .footer-links h3::after,
-.footer-contact h3::after,
-.footer-newsletter h3::after {
+.footer-contact h3::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -1288,82 +1286,6 @@ img {
   line-height: 1.5;
   font-size: 0.95rem;
   margin: 0;
-}
-
-.footer-newsletter {
-  flex: 1;
-  min-width: 250px;
-}
-
-.footer-newsletter p {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-}
-
-.newsletter-form {
-  display: flex;
-  position: relative;
-}
-
-.newsletter-form input {
-  flex: 1;
-  padding: 15px;
-  border: none;
-  border-radius: 30px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.95rem;
-  padding-right: 50px;
-}
-
-.newsletter-form input:focus {
-  outline: none;
-}
-
-.newsletter-form button {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  background-color: var(--azul-logo);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: var(--transicion);
-}
-
-/* Estilos para el mensaje de éxito del newsletter */
-.newsletter-success {
-  margin-top: 15px;
-  background: rgba(51, 204, 51, 0.2);
-  border-left: 4px solid var(--verde-logo);
-  padding: 10px 15px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--texto-claro);
-}
-
-.newsletter-success i {
-  color: var(--verde-logo);
-  font-size: 1.2rem;
-}
-
-.newsletter-success p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.newsletter-form button:hover {
-  background-color: var(--rojo-logo);
-  transform: scale(1.1);
 }
 
 .footer-social {
@@ -1568,8 +1490,7 @@ img {
 
   .footer-info,
   .footer-links,
-  .footer-contact,
-  .footer-newsletter {
+  .footer-contact {
     max-width: 100%;
   }
 }
@@ -2008,8 +1929,7 @@ img {
 
   .footer-info,
   .footer-links,
-  .footer-contact,
-  .footer-newsletter {
+  .footer-contact {
     max-width: 100%;
   }
 }
@@ -2399,8 +2319,7 @@ img {
 
   .footer-info,
   .footer-links,
-  .footer-contact,
-  .footer-newsletter {
+  .footer-contact {
     max-width: 100%;
   }
 }
