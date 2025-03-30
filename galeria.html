@@ -1317,6 +1317,19 @@
   }
 }
 
+@media screen and (max-width: 750px) {
+  .galeria-grid {
+    grid-template-columns: repeat(1, minmax(280px, 450px));
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .galeria-item {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .hero-title {
     font-size: 1.8rem;

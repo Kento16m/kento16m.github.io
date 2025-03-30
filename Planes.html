@@ -1432,6 +1432,179 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  /* Estilos para centralizar el formulario de contacto en móviles */
+  .contacto {
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contacto p {
+    text-align: center;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .contacto form {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-group {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Ocultar los iconos en móvil */
+  .form-icon {
+    display: none;
+  }
+  
+  /* Ajustar el padding del input al quitar los iconos */
+  .contacto input,
+  .contacto textarea {
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Mejorar el aspecto del botón */
+  .contacto button {
+    margin: 20px auto 0;
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+  
+  /* Mensaje de éxito */
+  .success-message {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Asegurar que la sección de contacto tenga suficiente espacio */
+  .mapa-contacto {
+    gap: 20px;
+  }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+  .contacto h2 {
+    font-size: 1.8rem;
+  }
+  
+  .contacto form {
+    max-width: 100%;
+  }
+  
+  .contacto button {
+    max-width: 100%;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .planes-comparison {
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .planes-comparison::after {
+    content: "← Desliza horizontalmente →";
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: var(--azul-logo);
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 0 0 15px 15px;
+  }
+  
+  .comparison-table {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: thin; 
+    scrollbar-color: var(--azul-logo) #f0f0f0; 
+  }
+  
+  .comparison-table::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .comparison-table::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+  }
+  
+  .comparison-table::-webkit-scrollbar-thumb {
+    background-color: var(--azul-logo);
+    border-radius: 4px;
+  }
+  
+  .comparison-table::-webkit-scrollbar-thumb:hover {
+    background-color: var(--fondo-oscuro);
+  }
+
+  .comparison-table table {
+    min-width: 600px;
+  }
+  
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comparison-table::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .planes-comparison::after {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .planes-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .plan-card {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .plan-card.featured {
+    max-width: 370px;
+  }
+  
+  .plan-button {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .hero-title {
     font-size: 1.8rem;
@@ -1633,57 +1806,57 @@
                         <h3>COMPARATIVA DE PLANES</h3>
                         <p>Encuentra el plan perfecto para ti</p>
                     </div>
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Características</th>
-                                <th>Plan Individual</th>
-                                <th> Plan Trio Fit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Precio mensual</td>
-                                <td>150.000 Gs</td>
-                                <td>390.000 Gs (130.000 Gs por persona)</td>
-                            </tr>
-                            <tr>
-                                <td>Acceso ilimitado</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Horario completo</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Uso de todas las máquinas</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Asesoramiento inicial</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Acceso a vestuarios</td>
-                                <td><i class="fas fa-check"></i></td>
-                                <td><i class="fas fa-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Ahorro por persona</td>
-                                <td>-</td>
-                                <td>13%</td>
-                            </tr>
-                            <tr>
-                                <td>Ideal para</td>
-                                <td>Personas que entrenan solas</td>
-                                <td>Amigos o familiares</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Características</th>
+                                    <th>Plan Individual</th>
+                                    <th> Plan Trio Fit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Precio mensual</td>
+                                    <td>150.000 Gs</td>
+                                    <td>390.000 Gs (130.000 Gs por persona)</td>
+                                </tr>
+                                <tr>
+                                    <td>Acceso ilimitado</td>
+                                    <td><i class="fas fa-check"></i></td>
+                                    <td><i class="fas fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Horario completo</td>
+                                    <td><i class="fas fa-check"></i></td>
+                                    <td><i class="fas fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Uso de todas las máquinas</td>
+                                    <td><i class="fas fa-check"></i></td>
+                                    <td><i class="fas fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Asesoramiento inicial</td>
+                                    <td><i class="fas fa-check"></i></td>
+                                    <td><i class="fas fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Acceso a vestuarios</td>
+                                    <td><i class="fas fa-check"></i></td>
+                                    <td><i class="fas fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Ahorro por persona</td>
+                                    <td>-</td>
+                                    <td>13%</td>
+                                </tr>
+                                <tr>
+                                    <td>Ideal para</td>
+                                    <td>Personas que entrenan solas</td>
+                                    <td>Amigos o familiares</td>
+                                </tr>
+                            </tbody>
+                        </table>
                 </div>
             </div>
         </section>
