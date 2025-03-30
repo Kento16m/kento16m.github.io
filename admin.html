@@ -26,6 +26,9 @@
                         <img src="img/logo.png" alt="Logo MacroGym Fitness">
                     </a>
                 </div>
+                
+               
+                
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -91,7 +94,7 @@
                                 <th>Nombre</th>
                                 <th>Número de Identificación</th>
                                 <th>Número de Teléfono</th>
-                                <th>Correo Electrónico</th>
+                                <th>Correo Electrónico </th>
                                 <th>Plan</th>
                                 <th>Horario</th>
                                 <th>Fecha de Registro</th>
@@ -121,7 +124,7 @@
                                 <label for="renewPlan">Plan:</label>
                                 <select id="renewPlan" required>
                                     <option value="Normal">Normal - ₲ 150.000/mes</option>
-                                    <option value="2 meses">2 meses - ₲ 200.000/mes</option>
+                                    <option value="1 mes">Trio Fit - ₲ 390.000/mes</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -175,6 +178,14 @@
                         <i class="fas fa-envelope"></i>
                         <p><a href="mailto:info@macrogymfitness.com">info@macrogymfitness.com</a></p>
                     </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Suscripción al boletín informativo</h3>
+                    <p>Recibe noticias, promociones y consejos de fitness por correo electrónico.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Correo Electronico">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
                 </div>
             </div>
             <div class="footer-social">
@@ -281,8 +292,8 @@
                     
                     // Duración del plan en días
                     let planDuration = 30; // por defecto un mes
-                    if (item.plan.includes("2 meses")) {
-                        planDuration = 60;
+                    if (item.plan.includes("Trio Fit")) {
+                        planDuration = 30;
                     }
                     
                     const expirationDate = new Date(lastRenewalDate);
@@ -456,8 +467,8 @@
                     
                     // Duración del plan en días
                     let planDuration = 30; // por defecto un mes
-                    if (item.plan.includes("2 meses")) {
-                        planDuration = 60;
+                    if (item.plan.includes("Trio Fit")) {
+                        planDuration = 30;
                     }
                     
                     const expirationDate = new Date(lastRenewalDate);
@@ -497,7 +508,7 @@
                     
                     // Duración del plan en días
                     let planDuration = 30; // por defecto un mes
-                    if (item.plan.includes("2 meses")) {
+                    if (item.plan.includes("Trio Fit")) {
                         planDuration = 60;
                     }
                     
