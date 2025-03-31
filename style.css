@@ -2294,6 +2294,44 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  .programas-grid {
+      grid-template-columns: 1fr; 
+      max-width: 100%;
+      padding: 15px;
+  }
+
+  .programa-card {
+      width: 100%;
+      max-width: 400px; 
+      margin: 0 auto; 
+  }
+
+  .programa-image {
+      height: 200px; 
+  }
+
+  .programa-content {
+      padding: 20px 15px; 
+  }
+
+  .programa-details {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .programa-card {
+      max-width: 100%; 
+  }
+
+  .programa-image {
+      height: 180px; 
+  }
+}
+
+@media screen and (max-width: 768px) {
   .nav-link {
     font-size: 1.2rem;
   }
