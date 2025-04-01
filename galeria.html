@@ -750,6 +750,225 @@
             transform: scale(1.1);
         }
 
+        /* Estilos para la sección de Instagram */
+        .instagram-section {
+            padding: 80px 20px;
+            background-color: #ffffff;
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .instagram-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("img/pattern.png");
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .instagram-section .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Estilos para las cartas de Instagram */
+        .instagram-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicion);
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .instagram-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .instagram-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .instagram-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .instagram-profile img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .instagram-profile-info h4 {
+            font-size: 0.9rem;
+            margin: 0;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .instagram-profile-info span {
+            font-size: 0.75rem;
+            color: var(--gris-medio);
+            display: block;
+        }
+
+        .instagram-options i {
+            color: var(--gris-medio);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .instagram-card-image {
+            width: 100%;
+            position: relative;
+        }
+
+        .instagram-card-image img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .instagram-card-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+        }
+
+        .instagram-actions-primary {
+            display: flex;
+            gap: 15px;
+        }
+
+        .instagram-card-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--gris-oscuro);
+            padding: 0;
+            transition: var(--transicion);
+        }
+
+        .instagram-card-actions button:hover {
+            color: var(--azul-logo);
+            transform: scale(1.1);
+        }
+
+        .instagram-card-likes {
+            padding: 0 15px 8px;
+        }
+
+        .instagram-card-likes span {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .instagram-card-caption {
+            padding: 0 15px 12px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .instagram-card-caption p {
+            margin: 0;
+        }
+
+        .instagram-card-time {
+            padding: 8px 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .instagram-card-time span {
+            font-size: 0.7rem;
+            color: var(--gris-medio);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .instagram-follow-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .instagram-follow-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--azul-logo);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transicion);
+            box-shadow: var(--sombra-suave);
+        }
+
+        .instagram-follow-btn i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .instagram-follow-btn:hover {
+            background-color: var(--fondo-oscuro);
+            transform: translateY(-3px);
+            box-shadow: var(--sombra-media);
+        }
+
+        /* Media queries para responsividad */
+        @media screen and (max-width: 768px) {
+            .instagram-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .instagram-card-image img {
+                height: 280px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .instagram-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .instagram-card {
+                max-width: 100%;
+            }
+            
+            .instagram-card-image img {
+                height: 250px;
+            }
+            
+            .instagram-profile-info h4 {
+                font-size: 0.85rem;
+            }
+        }
+
         /* Categorías */
         .categoria-instalaciones {
             background-color: var(--azul-logo);
@@ -1538,7 +1757,7 @@
                             <p>Equipos cardiovasculares de última generación para mejorar tu resistencia y quemar calorías.</p>
                             <div class="galeria-fecha">
                                 <i class="far fa-calendar-alt"></i>
-                                <span>Abril 2025</span>
+                                <span>Diciembre 2024</span>
                             </div>
                         </div>
                     </div>
@@ -1559,7 +1778,7 @@
                             <p>Contamos con un equipo de profesionales certificados para guiarte en tu camino fitness.</p>
                             <div class="galeria-fecha">
                                 <i class="far fa-calendar-alt"></i>
-                                <span>Mayo 2025</span>
+                                <span>Marzo 2025</span>
                             </div>
                         </div>
                     </div>
@@ -1580,7 +1799,7 @@
                             <p>Contamos con equipamientos óptimos y de buena calidad para tus entrenamientos.</p>
                             <div class="galeria-fecha">
                                 <i class="far fa-calendar-alt"></i>
-                                <span>Junio 2025</span>
+                                <span>Enero 2025</span>
                             </div>
                         </div>
                     </div>
@@ -1643,10 +1862,147 @@
                             <p>Nuestro amable personal de recepción está siempre dispuesto a ayudarte.</p>
                             <div class="galeria-fecha">
                                 <i class="far fa-calendar-alt"></i>
-                                <span>Septiembre 2025</span>
+                                <span>Marzo 2025</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Instagram Feed -->
+        <section id="instagram-feed" class="instagram-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>SÍGUENOS EN INSTAGRAM</h2>
+                    <div class="section-divider">
+                        <span></span>
+                        <i class="fab fa-instagram"></i>
+                        <span></span>
+                    </div>
+                    <p>Mantente al día con nuestras últimas publicaciones y eventos</p>
+                </div>
+                
+                <div class="instagram-grid">
+                    <!-- Publicación 1 -->
+                    <div class="instagram-card">
+                        <div class="instagram-card-header">
+                            <div class="instagram-profile">
+                                <img src="img/logo_icono.png" alt="MacroGym Profile">
+                                <div class="instagram-profile-info">
+                                    <h4>macrogymfitness</h4>
+                                    <span>MacroGym Fitness</span>
+                                </div>
+                            </div>
+                            <div class="instagram-options">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                        <div class="instagram-card-image">
+                            <img src="img galeria/galeria_pesas.png" alt="Entrenamiento de fuerza">
+                        </div>
+                        <div class="instagram-card-actions">
+                            <div class="instagram-actions-primary">
+                                <button><i class="far fa-heart"></i></button>
+                                <button><i class="far fa-comment"></i></button>
+                                <button><i class="far fa-paper-plane"></i></button>
+                            </div>
+                            <div class="instagram-actions-secondary">
+                                <button><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                        <div class="instagram-card-likes">
+                            <span>125 Me gusta</span>
+                        </div>
+                        <div class="instagram-card-caption">
+                            <p><strong>macrogymfitness</strong> 💪 ¡Nuevo equipamiento de pesas en MacroGym! Ven a probar nuestras instalaciones renovadas y alcanza tus objetivos fitness. #MacroGym #Fitness #NuevoEquipo</p>
+                        </div>
+                        <div class="instagram-card-time">
+                            <span>HACE 2 DÍAS</span>
+                        </div>
+                    </div>
+
+                    <!-- Publicación 2 -->
+                    <div class="instagram-card">
+                        <div class="instagram-card-header">
+                            <div class="instagram-profile">
+                                <img src="img/logo_icono.png" alt="MacroGym Profile">
+                                <div class="instagram-profile-info">
+                                    <h4>macrogymfitness</h4>
+                                    <span>MacroGym Fitness</span>
+                                </div>
+                            </div>
+                            <div class="instagram-options">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                        <div class="instagram-card-image">
+                            <img src="img galeria/entrenamiento_funcional.webp" alt="Clase de entrenamiento funcional">
+                        </div>
+                        <div class="instagram-card-actions">
+                            <div class="instagram-actions-primary">
+                                <button><i class="far fa-heart"></i></button>
+                                <button><i class="far fa-comment"></i></button>
+                                <button><i class="far fa-paper-plane"></i></button>
+                            </div>
+                            <div class="instagram-actions-secondary">
+                                <button><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                        <div class="instagram-card-likes">
+                            <span>98 Me gusta</span>
+                        </div>
+                        <div class="instagram-card-caption">
+                            <p><strong>macrogymfitness</strong> 🏋️‍♀️ Nuestras clases de entrenamiento funcional están diseñadas para mejorar tu fuerza, resistencia y flexibilidad. ¡Únete a la próxima sesión! #EntrenamientoFuncional #MacroGym #FitnessParaTodos</p>
+                        </div>
+                        <div class="instagram-card-time">
+                            <span>HACE 5 DÍAS</span>
+                        </div>
+                    </div>
+
+                    <!-- Publicación 3 -->
+                    <div class="instagram-card">
+                        <div class="instagram-card-header">
+                            <div class="instagram-profile">
+                                <img src="img/logo_icono.png" alt="MacroGym Profile">
+                                <div class="instagram-profile-info">
+                                    <h4>macrogymfitness</h4>
+                                    <span>MacroGym Fitness</span>
+                                </div>
+                            </div>
+                            <div class="instagram-options">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                        <div class="instagram-card-image">
+                            <img src="img galeria/galeria_fiesta.png" alt="Evento especial">
+                        </div>
+                        <div class="instagram-card-actions">
+                            <div class="instagram-actions-primary">
+                                <button><i class="far fa-heart"></i></button>
+                                <button><i class="far fa-comment"></i></button>
+                                <button><i class="far fa-paper-plane"></i></button>
+                            </div>
+                            <div class="instagram-actions-secondary">
+                                <button><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                        <div class="instagram-card-likes">
+                            <span>203 Me gusta</span>
+                        </div>
+                        <div class="instagram-card-caption">
+                            <p><strong>macrogymfitness</strong> 🎉 ¡Así celebramos la primavera en MacroGym! Gracias a todos los que asistieron a nuestro evento especial. ¡La comunidad MacroGym es la mejor! #FiestaDePrimavera #ComunidadFitness #MacroGym</p>
+                        </div>
+                        <div class="instagram-card-time">
+                            <span>HACE 1 SEMANA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instagram-follow-container">
+                    <a href="https://www.instagram.com/macrogymfitness/" target="_blank" class="instagram-follow-btn">
+                        <i class="fab fa-instagram"></i> Seguir en Instagram
+                    </a>
                 </div>
             </div>
         </section>
@@ -1712,9 +2068,6 @@
                 </a>
                 <a href="https://api.whatsapp.com/send?phone=%2B595991765892" target="_blank" class="social-icon">
                     <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="#" target="_blank" class="social-icon">
-                    <i class="fab fa-youtube"></i>
                 </a>
             </div>
         </div>
