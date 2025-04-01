@@ -1936,7 +1936,12 @@
                             <span></span>
                         </div>
                         <p>¿Tienes alguna pregunta sobre nuestros planes? Déjanos un mensaje y te responderemos a la brevedad.</p>
-                        <form action="https://formspree.io/f/mvgkzaln" method="POST">
+                        <form id="contactForm" action="https://formspree.io/f/mvgkzaln" method="POST">
+                            <!-- Campo honeypot invisible para los usuarios pero visible para los bots -->
+                            <div class="honeypot-field" style="display:none !important; visibility:hidden; opacity:0; position:absolute; left:-9999px;">
+                                <label for="website">Website (No completar este campo)</label>
+                                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                            </div>
                             <div class="form-group">
                                 <div class="form-icon">
                                     <i class="fas fa-user"></i>
@@ -1967,15 +1972,12 @@
                                 </div>
                                 <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
                             </div>
-                            <input type="hidden" name="_next" value="https://tu-sitio-web.com/gracias.html">
-                            <input type="hidden" name="_subject" value="Nuevo mensaje de MACRO GYM">
-                            <input type="hidden" name="_captcha" value="false">
                             <button type="submit">
                                 <span>Enviar mensaje</span>
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                             <div id="message" class="form-message"></div>
-                        </form>
+                        </form>                        
                     </div>
                 </div>
             </div>
@@ -2100,6 +2102,21 @@
                     messageDiv.style.display = 'block';
                 }, 1000);
             });
+        });
+    </script>
+    <script>
+        // Validación del formulario con honeypot
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Verificar si el campo honeypot está vacío
+            const honeypotField = document.getElementById('website');
+            if (honeypotField.value !== '') {
+                // Si el campo honeypot tiene contenido, es probablemente un bot
+                event.preventDefault();
+                console.log('Envío de formulario bloqueado: posible bot detectado');
+                return false;
+            }
+            // Si llegamos aquí, el formulario es válido (no es un bot)
+            return true;
         });
     </script>
     <script src="index_script.js"></script>

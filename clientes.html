@@ -308,7 +308,6 @@
         <section class="clientes-section">
             <div class="clientes-container">
                 <div class="clientes-header">
-                    
                     <h2>INSCRIBETE AHORA!</h2>
                     <div class="section-divider">
                         <span></span>
@@ -318,8 +317,12 @@
                     <p>Complete el formulario para registrarse como cliente de MACRO GYM</p>
                 </div>
                 
-                <!-- Formspree フォーム - ここにあなたのFormspree URLを入力してください -->
                 <form id="clientesForm" class="clientes-form" action="https://formspree.io/f/xzzevrpy" method="POST">
+                    <!-- Campo honeypot invisible para los usuarios pero visible para los bots -->
+                    <div class="honeypot-field" style="display:none !important; visibility:hidden; opacity:0; position:absolute; left:-9999px;">
+                        <label for="website_field">Website (No completar este campo)</label>
+                        <input type="text" name="website_field" id="website_field" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nombre">Nombre <span style="color: red;">*</span></label>
@@ -530,6 +533,37 @@
             // ローカルストレージにもデータを保存する（オプション）
             const clientesForm = document.getElementById('clientesForm');
             const successMessage = document.getElementById('successMessage');
+
+            // Validación del formulario con honeypot
+        clientesForm.addEventListener('submit', function(e) {
+            // Verificar si el campo honeypot está vacío
+            const honeypotField = document.getElementById('website_field');
+            if (honeypotField && honeypotField.value !== '') {
+                // Si el campo honeypot tiene contenido, es probablemente un bot
+                e.preventDefault();
+                console.log('Envío de formulario bloqueado: posible bot detectado');
+                return false;
+            }
+            
+            // Si llegamos aquí, el formulario es válido (no es un bot)
+            // El código existente para guardar en localStorage puede continuar aquí
+            
+            // Recopilar datos del formulario
+            const formData = new FormData(clientesForm);
+            const userData = {};
+            
+            for (const [key, value] of formData.entries()) {
+                // No incluir el campo honeypot en los datos guardados
+                if (key !== 'website_field') {
+                    userData[key] = value;
+                }
+            }
+            
+            // Guardar en localStorage
+            saveToLocalStorage(userData);
+            
+            return true;
+        });
             
             clientesForm.addEventListener('submit', function(e) {
                 // フォームの送信は阻止しない - Formspreeに送信される
