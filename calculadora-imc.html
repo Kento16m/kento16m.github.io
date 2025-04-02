@@ -647,30 +647,82 @@
         /* Estilos para hacer la tabla desplazable horizontalmente en móviles */
 @media screen and (max-width: 768px) {
     .nutrition-table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        -ms-overflow-style: -ms-autohiding-scrollbar;
-    }
-    
-    .nutrition-table table {
-        min-width: 500px; /* Asegura que la tabla mantenga un ancho mínimo */
-        margin-bottom: 0;
-    }
-    
-    /* Indicador visual de desplazamiento */
-    .nutrition-table::after {
-        content: '→';
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--primary-color);
-        animation: slideRight 1.5s infinite;
-        font-size: 20px;
-        pointer-events: none;
-    }
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                -ms-overflow-style: -ms-autohiding-scrollbar;
+            }
+            
+            /* Convertir tabla a formato de tarjetas en móvil */
+            .nutrition-table thead {
+                display: none; /* Ocultar encabezados de tabla */
+            }
+            
+            .nutrition-table tbody {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nutrition-table tr {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 15px;
+                background-color: #f9f9f9;
+                border-left: 4px solid var(--primary-color);
+                transition: var(--transition);
+            }
+            
+            .nutrition-table tr:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            
+            .nutrition-table td {
+                display: flex;
+                flex-direction: column;
+                border: none;
+                padding: 8px 0;
+                position: relative;
+            }
+            
+            .nutrition-table td:first-child {
+                font-weight: 700;
+                color: var(--fondo-oscuro);
+                font-size: 1.1rem;
+                border-bottom: 1px solid #e0e0e0;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+            }
+            
+            .nutrition-table td:nth-child(2)::before {
+                content: "Cantidad diaria:";
+                font-weight: 600;
+                font-size: 0.9rem;
+                color: var(--primary-color);
+                margin-bottom: 5px;
+            }
+            
+            .nutrition-table td:nth-child(3)::before {
+                content: "Fuentes recomendadas:";
+                font-weight: 600;
+                font-size: 0.9rem;
+                color: var(--primary-color);
+                margin-bottom: 5px;
+            }
+            
+            /* Eliminar el indicador visual de desplazamiento ya que no es necesario */
+            .nutrition-table::after {
+                display: none;
+            }
+            
+            /* Otros ajustes para móvil */
+            .form-group {
+                width: 80%;
+            }
     
     @keyframes slideRight {
         0% {
