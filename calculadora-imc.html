@@ -718,11 +718,6 @@
             .nutrition-table::after {
                 display: none;
             }
-            
-            /* Otros ajustes para móvil */
-            .form-group {
-                width: 80%;
-            }
     
     @keyframes slideRight {
         0% {
@@ -742,7 +737,7 @@
 
         @media screen and (max-width: 768px) {
             .form-group {
-                width: 80%;
+                width: 100%;
             }
 
             .calculator-card,
@@ -783,6 +778,12 @@
         /* Elementos para impresión que normalmente están ocultos */
         .print-header, .print-footer, .print-section-title {
             display: none;
+        }
+
+        @media screen and (max-width: 369px) {
+            .form-group {
+                width: 80%;
+            }
         }
     </style>
 </head>
