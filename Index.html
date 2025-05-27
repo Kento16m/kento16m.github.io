@@ -10,6 +10,88 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Visión y Misión Section */
+        .vision-mision-section {
+            background-color: #fff;
+            padding: 80px 20px 60px 20px;
+        }
+
+        .vision-mision-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .vision-mision-block {
+            flex: 1 1 350px;
+            min-width: 320px;
+            max-width: 500px;
+            background: #f8f8f8;
+            border-radius: 18px;
+            box-shadow: var(--sombra-suave);
+            margin: 0 10px;
+            padding: 40px 30px 30px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: var(--transicion);
+        }
+
+        .vision-mision-block:hover {
+            box-shadow: var(--sombra-media);
+            transform: translateY(-5px);
+        }
+
+        .vision-mision-block .section-header {
+            margin-bottom: 0;
+        }
+
+        .vision-mision-block h2 {
+            color: var(--azul-logo);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .vision-mision-block p {
+            color: var(--texto-oscuro);
+            font-size: 1.08rem;
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 900px) {
+            .vision-mision-container {
+                flex-direction: column;
+                gap: 30px;
+                align-items: center;
+            }
+            .vision-mision-block {
+                max-width: 600px;
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .vision-mision-block {
+                padding: 25px 12px 20px 12px;
+            }
+            .vision-mision-block h2 {
+                font-size: 1.3rem;
+            }
+            .vision-mision-block p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Pantalla de carga -->
@@ -367,6 +449,38 @@
             </div>
         </section>
     </main>
+
+    <!-- Visión y Misión Section -->
+    <section class="vision-mision-section">
+        <div class="vision-mision-container">
+            <div class="vision-mision-block" data-aos="fade-up">
+                <div class="section-header">
+                    <h2>VISIÓN</h2>
+                    <div class="section-divider">
+                        <span></span>
+                        <i class="fas fa-eye"></i>
+                        <span></span>
+                    </div>
+                    <p>
+                        Ser el gimnasio líder en innovación, calidad y resultados en Paraguay, inspirando a nuestra comunidad a adoptar un estilo de vida saludable y activo, y convirtiéndonos en referencia de bienestar integral.
+                    </p>
+                </div>
+            </div>
+            <div class="vision-mision-block" data-aos="fade-up" data-aos-delay="100">
+                <div class="section-header">
+                    <h2>MISIÓN</h2>
+                    <div class="section-divider">
+                        <span></span>
+                        <i class="fas fa-bullseye"></i>
+                        <span></span>
+                    </div>
+                    <p>
+                        Brindar a nuestros clientes un espacio moderno, seguro y motivador, con equipamiento de alta calidad y un equipo profesional comprometido, para que cada persona alcance sus objetivos de salud y fitness.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="contacto" class="contacto-section">
         <div class="contacto-container">
